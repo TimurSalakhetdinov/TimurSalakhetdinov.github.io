@@ -175,30 +175,33 @@
       </ul>
     </section>
 
-    <!-- Get In Touch -->
-    <section id="three">
-      <h2>Get In Touch</h2>
-      <div class="row">
-        <div class="col-8 col-12-small">
-          <form method="post" action="#">
-            <div class="row gtr-uniform gtr-50">
-              <div class="col-6 col-12-xsmall">
-                <input type="text" name="name" id="name" placeholder="Name" />
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="email" name="email" id="email" placeholder="Email" />
-              </div>
-              <div class="col-12">
-                <textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-              </div>
-            </div>
-          </form>
-          <ul class="actions">
-            <li><input type="submit" value="Send Message" /></li>
-          </ul>
+<!-- Get In Touch -->
+<section id="three">
+  <h2>Get In Touch</h2>
+  <div class="row">
+    <div class="col-8 col-12-small">
+      <!-- Updated form action to Formspree endpoint -->
+      <form action="https://formspree.io/f/xldlodoj" method="POST">
+        <input type="hidden" name="_subject" value="New message from portfolio site" />
+        <div class="row gtr-uniform gtr-50">
+          <div class="col-6 col-12-xsmall">
+            <input type="text" name="name" id="name" placeholder="Name" required />
+          </div>
+          <div class="col-6 col-12-xsmall">
+            <input type="email" name="email" id="email" placeholder="Email" required />
+          </div>
+          <div class="col-12">
+            <textarea name="message" id="message" placeholder="Message" rows="4" required></textarea>
+          </div>
+          <div class="col-12">
+            <!-- Submit button inside form -->
+            <button type="submit" class="button primary">Send Message</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </form>
+    </div>
+  </div>
+</section>
 
   </div>
 
