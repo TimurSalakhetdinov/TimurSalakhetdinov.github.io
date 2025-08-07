@@ -3274,6 +3274,21 @@ input, select, textarea {
   }
 }
 
+/* Style the “Advanced proficiency” subheader */
+#skills .features-header {
+  margin: 1.5em 0 0 0;     /* top 1.5em, then zero on right/bottom/left */
+  font-weight: 700;      /* bold */
+  font-size: 1.1em;      /* slightly larger */
+  list-style: none;      /* no bullet */
+  padding-left: 0;       /* align with others */
+  color: #787878;        /* match your h3 color */
+}
+
+#skills ul.features {
+  padding-left: 0;
+  margin-left: 0;
+}
+
 /* Force all portfolio thumbs to a uniform 16:9 box */
 .work-item .image {
   display: block;
