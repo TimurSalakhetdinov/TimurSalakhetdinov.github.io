@@ -3236,7 +3236,7 @@ input, select, textarea {
   padding-bottom: 1rem;
 }
 #blog .carousel-item {
-  flex: 0 0 280px;
+  flex: 0 0 350px;
   scroll-snap-align: start;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -3257,6 +3257,21 @@ input, select, textarea {
   font-size: 0.85rem;
   color: #555;
   margin: 0;
+}
+
+/* Mobile: full‑width Medium posts */
+@media screen and (max-width: 736px) {
+  /* Stop horizontal scroll snapping; stack cards full width */
+  #blog .carousel {
+    display: block;
+    overflow-x: hidden;
+    scroll-snap-type: none;
+  }
+  #blog .carousel-item {
+    flex: 0 0 100%;   /* take full container width */
+    max-width: 100%;  /* override fixed 280px */
+    margin: 0 0 1rem; /* vertical spacing between cards */
+  }
 }
 
 /* Force all portfolio thumbs to a uniform 16:9 box */
