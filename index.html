@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const resp = await fetch(url);
     const json = await resp.json();
-    const posts = json.items.slice(0, 5);
+    const posts = json.items.slice(0, 4);
     const carousel = document.querySelector('#blog .carousel');
 
     posts.forEach(post => {
