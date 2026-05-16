@@ -756,35 +756,7 @@
     <span class="sec-right">Latest from medium.com/@timursalakhetdinov</span>
   </div>
 
-  <div class="posts-grid fi">
-    <a href="https://medium.com/@timursalakhetdinov" class="post-link" target="_blank" rel="noopener">
-      <div class="post-meta">
-        <span class="post-tag">Forecasting</span>
-        <span class="post-date">2026-03-12 · 9 min</span>
-      </div>
-      <h3 class="post-h3">Dual-Process agents for time-series: notes from my M.Sc. thesis</h3>
-    </a>
-    <a href="https://medium.com/@timursalakhetdinov" class="post-link" target="_blank" rel="noopener">
-      <div class="post-meta">
-        <span class="post-tag">Bayesian</span>
-        <span class="post-date">2026-01-04 · 6 min</span>
-      </div>
-      <h3 class="post-h3">Why I keep coming back to Bayesian methods at work</h3>
-    </a>
-    <a href="https://medium.com/@timursalakhetdinov" class="post-link" target="_blank" rel="noopener">
-      <div class="post-meta">
-        <span class="post-tag">Production</span>
-        <span class="post-date">2025-11-21 · 8 min</span>
-      </div>
-      <h3 class="post-h3">From Excel cubes to Microsoft Fabric: a working-student's notes</h3>
-    </a>
-    <a href="https://medium.com/@timursalakhetdinov" class="post-link" target="_blank" rel="noopener">
-      <div class="post-meta">
-        <span class="post-tag">Forecasting</span>
-        <span class="post-date">2025-09-08 · 7 min</span>
-      </div>
-      <h3 class="post-h3">Notes on TimesFM in production</h3>
-    </a>
+  <div class="posts-grid fi" id="medium-posts">
     <div class="posts-rule"></div>
   </div>
 </section>
@@ -811,7 +783,7 @@
         </div>
         <div class="cl-row">
           <span class="cl-k">LinkedIn</span>
-          <a href="https://linkedin.com/in/stimur" class="cl-v" target="_blank" rel="noopener">linkedin.com/in/stimur</a>
+          <a href="https://linkedin.com/in/timursalakhetdinov" class="cl-v" target="_blank" rel="noopener">linkedin.com/in/timursalakhetdinov</a>
         </div>
         <div class="cl-row">
           <span class="cl-k">GitHub</span>
@@ -859,6 +831,42 @@
     { threshold: 0.07 }
   );
   document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+
+<!-- Medium latest posts -->
+<script>
+(async () => {
+  const username = 'timursalakhetdinov';
+  const apiKey   = 'zsgv0snbfndtdkw1lftle7bwug9euio2qcrjb7wd';
+  const url = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}&api_key=${apiKey}`;
+  const grid = document.getElementById('medium-posts');
+  const rule = grid.querySelector('.posts-rule');
+
+  try {
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const posts = (json.items || []).slice(0, 4);
+
+    posts.forEach(post => {
+      const date = new Date(post.pubDate).toISOString().slice(0, 10);
+      const tag  = (post.categories && post.categories[0]) || 'Article';
+      const card = document.createElement('a');
+      card.href    = post.link;
+      card.className = 'post-link fi';
+      card.target  = '_blank';
+      card.rel     = 'noopener';
+      card.innerHTML = `
+        <div class="post-meta">
+          <span class="post-tag">${tag}</span>
+          <span class="post-date">${date}</span>
+        </div>
+        <h3 class="post-h3">${post.title}</h3>`;
+      grid.insertBefore(card, rule);
+    });
+  } catch (e) {
+    console.error('Failed to load Medium posts', e);
+  }
+})();
 </script>
 </body>
 </html>
