@@ -407,21 +407,28 @@
       .hero-h1    { font-size: 52px; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
 
-      .feat-head { flex-direction: column; gap: 8px; align-items: flex-start; }
-      .feat-body { grid-template-columns: 1fr; }
-      .feat-h2   { font-size: 34px; }
+      .feat-head   { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .feat-head-l { flex-direction: column; gap: 4px; }
+      .feat-body   { grid-template-columns: 1fr; }
+      .feat-h2     { font-size: 34px; }
 
       .about-body  { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
 
-      .proj-thead { display: none; }
-      .proj-row   { grid-template-columns: 1fr; gap: 12px; }
-      .proj-thumb { aspect-ratio: 16/7; }
-      .proj-yr-col { text-align: left; }
+      .langs-lbl  { flex: 0 0 100%; }
+      .langs-row  { gap: 16px 24px; }
+
+      .proj-thead   { display: none; }
+      .proj-row     { grid-template-columns: 1fr; gap: 12px; }
+      .proj-thumb   { aspect-ratio: 16/7; }
+      .proj-yr-col  { text-align: left; }
+      .proj-methods { flex-direction: row; flex-wrap: wrap; }
+      .proj-note    { display: none; }
 
       .posts-grid   { grid-template-columns: 1fr; }
       .contact-body { grid-template-columns: 1fr; }
       .contact-h2   { font-size: 40px; }
+      .footer { flex-direction: column; gap: 10px; }
     }
 
     @media (max-width: 540px) {
@@ -448,7 +455,8 @@
       .cv-row   { grid-template-columns: 80px 1fr; }
       .cv-row .cv-k { display: none; }
 
-      .contact-h2 { font-size: 30px; }
+      .form-eyebrow { display: none; }
+      .contact-h2   { font-size: 30px; }
     }
   </style>
 </head>
