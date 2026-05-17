@@ -389,6 +389,14 @@
       font-family: var(--mono); font-size: 11px; letter-spacing: .05em; color: var(--ink-muted);
     }
 
+    /* ── Lang toggle ── */
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .lang-toggle { display: flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; border: 1px solid var(--rule); padding: 3px 8px; }
+    .lang-toggle a { color: var(--ink-muted); text-decoration: none; transition: color .15s; }
+    .lang-toggle a:hover { color: var(--ink); }
+    .lang-active { color: var(--ink); }
+    .lang-sep { color: var(--rule-strong); }
+
     /* ── Fade-in ── */
     .fi { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
     .fi.in { opacity: 1; transform: none; }
@@ -478,9 +486,16 @@
       <li><a href="#contact"><span class="nav-num">§05</span><span>Contact</span></a></li>
     </ul>
   </nav>
-  <div class="nav-status">
-    <span class="nav-dot"></span>
-    <span>open for Dec 2026 — Germany</span>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <span class="lang-active">EN</span>
+      <span class="lang-sep">·</span>
+      <a href="/de">DE</a>
+    </div>
+    <div class="nav-status">
+      <span class="nav-dot"></span>
+      <span>open for Dec 2026 — Germany</span>
+    </div>
   </div>
 </header>
 
