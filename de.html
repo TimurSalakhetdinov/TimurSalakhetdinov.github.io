@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timur Salakhetdinov — Data Scientist · KI-Ingenieur</title>
+  <meta name="description" content="Data Scientist mit zehn Jahren Analyseerfahrung in Finanzen, Telekommunikation und Gaming. Derzeit bei InnoGames im Bereich produktives ML-Forecasting, M.Sc.-Kandidat an der Leuphana Universität.">
+  <meta property="og:title" content="Timur Salakhetdinov — Data Scientist · KI-Ingenieur">
+  <meta property="og:description" content="Probabilistische Prognosen, agentische Systeme und zehn Jahre Analytics – als produktiver ML-Einsatz.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='3' fill='%2315171A'/><text x='50' y='72' font-family='Georgia,serif' font-size='52' font-style='italic' font-weight='500' fill='%23F4F4F1' text-anchor='middle'>ts</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #F4F4F1;
+      --paper:        #EBEBE5;
+      --ink:          #15171A;
+      --ink-soft:     #3C4046;
+      --ink-muted:    #7A7E84;
+      --rule:         #CFCFC7;
+      --rule-strong:  #9C9C92;
+      --accent:       oklch(0.42 0.14 252);
+      --highlight:    oklch(0.92 0.05 95);
+      --green:        oklch(0.6 0.16 145);
+      --serif: 'Source Serif 4', Georgia, serif;
+      --sans:  'IBM Plex Sans', system-ui, sans-serif;
+      --mono:  'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: inherit; }
+    img { display: block; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 24px; align-items: center;
+      padding: 20px 64px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg);
+      font-family: var(--mono); font-size: 12px; letter-spacing: .02em;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 14px; }
+    .nav-mark {
+      width: 28px; height: 28px; border-radius: 2px; flex-shrink: 0;
+      background: var(--ink); color: var(--bg);
+      display: grid; place-items: center;
+      font-family: var(--serif); font-size: 16px; font-style: italic; font-weight: 500;
+    }
+    .nav-name { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); }
+    .nav-role { color: var(--ink-muted); }
+    .nav-links { display: flex; gap: 28px; list-style: none; justify-content: center; }
+    .nav-links a {
+      color: var(--ink-soft); text-decoration: none;
+      display: flex; align-items: baseline; gap: 6px;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-num { color: var(--ink-muted); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-status { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); }
+    .nav-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+    .lang-toggle { display: flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; border: 1px solid var(--rule); padding: 3px 8px; }
+    .lang-toggle a { color: var(--ink-muted); text-decoration: none; transition: color .15s; }
+    .lang-toggle a:hover { color: var(--ink); }
+    .lang-active { color: var(--ink); }
+    .lang-sep { color: var(--rule-strong); }
+
+    /* ── Hero ── */
+    .hero { padding: 80px 64px 60px; border-bottom: 1px solid var(--rule); }
+    .hero-meta {
+      display: grid; grid-template-columns: 100px 1fr 1fr 1fr 1fr;
+      gap: 24px; padding-bottom: 24px; margin-bottom: 60px;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted);
+    }
+    .hero-meta .mk { margin-bottom: 8px; }
+    .hero-meta .mv {
+      color: var(--ink); font-family: var(--sans);
+      text-transform: none; letter-spacing: 0; font-size: 13px;
+    }
+    .hero-body { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: start; }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 12px;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px;
+    }
+    .hero-h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: 76px; line-height: 1.02; letter-spacing: -.02em;
+      color: var(--ink); font-optical-sizing: auto;
+    }
+    .hero-bio {
+      font-family: var(--sans); font-size: 18px; line-height: 1.6;
+      color: var(--ink-soft); margin-top: 32px; max-width: 680px;
+    }
+    .hl { background: var(--highlight); padding: 1px 4px; }
+    .hero-stats {
+      margin-top: 48px; display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 24px; padding-top: 24px; border-top: 1px solid var(--rule);
+    }
+    .stat-v {
+      font-family: var(--serif); font-size: 44px; font-weight: 400;
+      color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums;
+    }
+    .stat-l {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: var(--ink-muted); margin-top: 8px;
+    }
+    .author-card {
+      padding: 24px; border: 1px solid var(--rule);
+      background: var(--paper); border-radius: 2px;
+    }
+    .author-fig {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 16px;
+    }
+    .author-photo-wrap {
+      width: 100%; aspect-ratio: 1/1;
+      background: var(--bg); overflow: hidden;
+      border: 1px solid var(--rule);
+    }
+    .author-photo {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: saturate(.55) contrast(1.02) brightness(1.02);
+    }
+    .author-meta {
+      margin-top: 16px; font-family: var(--mono);
+      font-size: 11px; color: var(--ink-muted); line-height: 1.7;
+    }
+
+    /* ── Section header ── */
+    .sec-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding-bottom: 18px; margin-bottom: 40px;
+      border-bottom: 1px solid var(--rule-strong);
+    }
+    .sec-head-l { display: flex; align-items: baseline; gap: 16px; }
+    .sec-num { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); }
+    .sec-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); }
+    .sec-right {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .05em; color: var(--ink-muted); text-transform: uppercase;
+    }
+
+    /* ── Featured ── */
+    .featured { padding: 60px 64px; border-bottom: 1px solid var(--rule); }
+    .feat-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 40px;
+    }
+    .feat-head-l { display: flex; align-items: baseline; gap: 16px; }
+    .feat-sec-label {
+      font-family: var(--mono); font-size: 12px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--accent);
+    }
+    .feat-meta { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); }
+    .feat-badge {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .05em;
+      color: var(--ink-muted); padding: 4px 10px;
+      border: 1px solid var(--rule); background: var(--paper);
+    }
+    .feat-body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; }
+    .feat-h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: 46px; line-height: 1.1; letter-spacing: -.015em;
+      color: var(--ink);
+    }
+    .feat-p {
+      font-family: var(--sans); font-size: 16px;
+      line-height: 1.65; color: var(--ink-soft); margin-top: 24px;
+    }
+    .feat-p + .feat-p { margin-top: 12px; }
+    .methods-lbl {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ink-muted); margin-top: 32px; margin-bottom: 12px;
+    }
+    .methods-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--rule);
+      font-family: var(--mono); font-size: 12px;
+      background: var(--bg);
+    }
+    .mc {
+      padding: 10px 14px;
+    }
+    .mc:nth-child(n+5) { border-top: 1px solid var(--rule); }
+    .mc.k { border-right: 1px solid var(--rule); color: var(--ink-muted); }
+    .mc.v { color: var(--ink); }
+    .feat-foot {
+      margin-top: 28px;
+      font-family: var(--mono); font-size: 11px;
+      color: var(--ink-muted); letter-spacing: .05em;
+    }
+    .diagram-panel {
+      background: var(--paper); border: 1px solid var(--rule); padding: 28px;
+    }
+    .diagram-cap {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 18px;
+      display: flex; justify-content: space-between;
+    }
+
+    /* ── About ── */
+    .about { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
+    .about-body { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; }
+    .about-lead {
+      font-family: var(--serif); font-size: 26px;
+      line-height: 1.4; letter-spacing: -.005em; color: var(--ink);
+    }
+    .about-p { font-family: var(--sans); font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin-top: 28px; }
+    .about-p + .about-p { margin-top: 16px; }
+    .cv-table { border: 1px solid var(--rule); background: var(--bg); }
+    .cv-thead {
+      display: grid; grid-template-columns: 120px 1fr 120px;
+      background: var(--paper); border-bottom: 1px solid var(--rule);
+      padding: 10px 16px;
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted);
+    }
+    .cv-thead span:last-child { text-align: right; }
+    .cv-row {
+      display: grid; grid-template-columns: 120px 1fr 120px;
+      gap: 16px; padding: 16px;
+      border-bottom: 1px solid var(--rule); align-items: baseline;
+    }
+    .cv-row:last-child { border-bottom: none; }
+    .cv-y { font-family: var(--mono); font-size: 12px; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .cv-t { font-family: var(--serif); font-size: 17px; color: var(--ink); font-weight: 400; }
+    .cv-d { font-family: var(--sans); font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
+    .cv-k {
+      justify-self: end;
+      font-family: var(--mono); font-size: 11px; color: var(--ink-muted);
+      padding: 3px 8px; border: 1px solid var(--rule); background: var(--paper);
+    }
+
+    /* ── Skills ── */
+    .skills { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+    .skill-group { border: 1px solid var(--rule); background: var(--bg); }
+    .skill-group-head {
+      padding: 12px 18px; background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted);
+    }
+    .skill-row {
+      display: grid; grid-template-columns: 1fr 80px;
+      align-items: center; padding: 12px 18px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .skill-row:last-child { border-bottom: none; }
+    .skill-n { font-family: var(--sans); font-size: 14px; color: var(--ink); }
+    .skill-dots { display: flex; gap: 3px; justify-content: flex-end; }
+    .dot {
+      width: 10px; height: 10px; border-radius: 1px;
+      background: var(--rule);
+    }
+    .dot.on { background: var(--accent); }
+    .langs-row {
+      margin-top: 40px; display: flex; flex-wrap: wrap; gap: 32px;
+      padding-top: 24px; border-top: 1px solid var(--rule); align-items: baseline;
+    }
+    .langs-lbl {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted);
+    }
+    .lang-item { display: flex; align-items: baseline; gap: 10px; font-family: var(--sans); font-size: 14px; }
+    .lang-n { color: var(--ink); font-weight: 500; }
+    .lang-l { color: var(--ink-muted); font-family: var(--mono); font-size: 11px; letter-spacing: .05em; }
+
+    /* ── Work / Projects ── */
+    .work { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
+    .proj-table { border: 1px solid var(--rule); background: var(--bg); }
+    .proj-thead {
+      display: grid; grid-template-columns: 100px 140px 1fr 140px 120px;
+      gap: 24px; background: var(--paper); padding: 12px 24px;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted);
+    }
+    .proj-thead span:last-child { text-align: right; }
+    .proj-row {
+      display: grid; grid-template-columns: 100px 140px 1fr 140px 120px;
+      gap: 24px; padding: 24px; align-items: start;
+      border-bottom: 1px solid var(--rule);
+      color: inherit; text-decoration: none;
+      transition: background .2s ease;
+    }
+    .proj-row:last-child { border-bottom: none; }
+    .proj-row:hover { background: var(--paper); }
+    .proj-id { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 500; }
+    .proj-status { font-family: var(--mono); font-size: 10px; color: var(--ink-muted); margin-top: 4px; letter-spacing: .05em; }
+    .proj-thumb { aspect-ratio: 4/3; background: var(--paper); border: 1px solid var(--rule); overflow: hidden; }
+    .proj-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.4) contrast(1.05); }
+    .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
+    .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
+    .proj-methods { display: flex; flex-direction: column; gap: 6px; }
+    .method-tag {
+      font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
+      padding: 3px 8px; border: 1px solid var(--rule);
+      background: var(--paper); align-self: start;
+    }
+    .proj-yr-col { text-align: right; }
+    .proj-yr { font-family: var(--mono); font-size: 13px; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .proj-role { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); margin-top: 4px; letter-spacing: .05em; }
+    .proj-link { margin-top: 10px; font-family: var(--mono); font-size: 11px; color: var(--accent); }
+    .proj-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; }
+    .proj-note { font-family: var(--mono); font-size: 11px; letter-spacing: .05em; color: var(--ink-muted); }
+    .btn-repos {
+      font-family: var(--sans); font-size: 14px; color: var(--ink);
+      text-decoration: none; padding: 10px 18px;
+      border: 1px solid var(--ink); border-radius: 2px;
+      transition: background .15s, color .15s;
+    }
+    .btn-repos:hover { background: var(--ink); color: var(--bg); }
+
+    /* ── Writing ── */
+    .writing { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
+    .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+    .post-link {
+      display: block; padding: 24px 0;
+      border-top: 1px solid var(--rule);
+      text-decoration: none; color: inherit;
+      transition: opacity .15s;
+    }
+    .post-link:hover { opacity: .75; }
+    .post-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+    .post-tag {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: .05em; padding: 3px 8px;
+      border: 1px solid var(--accent); border-radius: 2px;
+    }
+    .post-date { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); letter-spacing: .05em; font-variant-numeric: tabular-nums; }
+    .post-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
+    .posts-rule { grid-column: 1/-1; border-top: 1px solid var(--rule); }
+
+    /* ── Contact ── */
+    .contact { padding: 80px 64px 60px; background: var(--paper); }
+    .contact-body { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .contact-h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: 56px; line-height: 1.05; letter-spacing: -.02em; color: var(--ink);
+    }
+    .contact-p { font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin-top: 24px; max-width: 540px; }
+    .contact-links { margin-top: 36px; border: 1px solid var(--rule); background: var(--bg); font-family: var(--mono); font-size: 13px; }
+    .cl-row { display: grid; grid-template-columns: 100px 1fr; padding: 12px 18px; border-bottom: 1px solid var(--rule); align-items: baseline; }
+    .cl-row:last-child { border-bottom: none; }
+    .cl-k { font-size: 11px; letter-spacing: .05em; color: var(--ink-muted); text-transform: uppercase; }
+    .cl-v { color: var(--ink); text-decoration: none; transition: color .15s; }
+    .cl-v:hover { color: var(--accent); }
+    .contact-form { background: var(--bg); border: 1px solid var(--rule); padding: 28px; }
+    .form-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 20px; }
+    .form-field { margin-bottom: 16px; }
+    .form-label { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+    .form-input, .form-textarea {
+      width: 100%; padding: 10px 12px;
+      background: var(--bg); border: 1px solid var(--rule);
+      font-family: var(--sans); font-size: 14px; color: var(--ink);
+      outline: none; appearance: none;
+      transition: border-color .15s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { resize: none; }
+    .form-submit {
+      width: 100%; background: var(--accent); color: var(--bg);
+      border: none; padding: 14px 20px; border-radius: 2px;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      letter-spacing: .02em; cursor: pointer; transition: opacity .15s;
+    }
+    .form-submit:hover { opacity: .88; }
+    .footer {
+      margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 11px; letter-spacing: .05em; color: var(--ink-muted);
+    }
+
+    /* ── Fade-in ── */
+    .fi { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+    .fi.in { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .nav { padding: 16px 28px; grid-template-columns: auto auto; }
+      .nav-links { display: none; }
+
+      .hero    { padding: 48px 28px 40px; }
+      .featured, .about, .skills, .work, .writing { padding: 52px 28px; }
+      .contact { padding: 52px 28px 48px; }
+
+      .hero-meta  { grid-template-columns: 1fr 1fr; }
+      .hero-body  { grid-template-columns: 1fr; gap: 40px; }
+      .hero-h1    { font-size: 52px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+
+      .feat-head   { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .feat-head-l { flex-direction: column; gap: 4px; }
+      .feat-body   { grid-template-columns: 1fr; }
+      .feat-h2     { font-size: 34px; }
+
+      .about-body  { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+
+      .langs-lbl  { flex: 0 0 100%; }
+      .langs-row  { gap: 16px 24px; }
+
+      .proj-thead   { display: none; }
+      .proj-row     { grid-template-columns: 1fr; gap: 12px; }
+      .proj-thumb   { aspect-ratio: 16/7; }
+      .proj-yr-col  { text-align: left; }
+      .proj-methods { flex-direction: row; flex-wrap: wrap; }
+      .proj-note    { display: none; }
+
+      .posts-grid   { grid-template-columns: 1fr; }
+      .contact-body { grid-template-columns: 1fr; }
+      .contact-h2   { font-size: 40px; }
+      .footer { flex-direction: column; gap: 10px; }
+    }
+
+    @media (max-width: 540px) {
+      .nav { padding: 14px 20px; }
+      .nav-role { display: none; }
+
+      .hero    { padding: 36px 20px 32px; }
+      .featured, .about, .skills, .work, .writing { padding: 44px 20px; }
+      .contact { padding: 44px 20px 40px; }
+
+      .hero-meta  { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .hero-h1    { font-size: 38px; }
+      .hero-bio   { font-size: 16px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .stat-v     { font-size: 32px; }
+
+      .feat-h2   { font-size: 28px; }
+      .sec-right { display: none; }
+
+      .skills-grid { grid-template-columns: 1fr; }
+
+      .cv-thead { grid-template-columns: 80px 1fr; }
+      .cv-thead span:last-child { display: none; }
+      .cv-row   { grid-template-columns: 80px 1fr; }
+      .cv-row .cv-k { display: none; }
+
+      .form-eyebrow { display: none; }
+      .contact-h2   { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="nav-brand">
+    <div class="nav-mark">ts</div>
+    <span class="nav-name">Timur Salakhetdinov</span>
+    <span class="nav-role">/ data scientist · ki-ingenieur</span>
+  </div>
+  <nav aria-label="Abschnitte">
+    <ul class="nav-links">
+      <li><a href="#about"><span class="nav-num">§01</span><span>Über mich</span></a></li>
+      <li><a href="#skills"><span class="nav-num">§02</span><span>Kenntnisse</span></a></li>
+      <li><a href="#work"><span class="nav-num">§03</span><span>Projekte</span></a></li>
+      <li><a href="#writing"><span class="nav-num">§04</span><span>Artikel</span></a></li>
+      <li><a href="#contact"><span class="nav-num">§05</span><span>Kontakt</span></a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <a href="/">EN</a>
+      <span class="lang-sep">·</span>
+      <span class="lang-active">DE</span>
+    </div>
+    <div class="nav-status">
+      <span class="nav-dot"></span>
+      <span>offen ab Dez. 2026 — Deutschland</span>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-meta">
+    <div><div class="mk">Index</div><div class="mv">TS · 2026</div></div>
+    <div><div class="mk">Standort</div><div class="mv">Hamburg, DE</div></div>
+    <div><div class="mk">Zugehörigkeit</div><div class="mv">InnoGames · Leuphana Uni.</div></div>
+    <div><div class="mk">Verfügbar</div><div class="mv">Dezember 2026</div></div>
+    <div><div class="mk">Letzte Aktualisierung</div><div class="mv">16. Mai 2026</div></div>
+  </div>
+
+  <div class="hero-body">
+    <div>
+      <div class="hero-eyebrow">§ 00 — Zusammenfassung</div>
+      <h1 class="hero-h1">Probabilistische Prognosen, agentische Systeme und zehn Jahre Analytics – als produktiver ML-Einsatz.</h1>
+      <p class="hero-bio">
+        Data Scientist mit zehn Jahren analytischer Erfahrung in den Bereichen Finanzen, Telekommunikation und Gaming. Derzeit Werkstudent bei <span class="hl">InnoGames</span>, wo ich Produktionsprognose-Systeme aufbaue (Prophet, PyMC, TimesFM auf GCP), und absolviere gleichzeitig einen M.Sc. an der Leuphana Universität als <span class="hl">Deutschlandstipendiat</span>.
+      </p>
+      <div class="hero-stats">
+        <div><div class="stat-v">10+</div><div class="stat-l">Jahre Analytics</div></div>
+        <div><div class="stat-v">1.8</div><div class="stat-l">M.Sc. Note (Leuphana)</div></div>
+        <div><div class="stat-v">8.0</div><div class="stat-l">IELTS (Englisch C1)</div></div>
+        <div><div class="stat-v">B2</div><div class="stat-l">Deutsch (lernend)</div></div>
+      </div>
+    </div>
+
+    <div class="author-card">
+      <div class="author-fig">Fig. 1 — Author</div>
+      <div class="author-photo-wrap">
+        <img src="images/avatar.jpg" alt="Timur Salakhetdinov" class="author-photo">
+      </div>
+      <div class="author-meta">
+        <div>name: timur salakhetdinov</div>
+        <div>role: working student, analytics @ innogames</div>
+        <div>edu:&nbsp;&nbsp;leuphana m.sc. 2024–26</div>
+        <div>tz:&nbsp;&nbsp;&nbsp;europe/berlin (cet)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured / Thesis -->
+<section class="featured">
+  <div class="feat-head">
+    <div class="feat-head-l">
+      <span class="feat-sec-label">§ Abschlussarbeit · Hauptprojekt</span>
+      <span class="feat-meta">M.Sc. · InnoGames · Jun–Sep 2026</span>
+    </div>
+    <span class="feat-badge">Industriepartner · InnoGames</span>
+  </div>
+
+  <div class="feat-body">
+    <div>
+      <h2 class="feat-h2">Eine agentische Prognosearchitektur für Spielumsätze.</h2>
+      <p class="feat-p">
+        Meine M.Sc.-Abschlussarbeit untersucht, wie zwei komplementäre Agenten – ein schneller Prognostiker und ein langsamerer Prüfer – über ein episodisches Gedächtnis vergangener Prognosezyklen koordinieren können, um probabilistische Dreimonatsprognosen für den Spielumsatz bei InnoGames zu verbessern.
+      </p>
+      <p class="feat-p">Noch in Bearbeitung bis September 2026 – weitere Details nach Einreichung der Arbeit.</p>
+
+      <div class="methods-lbl">Methoden &amp; Stack</div>
+      <div class="methods-grid">
+        <div class="mc k">Domäne</div>       <div class="mc v">Probabilistische time-series</div>
+        <div class="mc k">Architektur</div>  <div class="mc v">Two-agent (fast + slow)</div>
+        <div class="mc k">Gedächtnis</div>   <div class="mc v">Episodic graph of past cycles</div>
+        <div class="mc k">Stack</div>        <div class="mc v">LangGraph · PyMC · TimesFM</div>
+        <div class="mc k">Plattform</div>    <div class="mc v">GCP · Vertex AI</div>
+        <div class="mc k">Status</div>       <div class="mc v">In Bearbeitung — Abgabe Sep 2026</div>
+      </div>
+
+      <div class="feat-foot">M.Sc.-Abschlussarbeit · Leuphana Universität · in Bearbeitung</div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-cap">
+        <span>Fig. 2 — Agenten-Topologie (Entwurf)</span>
+        <span>WIP</span>
+      </div>
+      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Agent topology diagram">
+        <defs>
+          <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
+          </pattern>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0L10 5L0 10z" fill="#15171A"/>
+          </marker>
+        </defs>
+        <rect width="480" height="360" fill="url(#g)"/>
+
+        <!-- ANALYST -->
+        <rect x="10" y="58" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="60" y="76" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">ANALYST</text>
+        <text x="60" y="92" font-family="IBM Plex Mono,monospace" font-size="8" fill="#7A7E84" text-anchor="middle">system 1 · fast</text>
+
+        <!-- MEMORY -->
+        <rect x="10" y="178" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="60" y="196" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">MEMORY</text>
+        <text x="60" y="212" font-family="IBM Plex Mono,monospace" font-size="8" fill="#7A7E84" text-anchor="middle">episodic graph</text>
+
+        <!-- TIMESFM -->
+        <rect x="10" y="298" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="60" y="316" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">TIMESFM</text>
+        <text x="60" y="332" font-family="IBM Plex Mono,monospace" font-size="8" fill="#7A7E84" text-anchor="middle">+ PyMC update</text>
+
+        <!-- AUDITOR -->
+        <rect x="190" y="178" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="196" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AUDITOR</text>
+        <text x="240" y="212" font-family="IBM Plex Mono,monospace" font-size="8" fill="#7A7E84" text-anchor="middle">system 2 · slow</text>
+
+        <!-- FORECAST -->
+        <rect x="370" y="178" width="100" height="44" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
+        <text x="420" y="196" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
+        <text x="420" y="212" font-family="IBM Plex Mono,monospace" font-size="8" fill="#F4F4F1" text-anchor="middle">3-month + CI</text>
+
+        <!-- Edges -->
+        <path d="M110 80Q175 80 175 180L190 200" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M110 200L190 200" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M110 320Q175 320 175 220L190 200" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M290 200L370 200" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="sec-head fi">
+    <div class="sec-head-l">
+      <span class="sec-num">§ 01</span>
+      <span class="sec-title">Über mich</span>
+    </div>
+    <span class="sec-right">Kurzlebenslauf</span>
+  </div>
+
+  <div class="about-body fi">
+    <div>
+      <p class="about-lead">Zehn Jahre Analytics – von der Telekommunikations-M&amp;A-Forschung bis hin zu produktivem Forecasting.</p>
+      <p class="about-p">Ich bin über Finanzen und Versicherungen zum Data Science gelangt, nicht über die Akademie. Das prägt meine Arbeitsweise: Ich baue Systeme, die der unordentlichen Geschäftswirklichkeit standhalten, und bevorzuge Methoden, die vor Stakeholdern vertretbar sind – Bayesianische Inferenz, strukturiertes Gedächtnis, instrumentierte Prognosen.</p>
+      <p class="about-p">Derzeit absolviere ich meinen M.Sc. in Management &amp; Data Science an der Leuphana Universität als Deutschlandstipendiat (Note 1,8) und arbeite gleichzeitig bei InnoGames im Bereich produktives ML-Forecasting. Offen für Vollzeitstellen in Deutschland ab Dezember 2026.</p>
+    </div>
+
+    <div class="cv-table">
+      <div class="cv-thead">
+        <span>Zeitraum</span><span>Stelle / Studiengang</span><span>Art</span>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">Nov 2025 →</div>
+        <div>
+          <div class="cv-t">Werkstudent, Analytics · InnoGames</div>
+          <div class="cv-d">Hamburg, hybrid · Microsoft Fabric, Power BI, Hive SQL, Superset · Prophet / PyMC / TimesFM auf GCP</div>
+        </div>
+        <div class="cv-k">Teilzeit</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">Okt 2024 →</div>
+        <div>
+          <div class="cv-t">M.Sc. Management &amp; Data Science</div>
+          <div class="cv-d">Leuphana Universität Lüneburg · Deutschlandstipendium · Note 1,8 · voraussichtl. Nov 2026</div>
+        </div>
+        <div class="cv-k">Studium</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">2024–25</div>
+        <div>
+          <div class="cv-t">Datenanalyst · Absolute Insurance</div>
+          <div class="cv-d">Moskau, remote · MS SQL · Power-BI-Dashboards · Clustering für Underwriting</div>
+        </div>
+        <div class="cv-k">VZ</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">2019–23</div>
+        <div>
+          <div class="cv-t">Finanzanalyst · Arkada Company</div>
+          <div class="cv-d">Moskau · Telekommunikations-Marktforschung, Bewertung, Wettbewerbsanalyse</div>
+        </div>
+        <div class="cv-k">VZ</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">2011–19</div>
+        <div>
+          <div class="cv-t">Marktforschungsanalyst · MTS PJSC</div>
+          <div class="cv-d">Moskau · internationale Telekommunikationsmärkte (Indien, Serbien, Slowenien, Moldau)</div>
+        </div>
+        <div class="cv-k">VZ</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">1999–05</div>
+        <div>
+          <div class="cv-t">Spezialistendiplom, Wirtschaft &amp; Management</div>
+          <div class="cv-d">RUDN Universität, Moskau · Abschluss mit Auszeichnung</div>
+        </div>
+        <div class="cv-k">Studium</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="skills" id="skills">
+  <div class="sec-head fi">
+    <div class="sec-head-l">
+      <span class="sec-num">§ 02</span>
+      <span class="sec-title">Kenntnisse</span>
+    </div>
+    <span class="sec-right">Selbsteinschätzung</span>
+  </div>
+
+  <div class="skills-grid fi">
+    <div class="skill-group">
+      <div class="skill-group-head">Sprachen</div>
+      <div class="skill-row"><span class="skill-n">Python (NumPy, Pandas, Sklearn, PyMC)</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+      <div class="skill-row"><span class="skill-n">SQL (MS SQL, Hive)</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+      <div class="skill-row"><span class="skill-n">Cypher (Neo4j)</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-head">KI / Machine Learning</div>
+      <div class="skill-row"><span class="skill-n">Bayesian Inference (PyMC, MCMC)</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+      <div class="skill-row"><span class="skill-n">LangGraph / Agentic AI</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
+      <div class="skill-row"><span class="skill-n">Forecasting (TimesFM, Prophet)</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+      <div class="skill-row"><span class="skill-n">Classical ML (Scikit-Learn)</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+      <div class="skill-row"><span class="skill-n">RAG / Retrieval</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-head">Plattformen / Werkzeuge</div>
+      <div class="skill-row"><span class="skill-n">GCP (BigQuery ML, Vertex AI)</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
+      <div class="skill-row"><span class="skill-n">Microsoft Fabric</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+      <div class="skill-row"><span class="skill-n">Power BI</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div></div>
+      <div class="skill-row"><span class="skill-n">Apache Superset</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
+      <div class="skill-row"><span class="skill-n">Docker / Git</span><div class="skill-dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div></div>
+    </div>
+  </div>
+
+  <div class="langs-row fi">
+    <div class="langs-lbl">Gesprochene Sprachen /</div>
+    <div class="lang-item"><span class="lang-n">Englisch</span><span class="lang-l">C1 · IELTS 8.0</span></div>
+    <div class="lang-item"><span class="lang-n">Deutsch</span><span class="lang-l">B2 · Verbesserung</span></div>
+    <div class="lang-item"><span class="lang-n">Russisch</span><span class="lang-l">Muttersprache</span></div>
+  </div>
+</section>
+
+<!-- Work -->
+<section class="work" id="work">
+  <div class="sec-head fi">
+    <div class="sec-head-l">
+      <span class="sec-num">§ 03</span>
+      <span class="sec-title">Projekte</span>
+    </div>
+    <span class="sec-right">5 Einträge · Open Source &amp; Studienarbeiten</span>
+  </div>
+
+  <div class="proj-table fi">
+    <div class="proj-thead">
+      <span>ID</span><span>Vorschau</span><span>Titel &amp; Zusammenfassung</span><span>Methoden</span><span>Jahr / Rolle</span>
+    </div>
+
+    <a href="https://github.com/lucagem29/KGQA_Project" class="proj-row" target="_blank" rel="noopener">
+      <div><div class="proj-id">P-005</div><div class="proj-status">Studienarbeit</div></div>
+      <div class="proj-thumb"><img src="images/thumbs/06.jpg" alt="" style="object-position: top;"></div>
+      <div>
+        <h3 class="proj-h3">Knowledge Graph Question Answering</h3>
+        <p class="proj-blurb">Teamprojekt: SPARQL-basierte Fragebeantwortung über strukturierte Wissensgraphen – ermöglicht Abfragen in natürlicher Sprache über RDF-Wissensbasen.</p>
+      </div>
+      <div class="proj-methods"><span class="method-tag">SPARQL</span><span class="method-tag">RDF</span><span class="method-tag">NLP</span></div>
+      <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Teamprojekt</div><div class="proj-link">↗ repo</div></div>
+    </a>
+
+    <a href="https://github.com/freiraum-bq/KVG_Ulf" class="proj-row" target="_blank" rel="noopener">
+      <div><div class="proj-id">P-004</div><div class="proj-status">Industriepartner</div></div>
+      <div class="proj-thumb"><img src="images/thumbs/05.png" alt=""></div>
+      <div>
+        <h3 class="proj-h3">KVG ML Route Modelling</h3>
+        <p class="proj-blurb">Teamprojekt mit einem regionalen Verkehrspartner: ML zur Modellierung und Vorhersage von Transportrouten unter Kombination von Geodaten mit prädiktiver Modellierung.</p>
+      </div>
+      <div class="proj-methods"><span class="method-tag">ML</span><span class="method-tag">Geospatial</span><span class="method-tag">Forecasting</span></div>
+      <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Teamprojekt</div><div class="proj-link">↗ repo</div></div>
+    </a>
+
+    <a href="https://github.com/TimurSalakhetdinov/Networks-Project" class="proj-row" target="_blank" rel="noopener">
+      <div><div class="proj-id">P-003</div><div class="proj-status">Studienarbeit</div></div>
+      <div class="proj-thumb"><img src="images/thumbs/03.jpg" alt=""></div>
+      <div>
+        <h3 class="proj-h3">Neo4j Graph Analysis of Artist Influence Networks</h3>
+        <p class="proj-blurb">Graph-Datenbanklösung mit Neo4j und Cypher zur Analyse des künstlerischen Einflusses und zur Clusterung musikalischer Genealogien.</p>
+      </div>
+      <div class="proj-methods"><span class="method-tag">Neo4j</span><span class="method-tag">Cypher</span><span class="method-tag">Graph</span></div>
+      <div class="proj-yr-col"><div class="proj-yr">2025</div><div class="proj-role">Einzelarbeit</div><div class="proj-link">↗ repo</div></div>
+    </a>
+
+    <a href="https://github.com/TimurSalakhetdinov/Abe_2009_model_implementation" class="proj-row" target="_blank" rel="noopener">
+      <div><div class="proj-id">P-002</div><div class="proj-status">Replikation</div></div>
+      <div class="proj-thumb"><img src="images/thumbs/01.jpg" alt=""></div>
+      <div>
+        <h3 class="proj-h3">Hierarchical Bayesian Pareto/NBD: Replication of Abe (2009)</h3>
+        <p class="proj-blurb">Implementierung und Validierung des hierarchischen Bayesianischen Pareto/NBD-Modells aus Abe (2009) am kanonischen CDNOW-Datensatz.</p>
+      </div>
+      <div class="proj-methods"><span class="method-tag">PyMC</span><span class="method-tag">MCMC</span><span class="method-tag">Bayesian</span></div>
+      <div class="proj-yr-col"><div class="proj-yr">2025</div><div class="proj-role">Einzelarbeit</div><div class="proj-link">↗ repo</div></div>
+    </a>
+
+    <a href="https://github.com/TimurSalakhetdinov/Hackathon-2025" class="proj-row" target="_blank" rel="noopener">
+      <div><div class="proj-id">P-001</div><div class="proj-status">Hackathon</div></div>
+      <div class="proj-thumb"><img src="images/thumbs/02.jpeg" alt="" style="object-position: top;"></div>
+      <div>
+        <h3 class="proj-h3">ChefTreff AI Hackathon: Product Detection</h3>
+        <p class="proj-blurb">In 24 Stunden entwickelt: eine Computer-Vision-Pipeline zur Erkennung beschädigter oder defekter Objekte in Produktbildern.</p>
+      </div>
+      <div class="proj-methods"><span class="method-tag">PyTorch</span><span class="method-tag">CNN</span><span class="method-tag">CV</span></div>
+      <div class="proj-yr-col"><div class="proj-yr">2025</div><div class="proj-role">Hackathon</div><div class="proj-link">↗ repo</div></div>
+    </a>
+  </div>
+
+  <div class="proj-footer fi">
+    <span class="proj-note">* Vorschaubilder entsättigt für einheitliches Erscheinungsbild</span>
+    <a href="https://github.com/TimurSalakhetdinov?tab=repositories" class="btn-repos" target="_blank" rel="noopener">Alle Repositories auf GitHub →</a>
+  </div>
+</section>
+
+<!-- Writing -->
+<section class="writing" id="writing">
+  <div class="sec-head fi">
+    <div class="sec-head-l">
+      <span class="sec-num">§ 04</span>
+      <span class="sec-title">Artikel</span>
+    </div>
+    <span class="sec-right">Neuestes von medium.com/@timursalakhetdinov</span>
+  </div>
+
+  <div class="posts-grid fi" id="medium-posts">
+    <div class="posts-rule"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="sec-head fi">
+    <div class="sec-head-l">
+      <span class="sec-num">§ 05</span>
+      <span class="sec-title">Kontakt</span>
+    </div>
+    <span class="sec-right">offenes Postfach · Antwort innerhalb von 24 Stunden</span>
+  </div>
+
+  <div class="contact-body fi">
+    <div>
+      <h2 class="contact-h2">Suchen Sie einen Data Scientist oder KI-Ingenieur in Deutschland ab Dezember 2026?</h2>
+      <p class="contact-p">Mein größter Mehrwert liegt in der Prognoseautomatisierung, skalierbaren Analytics-Pipelines und agentischem Systemdesign.</p>
+
+      <div class="contact-links">
+        <div class="cl-row">
+          <span class="cl-k">E-Mail</span>
+          <a href="mailto:timsalakhetdinov@gmail.com" class="cl-v">timsalakhetdinov@gmail.com</a>
+        </div>
+        <div class="cl-row">
+          <span class="cl-k">LinkedIn</span>
+          <a href="https://linkedin.com/in/timursalakhetdinov" class="cl-v" target="_blank" rel="noopener">linkedin.com/in/timursalakhetdinov</a>
+        </div>
+        <div class="cl-row">
+          <span class="cl-k">GitHub</span>
+          <a href="https://github.com/TimurSalakhetdinov" class="cl-v" target="_blank" rel="noopener">github.com/TimurSalakhetdinov</a>
+        </div>
+        <div class="cl-row">
+          <span class="cl-k">Medium</span>
+          <a href="https://medium.com/@timursalakhetdinov" class="cl-v" target="_blank" rel="noopener">@timursalakhetdinov</a>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" name="contact" action="https://formspree.io/f/xldlodoj" method="POST">
+      <div class="form-eyebrow">Formular A · Anfrage</div>
+      <div class="form-field">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-input" type="text" id="name" name="name" autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="email">E-Mail</label>
+        <input class="form-input" type="email" id="email" name="email" autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="company">Unternehmen / Stelle</label>
+        <input class="form-input" type="text" id="company" name="company">
+      </div>
+      <div class="form-field" style="margin-bottom:20px">
+        <label class="form-label" for="message">Nachricht</label>
+        <textarea class="form-textarea" id="message" name="message" rows="5"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Nachricht senden →</button>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <span>© timur salakhetdinov · 2026</span>
+    <span>erstellt mit HTML / CSS / Vanilla JS – keine Tracker</span>
+    <span>v2.0 · zuletzt bearbeitet am 16. Mai 2026</span>
+  </footer>
+</section>
+
+<script>
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+    { threshold: 0.07 }
+  );
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+
+<!-- Medium latest posts -->
+<script>
+(async () => {
+  const username = 'timursalakhetdinov';
+  const apiKey   = 'zsgv0snbfndtdkw1lftle7bwug9euio2qcrjb7wd';
+  const url = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}&api_key=${apiKey}`;
+  const grid = document.getElementById('medium-posts');
+  const rule = grid.querySelector('.posts-rule');
+
+  try {
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const posts = (json.items || []).slice(0, 4);
+
+    posts.forEach(post => {
+      const date = new Date(post.pubDate).toISOString().slice(0, 10);
+      const tag  = (post.categories && post.categories[0]) || 'Article';
+      const card = document.createElement('a');
+      card.href    = post.link;
+      card.className = 'post-link fi in';
+      card.target  = '_blank';
+      card.rel     = 'noopener';
+      card.innerHTML = `
+        <div class="post-meta">
+          <span class="post-tag">${tag}</span>
+          <span class="post-date">${date}</span>
+        </div>
+        <h3 class="post-h3">${post.title}</h3>`;
+      grid.insertBefore(card, rule);
+    });
+  } catch (e) {
+    console.error('Failed to load Medium posts', e);
+  }
+})();
+</script>
+</body>
+</html>
