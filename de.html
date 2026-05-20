@@ -414,9 +414,9 @@
     .proj-row:hover { background: var(--paper); }
     .proj-id { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 500; }
     .proj-status { font-family: var(--mono); font-size: 10px; color: var(--ink-muted); margin-top: 4px; letter-spacing: .05em; }
-    .proj-thumb { aspect-ratio: 4/3; background: var(--paper); border: 1px solid var(--rule); overflow: hidden; }
-    .proj-thumb picture { display: block; width: 100%; height: 100%; }
-    .proj-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.4) contrast(1.05); }
+    .proj-thumb { background: var(--paper); border: 1px solid var(--rule); overflow: hidden; }
+    .proj-thumb picture { display: block; width: 100%; }
+    .proj-thumb img { width: 100%; height: auto; display: block; filter: saturate(.4) contrast(1.05); }
     .author-photo-wrap picture { display: block; width: 100%; height: 100%; }
     .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
     .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
@@ -442,7 +442,7 @@
 
     /* ── Writing ── */
     .writing { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
-    .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+    .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; min-height: 280px; }
     .post-link {
       display: block; padding: 24px 0;
       border-top: 1px solid var(--rule);
@@ -531,7 +531,6 @@
 
       .proj-thead   { display: none; }
       .proj-row     { grid-template-columns: 1fr; gap: 12px; }
-      .proj-thumb   { aspect-ratio: 16/7; }
       .proj-yr-col  { text-align: left; }
       .proj-methods { flex-direction: row; flex-wrap: wrap; }
       .proj-note    { display: none; }
@@ -636,7 +635,7 @@
                alt="Timur Salakhetdinov"
                class="author-photo"
                width="1200"
-               height="1179"
+               height="1200"
                fetchpriority="high"
                decoding="async">
         </picture>
@@ -1076,6 +1075,10 @@
     const json = await resp.json();
     const posts = (json.items || []).slice(0, 4);
 
+    if (posts.length === 0) {
+      document.querySelector('.writing').style.display = 'none';
+      return;
+    }
     posts.forEach(post => {
       const date = new Date(post.pubDate).toISOString().slice(0, 10);
       const tag  = (post.categories && post.categories[0]) || 'Article';
@@ -1093,7 +1096,7 @@
       grid.insertBefore(card, rule);
     });
   } catch (e) {
-    console.error('Failed to load Medium posts', e);
+    document.querySelector('.writing').style.display = 'none';
   }
 })();
 </script>
