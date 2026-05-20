@@ -82,7 +82,11 @@
         "Retrieval-Augmented Generation",
         "Neo4j",
         "SQL",
-        "Python"
+        "Python",
+        "Customer Lifetime Value",
+        "Customer segmentation",
+        "Insurance analytics",
+        "Telecom analytics"
       ],
       "knowsLanguage": [
         {"@type": "Language", "name": "English", "alternateName": "en"},
@@ -108,10 +112,172 @@
   </script>
   <link rel="preload" as="image" href="/images/avatar.webp" type="image/webp" fetchpriority="high">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='3' fill='%2315171A'/><text x='50' y='72' font-family='Georgia,serif' font-size='52' font-style='italic' font-weight='500' fill='%23F4F4F1' text-anchor='middle'>ts</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/source-serif-4-normal-300-700-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* — Self-hosted fonts (latin + latin-ext subsets) — */
+    /* latin-ext */
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-mono-normal-300-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-mono-normal-300-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-mono-normal-400-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-mono-normal-400-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-mono-normal-500-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-mono-normal-500-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-300-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-300-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-400-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-400-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-500-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-500-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-600-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('/fonts/ibm-plex-sans-normal-600-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Source Serif 4';
+      font-style: italic;
+      font-weight: 300 700;
+      font-display: swap;
+      src: url('/fonts/source-serif-4-italic-300-700-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Source Serif 4';
+      font-style: italic;
+      font-weight: 300 700;
+      font-display: swap;
+      src: url('/fonts/source-serif-4-italic-300-700-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Source Serif 4';
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: swap;
+      src: url('/fonts/source-serif-4-normal-300-700-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Source Serif 4';
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: swap;
+      src: url('/fonts/source-serif-4-normal-300-700-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -570,6 +736,33 @@
       .form-eyebrow { display: none; }
       .contact-h2   { font-size: 30px; }
     }
+
+    /* ── Work intro ── */
+    .work-intro { margin-bottom: 40px; max-width: 680px; }
+    .work-intro-eyebrow {
+      font-family: var(--mono); font-size: 12px;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .work-intro-p {
+      font-family: var(--sans); font-size: 16px;
+      line-height: 1.65; color: var(--ink-soft);
+    }
+
+    /* ── Contact fit list ── */
+    .contact-fit-list {
+      font-family: var(--sans); font-size: 15px; line-height: 1.7;
+      color: var(--ink-soft); margin-top: 16px;
+      list-style: none; padding: 0;
+    }
+    .contact-fit-list li {
+      padding-left: 18px; position: relative; margin-top: 10px;
+    }
+    .contact-fit-list li::before {
+      content: '–';
+      position: absolute; left: 0; color: var(--ink-muted);
+    }
+
   </style>
 </head>
 <body>
@@ -602,6 +795,8 @@
     </div>
   </div>
 </header>
+
+<main>
 
 <!-- Hero -->
 <section class="hero">
@@ -866,6 +1061,12 @@
     <span class="sec-right">5 entries · open source &amp; coursework</span>
   </div>
 
+
+  <div class="work-intro fi">
+    <p class="work-intro-eyebrow">What I work on</p>
+    <p class="work-intro-p">I build production forecasting and decision-support systems for teams that need defensible predictions, not just performant models. My current focus is hierarchical Bayesian inference, agentic LLM systems for analyst workflows, and time-series foundation models running on EU-deployable infrastructure. The projects below span all three: knowledge-graph question answering, route modelling on real city transport data, hierarchical Bayesian customer lifetime value, and a multi-agent forecasting architecture.</p>
+  </div>
+
   <div class="proj-table fi">
     <div class="proj-thead">
       <span>ID</span><span>Preview</span><span>Title &amp; abstract</span><span>Methods</span><span>Year / Role</span>
@@ -1005,6 +1206,15 @@
     <div>
       <h2 class="contact-h2">Looking for a data scientist or AI engineer in Germany, Hamburg or Munich, from December 2026?</h2>
       <p class="contact-p">I bring the most value in forecasting automation, scalable analytics pipelines, and agentic system design, with a focus on open-source, EU-deployable architectures.</p>
+      <p class="contact-p" style="margin-top:20px;">My work fits four kinds of teams well:</p>
+      <ul class="contact-fit-list">
+        <li>Insurance and reinsurance analytics, where my underwriting and segmentation work at Absolute Insurance and my Bayesian forecasting research apply directly. Munich is the European center for this industry.</li>
+        <li>Telecom and network analytics, building on eight years at MTS modelling Indian, Serbian, Slovenian, and Moldovan markets. Munich hosts major operator headquarters.</li>
+        <li>Startups and scale-ups in Munich and Hamburg where production ML and agentic systems are differentiators, not experiments.</li>
+        <li>Enterprise IT and platform teams across Bavaria and Hamburg, where forecasting and AI engineering are moving from research into core product.</li>
+      </ul>
+      <p class="contact-p">I'm comfortable in English, German B2, and Russian native. The last decade has been about shipping analytics for international teams across three industries.</p>
+
 
       <div class="contact-links">
         <div class="cl-row">
@@ -1052,8 +1262,11 @@
     <span>© timur salakhetdinov · 2026</span>
     <span>built with html / css / vanilla js — no trackers</span>
     <span>v2.0 · last edited 19 may 2026</span>
+    <span><a href="/imprint.html">Imprint</a> · <a href="/privacy.html">Privacy</a></span>
   </footer>
 </section>
+
+</main>
 
 <script>
   const io = new IntersectionObserver(
