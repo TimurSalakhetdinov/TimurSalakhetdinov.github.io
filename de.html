@@ -106,6 +106,7 @@
     }
   ]
   </script>
+  <link rel="preload" as="image" href="/images/avatar.webp" type="image/webp" fetchpriority="high">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='3' fill='%2315171A'/><text x='50' y='72' font-family='Georgia,serif' font-size='52' font-style='italic' font-weight='500' fill='%23F4F4F1' text-anchor='middle'>ts</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -414,7 +415,9 @@
     .proj-id { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 500; }
     .proj-status { font-family: var(--mono); font-size: 10px; color: var(--ink-muted); margin-top: 4px; letter-spacing: .05em; }
     .proj-thumb { aspect-ratio: 4/3; background: var(--paper); border: 1px solid var(--rule); overflow: hidden; }
+    .proj-thumb picture { display: block; width: 100%; height: 100%; }
     .proj-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.4) contrast(1.05); }
+    .author-photo-wrap picture { display: block; width: 100%; height: 100%; }
     .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
     .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
     .proj-methods { display: flex; flex-direction: column; gap: 6px; }
@@ -627,7 +630,16 @@
     <div class="author-card">
       <div class="author-fig">Fig. 1 — Author</div>
       <div class="author-photo-wrap">
-        <img src="images/avatar.jpg" alt="Timur Salakhetdinov" class="author-photo">
+        <picture>
+          <source srcset="images/avatar.webp" type="image/webp">
+          <img src="images/avatar.jpg"
+               alt="Timur Salakhetdinov"
+               class="author-photo"
+               width="1200"
+               height="1179"
+               fetchpriority="high"
+               decoding="async">
+        </picture>
       </div>
       <div class="author-meta">
         <div>name: timur salakhetdinov</div>
@@ -860,7 +872,16 @@
 
     <a href="https://github.com/lucagem29/KGQA_Project" class="proj-row" target="_blank" rel="noopener external">
       <div><div class="proj-id">P-005</div><div class="proj-status">Studienarbeit</div></div>
-      <div class="proj-thumb"><img src="images/thumbs/06.jpg" alt="Projektvorschau zu einem System für Frage-Antwort-Verarbeitung über Wissensgraphen mit SPARQL." style="object-position: top;"></div>
+      <div class="proj-thumb">
+        <picture>
+          <source srcset="images/thumbs/06.webp" type="image/webp">
+          <img src="images/thumbs/06.jpg"
+               alt="Projektvorschau zu einem System für Frage-Antwort-Verarbeitung über Wissensgraphen mit SPARQL."
+               width="800" height="450"
+               loading="lazy" decoding="async"
+               style="object-position: top;">
+        </picture>
+      </div>
       <div>
         <h3 class="proj-h3">Knowledge Graph Question Answering</h3>
         <p class="proj-blurb">Teamprojekt: SPARQL-basierte Fragebeantwortung über strukturierte Wissensgraphen, ermöglicht Abfragen in natürlicher Sprache über RDF-Wissensbasen.</p>
@@ -871,7 +892,15 @@
 
     <a href="https://github.com/freiraum-bq/KVG_Ulf" class="proj-row" target="_blank" rel="noopener external">
       <div><div class="proj-id">P-004</div><div class="proj-status">Industriepartner</div></div>
-      <div class="proj-thumb"><img src="images/thumbs/05.png" alt="Projektvorschau zur Routenmodellierung mit Machine Learning anhand von KVG-Verkehrsdaten."></div>
+      <div class="proj-thumb">
+        <picture>
+          <source srcset="images/thumbs/05.webp" type="image/webp">
+          <img src="images/thumbs/05.jpg"
+               alt="Projektvorschau zur Routenmodellierung mit Machine Learning anhand von KVG-Verkehrsdaten."
+               width="800" height="533"
+               loading="lazy" decoding="async">
+        </picture>
+      </div>
       <div>
         <h3 class="proj-h3">KVG ML Route Modelling</h3>
         <p class="proj-blurb">Teamprojekt mit einem regionalen Verkehrspartner: ML zur Modellierung und Vorhersage von Transportrouten unter Kombination von Geodaten mit prädiktiver Modellierung.</p>
@@ -882,7 +911,15 @@
 
     <a href="https://github.com/TimurSalakhetdinov/Networks-Project" class="proj-row" target="_blank" rel="noopener external">
       <div><div class="proj-id">P-003</div><div class="proj-status">Studienarbeit</div></div>
-      <div class="proj-thumb"><img src="images/thumbs/03.jpg" alt="Projektvorschau zur Neo4j-Graphanalyse von Künstler-Einflussnetzwerken."></div>
+      <div class="proj-thumb">
+        <picture>
+          <source srcset="images/thumbs/03.webp" type="image/webp">
+          <img src="images/thumbs/03.jpg"
+               alt="Projektvorschau zur Neo4j-Graphanalyse von Künstler-Einflussnetzwerken."
+               width="800" height="400"
+               loading="lazy" decoding="async">
+        </picture>
+      </div>
       <div>
         <h3 class="proj-h3">Neo4j Graph Analysis of Artist Influence Networks</h3>
         <p class="proj-blurb">Graph-Datenbanklösung mit Neo4j und Cypher zur Analyse des künstlerischen Einflusses und zur Clusterung musikalischer Genealogien.</p>
@@ -893,7 +930,15 @@
 
     <a href="https://github.com/TimurSalakhetdinov/Abe_2009_model_implementation" class="proj-row" target="_blank" rel="noopener external">
       <div><div class="proj-id">P-002</div><div class="proj-status">Replikation</div></div>
-      <div class="proj-thumb"><img src="images/thumbs/01.jpg" alt="Projektvorschau zur Replikation des hierarchischen Bayesianischen Pareto/NBD-Modells nach Abe (2009)."></div>
+      <div class="proj-thumb">
+        <picture>
+          <source srcset="images/thumbs/01.webp" type="image/webp">
+          <img src="images/thumbs/01.jpg"
+               alt="Projektvorschau zur Replikation des hierarchischen Bayesianischen Pareto/NBD-Modells nach Abe (2009)."
+               width="800" height="496"
+               loading="lazy" decoding="async">
+        </picture>
+      </div>
       <div>
         <h3 class="proj-h3">Hierarchical Bayesian Pareto/NBD: Replication of Abe (2009)</h3>
         <p class="proj-blurb">Implementierung und Validierung des hierarchischen Bayesianischen Pareto/NBD-Modells aus Abe (2009) am kanonischen CDNOW-Datensatz.</p>
@@ -904,7 +949,16 @@
 
     <a href="https://github.com/TimurSalakhetdinov/Hackathon-2025" class="proj-row" target="_blank" rel="noopener external">
       <div><div class="proj-id">P-001</div><div class="proj-status">Hackathon</div></div>
-      <div class="proj-thumb"><img src="images/thumbs/02.jpeg" alt="Projektvorschau zur Produkterkennungs-Challenge beim ChefTreff AI Hackathon." style="object-position: top;"></div>
+      <div class="proj-thumb">
+        <picture>
+          <source srcset="images/thumbs/02.webp" type="image/webp">
+          <img src="images/thumbs/02.jpeg"
+               alt="Projektvorschau zur Produkterkennungs-Challenge beim ChefTreff AI Hackathon."
+               width="800" height="417"
+               loading="lazy" decoding="async"
+               style="object-position: top;">
+        </picture>
+      </div>
       <div>
         <h3 class="proj-h3">ChefTreff AI Hackathon: Product Detection</h3>
         <p class="proj-blurb">In 24 Stunden entwickelt: eine Computer-Vision-Pipeline zur Erkennung beschädigter oder defekter Objekte in Produktbildern.</p>
