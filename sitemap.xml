@@ -19,4 +19,36 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/de"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/"/>
   </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/impressum.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/imprint.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/imprint.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/imprint.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/datenschutz.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/privacy.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/privacy.html"/>
+  </url>
 </urlset>
