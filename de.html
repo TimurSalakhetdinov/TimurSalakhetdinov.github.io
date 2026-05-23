@@ -643,7 +643,7 @@
 
     /* ── Contact ── */
     .contact { padding: 80px 64px 60px; background: var(--paper); }
-    .contact-body { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .contact-body { display: grid; grid-template-columns: 1fr; gap: 64px; }
     .contact-h2 {
       font-family: var(--serif); font-weight: 400;
       font-size: 56px; line-height: 1.05; letter-spacing: -.02em; color: var(--ink);
@@ -656,31 +656,6 @@
     .cl-k { font-size: 11px; letter-spacing: .05em; color: var(--ink-muted); text-transform: uppercase; }
     .cl-v { color: var(--ink); text-decoration: none; transition: color .15s; }
     .cl-v:hover { color: var(--accent); }
-    .contact-form { background: var(--bg); border: 1px solid var(--rule); padding: 28px; }
-    .form-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 20px; }
-    .form-field { margin-bottom: 1.1rem; }
-    .form-label { display: block; font-family: var(--mono); font-size: 0.75rem; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.4rem; }
-    .form-input, .form-textarea {
-      width: 100%; padding: 0.7rem 0.9rem;
-      background: var(--bg); border: 1px solid var(--rule);
-      font-family: var(--sans); font-size: 1rem; color: var(--ink);
-      outline: none; appearance: none;
-      border-radius: 4px; box-sizing: border-box;
-      transition: border-color .15s;
-    }
-    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
-    .form-textarea { min-height: 7rem; resize: vertical; }
-    .form-submit {
-      width: 100%; background: var(--accent); color: var(--bg);
-      border: none; padding: 0.85rem 1rem; border-radius: 2px;
-      font-family: var(--sans); font-size: 1rem; font-weight: 500;
-      letter-spacing: .02em; cursor: pointer; transition: opacity .15s;
-      margin-top: 0.5rem;
-    }
-    .form-submit:hover { opacity: .88; }
-    @media (min-width: 640px) {
-      .form-submit { width: auto; min-width: 200px; }
-    }
     .footer {
       margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule);
       display: flex; justify-content: space-between;
@@ -723,7 +698,6 @@
       .proj-note    { display: none; }
 
       .posts-grid   { grid-template-columns: 1fr; }
-      .contact-body { grid-template-columns: 1fr; }
       .contact-h2   { font-size: 40px; }
       .footer { flex-direction: column; gap: 10px; }
     }
@@ -752,7 +726,7 @@
       .cv-row   { grid-template-columns: 80px 1fr; }
       .cv-row .cv-k { display: none; }
 
-      .form-eyebrow { display: none; }
+
       .contact-h2   { font-size: 30px; }
     }
 
@@ -1260,26 +1234,6 @@
       </div>
     </div>
 
-    <form class="contact-form" name="contact" action="https://formspree.io/f/xldlodoj" method="POST">
-      <div class="form-eyebrow">Formular A · Anfrage</div>
-      <div class="form-field">
-        <label class="form-label" for="name">Name</label>
-        <input class="form-input" type="text" id="name" name="name" autocomplete="name">
-      </div>
-      <div class="form-field">
-        <label class="form-label" for="email">E-Mail</label>
-        <input class="form-input" type="email" id="email" name="email" autocomplete="email">
-      </div>
-      <div class="form-field">
-        <label class="form-label" for="company">Unternehmen / Stelle</label>
-        <input class="form-input" type="text" id="company" name="company">
-      </div>
-      <div class="form-field">
-        <label class="form-label" for="message">Nachricht</label>
-        <textarea class="form-textarea" id="message" name="message" rows="4"></textarea>
-      </div>
-      <button type="submit" class="form-submit">Nachricht senden →</button>
-    </form>
   </div>
 
   <footer class="footer">
