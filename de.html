@@ -86,7 +86,10 @@
         "Customer Lifetime Value",
         "Customer segmentation",
         "Insurance analytics",
-        "Telecom analytics"
+        "Telecom analytics",
+        "Gaming analytics",
+        "Revenue forecasting",
+        "Microsoft Fabric"
       ],
       "knowsLanguage": [
         {"@type": "Language", "name": "English", "alternateName": "en"},
@@ -645,26 +648,31 @@
     .cl-k { font-size: 11px; letter-spacing: .05em; color: var(--ink-muted); text-transform: uppercase; }
     .cl-v { color: var(--ink); text-decoration: none; transition: color .15s; }
     .cl-v:hover { color: var(--accent); }
-    .contact-form { background: var(--bg); border: 1px solid var(--rule); padding: 28px; }
+    .contact-form { background: var(--bg); border: 1px solid var(--rule); padding: 28px; max-width: 560px; margin: 0 auto; }
     .form-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 20px; }
-    .form-field { margin-bottom: 16px; }
-    .form-label { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+    .form-field { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-family: var(--mono); font-size: 0.75rem; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.4rem; }
     .form-input, .form-textarea {
-      width: 100%; padding: 10px 12px;
+      width: 100%; padding: 0.7rem 0.9rem;
       background: var(--bg); border: 1px solid var(--rule);
-      font-family: var(--sans); font-size: 14px; color: var(--ink);
+      font-family: var(--sans); font-size: 1rem; color: var(--ink);
       outline: none; appearance: none;
+      border-radius: 4px; box-sizing: border-box;
       transition: border-color .15s;
     }
     .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
-    .form-textarea { resize: none; }
+    .form-textarea { min-height: 7rem; resize: vertical; }
     .form-submit {
       width: 100%; background: var(--accent); color: var(--bg);
-      border: none; padding: 14px 20px; border-radius: 2px;
-      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      border: none; padding: 0.85rem 1rem; border-radius: 2px;
+      font-family: var(--sans); font-size: 1rem; font-weight: 500;
       letter-spacing: .02em; cursor: pointer; transition: opacity .15s;
+      margin-top: 0.5rem;
     }
     .form-submit:hover { opacity: .88; }
+    @media (min-width: 640px) {
+      .form-submit { width: auto; min-width: 200px; }
+    }
     .footer {
       margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule);
       display: flex; justify-content: space-between;
@@ -1212,12 +1220,13 @@
     <div>
       <h2 class="contact-h2">Suchen Sie einen Data Scientist oder KI-Ingenieur in Deutschland, Hamburg oder München, ab Dezember 2026?</h2>
       <p class="contact-p">Mein größter Mehrwert liegt in der Prognoseautomatisierung, skalierbaren Analytics-Pipelines und agentischem Systemdesign, mit Fokus auf Open-Source-Lösungen, die vollständig in der EU betrieben werden können.</p>
-      <h3 class="contact-h3">Wo ich hinpasse, in Deutschland</h3>
+      <h3 class="contact-h3">Meine Arbeit passt gut zu fünf Arten von Teams:</h3>
       <ul class="contact-fit-list">
-        <li>Versicherungs- und Rückversicherungs-Analytics. Underwriting-Segmentierung bei Absolute Insurance plus aktuelle Bayesianische Prognoseforschung.</li>
-        <li>Telekommunikations- und Netzwerk-Analytics. Acht Jahre bei MTS mit Marktmodellierung in Indien, Serbien, Slowenien und Moldau.</li>
-        <li>Startups und Scale-ups, in denen produktives ML und agentische Systeme Differenzierungsmerkmale sind, keine Experimente.</li>
-        <li>Enterprise-IT- und Plattformteams, in denen Prognosen und KI-Engineering vom Forschungsthema zum Kernprodukt werden.</li>
+        <li>Versicherungs- und Rückversicherungs-Analytics. Underwriting-Segmentierung bei Absolute Insurance und aktuelle Bayesianische Prognoseforschung, anwendbar auf den Münchner Versicherungs-Cluster und darüber hinaus.</li>
+        <li>Gaming und Consumer Products. Derzeit baue ich ML-Umsatzprognosen und Analytics-Infrastruktur bei InnoGames in Hamburg, inklusive Microsoft Fabric Migration und Power BI Dashboards.</li>
+        <li>Telekommunikations- und Netzwerk-Analytics. Acht Jahre bei MTS mit Marktanalyse und M&amp;A in Indien, Serbien, Slowenien und Moldau, relevant für die Münchner Operator-Zentralen.</li>
+        <li>Startups und Scale-ups in München und Hamburg, die produktives ML und agentische Systeme als Kernprodukt liefern, nicht als Pilotprojekte.</li>
+        <li>Enterprise-IT- und Plattformteams in München und Hamburg, die Prognosen und KI-Engineering in Kernprodukte integrieren.</li>
       </ul>
       <p class="contact-p">Ich bin sicher in Englisch, Deutsch B2 und Russisch (Muttersprache). Das letzte Jahrzehnt habe ich damit verbracht, Analytics für internationale Teams in drei Branchen zu liefern.</p>
 
@@ -1256,9 +1265,9 @@
         <label class="form-label" for="company">Unternehmen / Stelle</label>
         <input class="form-input" type="text" id="company" name="company">
       </div>
-      <div class="form-field" style="margin-bottom:20px">
+      <div class="form-field">
         <label class="form-label" for="message">Nachricht</label>
-        <textarea class="form-textarea" id="message" name="message" rows="5"></textarea>
+        <textarea class="form-textarea" id="message" name="message" rows="4"></textarea>
       </div>
       <button type="submit" class="form-submit">Nachricht senden →</button>
     </form>
