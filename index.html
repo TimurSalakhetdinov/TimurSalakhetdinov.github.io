@@ -423,18 +423,25 @@
 
     /* ── Section header ── */
     .sec-head {
-      display: flex; justify-content: space-between; align-items: baseline;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
+      gap: 10px 24px;
       padding-bottom: 18px; margin-bottom: 40px;
       border-bottom: 1px solid var(--rule-strong);
     }
-    .sec-head-l { display: flex; align-items: baseline; gap: 16px; }
+    .sec-head-l {
+      display: flex; flex: 1 1 520px; flex-wrap: wrap;
+      align-items: baseline; gap: 8px 16px; min-width: 0;
+    }
     .sec-num { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); }
     .sec-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); }
     .sec-right {
+      flex: 0 1 auto; margin-left: auto; max-width: 100%;
       font-family: var(--mono); font-size: 11px;
       letter-spacing: .05em; color: var(--ink-muted); text-transform: uppercase;
+      line-height: 1.4; text-align: right;
     }
     .sec-h2 {
+      flex: 0 0 100%; max-width: 100%; line-height: 1.35;
       font-family: var(--serif); font-size: inherit; font-weight: 400;
       color: var(--ink-soft); margin: 0; letter-spacing: 0.01em;
     }
@@ -669,6 +676,11 @@
     .fi.in { opacity: 1; transform: none; }
 
     /* ── Responsive ── */
+    @media (max-width: 1540px) {
+      .nav { padding: 16px 28px; grid-template-columns: auto auto; }
+      .nav-links { display: none; }
+    }
+
     @media (max-width: 900px) {
       .nav { padding: 16px 28px; grid-template-columns: auto auto; }
       .nav-links { display: none; }
@@ -958,10 +970,10 @@
         <div class="cv-k">Part-time</div>
       </div>
       <div class="cv-row">
-        <div class="cv-y">Oct 2024 →</div>
+        <div class="cv-y">2024–27</div>
         <div>
           <div class="cv-t">M.Sc. Management &amp; Data Science</div>
-          <div class="cv-d">Leuphana University Lüneburg · Deutschlandstipendium · GPA 1.8 · exp. Apr 2027</div>
+          <div class="cv-d">Leuphana University Lüneburg · Deutschlandstipendium · GPA 1.8 · expected Mar 2027</div>
         </div>
         <div class="cv-k">Study</div>
       </div>
