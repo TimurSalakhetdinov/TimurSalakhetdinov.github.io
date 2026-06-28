@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timur Salakhetdinov | Data Scientist in Hamburg, KI-Ingenieur</title>
+  <title>Timur Salakhetdinov | Data Scientist, KI-Ingenieur in Hamburg</title>
   <meta name="description" content="Data Scientist &amp; KI-Ingenieur, 10 Jahre in Finanzen, Telekom, Gaming. LangGraph, Bayesianisches Forecasting. Stellen in Deutschland (Hamburg, München), Apr. 2027.">
 
   <link rel="canonical" href="https://timursalakhetdinov.com/de" />
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="Timur Salakhetdinov" />
   <meta property="og:locale" content="de_DE" />
   <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:title" content="Timur Salakhetdinov | Data Scientist in Hamburg, KI-Ingenieur" />
+  <meta property="og:title" content="Timur Salakhetdinov | Data Scientist, KI-Ingenieur in Hamburg" />
   <meta property="og:description" content="Data Scientist &amp; KI-Ingenieur, 10 Jahre in Finanzen, Telekom, Gaming. LangGraph, Bayesianisches Forecasting. Stellen in Deutschland (Hamburg, München), Apr. 2027." />
   <meta property="og:image" content="https://timursalakhetdinov.com/images/og-cover.jpg" />
   <meta property="og:image:secure_url" content="https://timursalakhetdinov.com/images/og-cover.jpg" />
@@ -26,7 +26,7 @@
   <meta property="og:image:alt" content="Timur Salakhetdinov, Data Scientist and AI Engineer based in Germany, working on LangGraph agentic systems and Bayesian forecasting." />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Timur Salakhetdinov | Data Scientist in Hamburg, KI-Ingenieur" />
+  <meta name="twitter:title" content="Timur Salakhetdinov | Data Scientist, KI-Ingenieur in Hamburg" />
   <meta name="twitter:description" content="Data Scientist &amp; KI-Ingenieur, 10 Jahre in Finanzen, Telekom, Gaming. LangGraph, Bayesianisches Forecasting. Stellen in Deutschland (Hamburg, München), Apr. 2027." />
   <meta name="twitter:image" content="https://timursalakhetdinov.com/images/og-cover.jpg" />
   <meta name="twitter:image:alt" content="Timur Salakhetdinov, Data Scientist and AI Engineer based in Germany, working on LangGraph agentic systems and Bayesian forecasting." />
@@ -429,18 +429,25 @@
 
     /* ── Section header ── */
     .sec-head {
-      display: flex; justify-content: space-between; align-items: baseline;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
+      gap: 10px 24px;
       padding-bottom: 18px; margin-bottom: 40px;
       border-bottom: 1px solid var(--rule-strong);
     }
-    .sec-head-l { display: flex; align-items: baseline; gap: 16px; }
+    .sec-head-l {
+      display: flex; flex: 1 1 520px; flex-wrap: wrap;
+      align-items: baseline; gap: 8px 16px; min-width: 0;
+    }
     .sec-num { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); }
     .sec-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); }
     .sec-right {
+      flex: 0 1 auto; margin-left: auto; max-width: 100%;
       font-family: var(--mono); font-size: 11px;
       letter-spacing: .05em; color: var(--ink-muted); text-transform: uppercase;
+      line-height: 1.4; text-align: right;
     }
     .sec-h2 {
+      flex: 0 0 100%; max-width: 100%; line-height: 1.35;
       font-family: var(--serif); font-size: inherit; font-weight: 400;
       color: var(--ink-soft); margin: 0; letter-spacing: 0.01em;
     }
@@ -667,6 +674,11 @@
     .fi.in { opacity: 1; transform: none; }
 
     /* ── Responsive ── */
+    @media (max-width: 1540px) {
+      .nav { padding: 16px 28px; grid-template-columns: auto auto; }
+      .nav-links { display: none; }
+    }
+
     @media (max-width: 900px) {
       .nav { padding: 16px 28px; grid-template-columns: auto auto; }
       .nav-links { display: none; }
@@ -836,7 +848,7 @@
       <div class="author-meta">
         <div>name: timur salakhetdinov</div>
         <div>role: data scientist &amp; ki-ingenieur @ innogames</div>
-        <div>edu:&nbsp;&nbsp;leuphana m.sc. 2024–26</div>
+        <div>edu:&nbsp;&nbsp;leuphana m.sc. 2024–27</div>
         <div>tz:&nbsp;&nbsp;&nbsp;europe/berlin (cet)</div>
       </div>
     </div>
@@ -848,7 +860,7 @@
   <div class="feat-head">
     <div class="feat-head-l">
       <span class="feat-sec-label">§ Abschlussarbeit · Hauptprojekt</span>
-      <span class="feat-meta">M.Sc. · InnoGames · Sep–Dez 2026</span>
+      <span class="feat-meta">M.Sc. · InnoGames · April 2026–März 2027</span>
     </div>
     <span class="feat-badge">Industriepartner · InnoGames</span>
   </div>
@@ -859,7 +871,7 @@
       <p class="feat-p">
         Meine M.Sc.-Abschlussarbeit entwickelt eine agentische Prognosearchitektur: ein schneller Analyst und ein langsamerer Prüfer, die über ein strukturiertes Gedächtnis vergangener Prognosefehler koordinieren, um probabilistische Dreimonatsprognosen für den Spielumsatz bei InnoGames zu verbessern.
       </p>
-      <p class="feat-p">Noch in Bearbeitung bis Dezember 2026. Weitere Details nach Einreichung der Arbeit.</p>
+      <p class="feat-p">Noch in Bearbeitung bis März 2027. Weitere Details nach Einreichung der Arbeit.</p>
 
       <div class="methods-lbl">Methoden &amp; Stack</div>
       <div class="methods-grid">
@@ -868,7 +880,7 @@
         <div class="mc k">Gedächtnis</div>      <div class="mc v">Strukturierter Speicher vergangener Prognosefehler</div>
         <div class="mc k">Referenz-Stack</div>  <div class="mc v">LangGraph · PyMC · TimesFM · DuckDB · Ollama (Docker)</div>
         <div class="mc k">Produktionspfad</div> <div class="mc v">BigQuery ML · Vertex AI · Cloud Run (GCP)</div>
-        <div class="mc k">Status</div>          <div class="mc v">In Bearbeitung · Abgabe Dez 2026</div>
+        <div class="mc k">Status</div>          <div class="mc v">In Bearbeitung · Abgabe März 2027</div>
       </div>
 
       <div class="feat-foot">M.Sc.-Abschlussarbeit · Leuphana Universität · "Agentic Memory-Augmented Bayesian Time Series Forecasting: A Dual-Process Architecture" · in Bearbeitung</div>
@@ -955,10 +967,10 @@
         <div class="cv-k">Teilzeit</div>
       </div>
       <div class="cv-row">
-        <div class="cv-y">Okt 2024 →</div>
+        <div class="cv-y">2024–27</div>
         <div>
           <div class="cv-t">M.Sc. Management &amp; Data Science</div>
-          <div class="cv-d">Leuphana Universität Lüneburg · Deutschlandstipendium · Note 1,8 · voraussichtl. Apr 2027</div>
+          <div class="cv-d">Leuphana Universität Lüneburg · Deutschlandstipendium · Note 1,8 · voraussichtl. März 2027</div>
         </div>
         <div class="cv-k">Studium</div>
       </div>
