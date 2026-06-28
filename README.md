@@ -4,7 +4,7 @@ Personal portfolio site live at [timursalakhetdinov.com](https://timursalakhetdi
 
 ## About
 
-Data Scientist & AI Engineer. M.Sc. Management & Data Science candidate at Leuphana University (Deutschlandstipendium, GPA 1.8). Currently at InnoGames building a stateful multi-agent revenue forecasting system using LangGraph, PuppyGraph, and TimesFM on GCP.
+Data Scientist & AI Engineer. M.Sc. Management & Data Science candidate at Leuphana University with GPA 1.8. Currently at InnoGames building a stateful multi-agent revenue forecasting system using LangGraph, PuppyGraph, and TimesFM on GCP.
 
 ## Featured Projects
 
