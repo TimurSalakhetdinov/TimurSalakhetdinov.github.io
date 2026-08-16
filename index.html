@@ -77,9 +77,14 @@
         "Agentic AI",
         "PyMC",
         "Chronos",
+        "Chronos-2",
+        "TimesFM",
         "TabPFN",
+        "TabPFN-TS",
         "Time-series foundation models",
         "Time series forecasting",
+        "Forecast calibration",
+        "Prediction intervals",
         "MLOps",
         "Retrieval-Augmented Generation",
         "GraphRAG",
@@ -819,7 +824,7 @@
     <div><div class="mk">Location</div><div class="mv">Hamburg, DE</div></div>
     <div><div class="mk">Affiliation</div><div class="mv">InnoGames · Leuphana Uni.</div></div>
     <div><div class="mk">Available</div><div class="mv">April 2027</div></div>
-    <div><div class="mk">Last revision</div><div class="mv">28 June 2026</div></div>
+    <div><div class="mk">Last revision</div><div class="mv">16 August 2026</div></div>
   </div>
 
   <div class="hero-body">
@@ -827,7 +832,7 @@
       <div class="hero-eyebrow">§ 00 · Abstract</div>
       <h1 class="hero-h1">Agentic systems and ten years of analytics turned into production ML.</h1>
       <p class="hero-bio">
-        Data Scientist and AI Engineer with ten years of analytical experience across finance, telecom, insurance, and gaming. I build applied AI systems, currently developing revenue forecasting infrastructure at <span class="hl">InnoGames</span> with time-series foundation models and Vertex AI on GCP while completing my M.Sc. at Leuphana University.
+        Data Scientist and AI Engineer with ten years of analytical experience across finance, telecom, insurance, and gaming. I build applied AI systems, currently developing revenue forecasting infrastructure at <span class="hl">InnoGames</span> with time-series foundation models and Vertex AI on GCP, while my M.Sc. thesis at Leuphana University benchmarks foundation models for free-to-play revenue forecasting on a self-hosted open-weight stack.
       </p>
       <div class="hero-stats">
         <div><div class="stat-v">10+</div><div class="stat-l">years analytics</div></div>
@@ -866,7 +871,7 @@
   <div class="feat-head">
     <div class="feat-head-l">
       <span class="feat-sec-label">§ Thesis · Lead Project</span>
-      <span class="feat-meta">M.Sc. · InnoGames · April 2026–Feb 2027</span>
+      <span class="feat-meta">M.Sc. · InnoGames · May 2026–Mar 2027</span>
     </div>
     <span class="feat-badge">Industry partner · InnoGames</span>
   </div>
@@ -877,19 +882,22 @@
       <p class="feat-p">
         My M.Sc. thesis forecasts revenue for long-running free-to-play games with TabPFN-TS-3, a tabular foundation model that predicts unseen series in context, without gradient updates on company data. The contribution is an LLM agent that compiles internal planning text into typed covariates.
       </p>
-      <p class="feat-p">Work in progress. Submission December 2026. Further details once the thesis is submitted.</p>
+      <p class="feat-p">The research question is whether covariates compiled from planning text improve on the six calendar flags the studio already encodes, measured on point accuracy and on the quality of the prediction intervals.</p>
+      <p class="feat-p">The baseline tier is complete: thirteen forecasting systems compared across three long-running titles over 49 monthly forecast origins. Text-covariate experiments run in autumn, submission December 2026. Further details once the thesis is submitted.</p>
 
       <div class="methods-lbl">Methods &amp; stack</div>
       <div class="methods-grid">
         <div class="mc k">Domain</div>          <div class="mc v">Probabilistic time-series</div>
         <div class="mc k">Architecture</div>    <div class="mc v">Tabular foundation model + LLM covariate agent</div>
         <div class="mc k">Covariates</div>      <div class="mc v">LLM-compiled from internal planning text</div>
-        <div class="mc k">Reference stack</div> <div class="mc v">TabPFN v3 · Ollama (Docker) · LightGBM · Python</div>
-        <div class="mc k">Baselines</div>       <div class="mc v">Chronos-2 · TimesFM · PyMC · LightGBM</div>
-        <div class="mc k">Status</div>          <div class="mc v">In progress · submission Dec 2026</div>
+        <div class="mc k">Reference stack</div> <div class="mc v">TabPFN-TS-3 (frozen) · Ollama (Docker) · LightGBM · Python</div>
+        <div class="mc k">Baselines</div>       <div class="mc v">Chronos-2 · TimesFM 2.5 · TabICLv2 · PyMC · LightGBM · production pipeline</div>
+        <div class="mc k">Study scale</div>     <div class="mc v">3 titles · 49 monthly origins · 3-month daily horizon</div>
+        <div class="mc k">Evaluation</div>      <div class="mc v">MASE · MAPE · CRPS · 90% coverage · PIT · Diebold-Mariano</div>
+        <div class="mc k">Status</div>          <div class="mc v">Baselines done · submission Dec 2026</div>
       </div>
 
-      <div class="feat-foot">M.Sc. thesis · Leuphana University · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · in progress</div>
+      <div class="feat-foot">M.Sc. thesis · Leuphana University · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · supervisors: Dr. Debayan Banerjee, Jonas Scharfenberger</div>
     </div>
 
     <div class="diagram-panel">
@@ -956,7 +964,7 @@
   <div class="about-body fi">
     <div>
       <p class="about-lead">Ten years in analytics, from telecom M&amp;A research to production forecasting.</p>
-      <p class="about-p">My work is closest to problems where forecasting, analytics engineering, and decision support meet. I care about models that can be inspected, monitored, and explained: Bayesian inference, structured memory, and production forecasting workflows rather than one-off notebooks.</p>
+      <p class="about-p">My work is closest to problems where forecasting, analytics engineering, and decision support meet. I care about models that can be inspected, monitored, and explained: Bayesian inference, calibrated prediction intervals, and production forecasting workflows rather than one-off notebooks.</p>
       <p class="about-p">I am finishing an M.Sc. in Management &amp; Data Science at Leuphana University as a Deutschlandstipendium scholar while building production ML forecasting systems at InnoGames. From April 2027, I am open to full-time Data Scientist and AI Engineer roles in Germany.</p>
     </div>
 
@@ -1225,7 +1233,7 @@
       <ul class="contact-fit-list">
         <li>Insurance and reinsurance analytics. Underwriting segmentation at Absolute Insurance plus current Bayesian forecasting research, applicable to Munich's insurance cluster and beyond.</li>
         <li>Gaming and consumer products. Currently building ML revenue forecasting and analytics infrastructure at InnoGames in Hamburg, including Microsoft Fabric migration and Power BI dashboards.</li>
-        <li>AI-native startups and applied AI labs working on LLM systems, agentic architectures, and retrieval. My thesis builds an LLM agent that turns unstructured text into structured inputs for a foundation-model forecaster.</li>
+        <li>AI-native startups and applied AI labs working on LLM systems, agentic architectures, and retrieval. My thesis builds an LLM agent that turns unstructured planning text into typed covariates for a frozen foundation-model forecaster, running entirely on local open-weight models.</li>
         <li>Telecom and network analytics. Eight years at MTS covering market analysis and M&amp;A across Indian, Serbian, Slovenian, and Moldovan markets, relevant to Munich's operator headquarters.</li>
         <li>Global tech firms and platform teams in Munich and Hamburg where forecasting, applied ML, and production analytics scale across products.</li>
         <li>Startups and scale-ups shipping production ML and agentic systems as core product, not pilots.</li>
@@ -1258,7 +1266,7 @@
   <footer class="footer">
     <span>© timur salakhetdinov · 2026</span>
     <span>built with html / css / vanilla js · no trackers</span>
-    <span>v2.0 · last edited 28 june 2026</span>
+    <span>v2.1 · last edited 16 august 2026</span>
     <span><a href="/imprint.html">Imprint</a> · <a href="/privacy.html">Privacy</a></span>
   </footer>
 </section>
