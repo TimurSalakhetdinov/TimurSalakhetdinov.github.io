@@ -835,7 +835,7 @@
       <div class="hero-eyebrow">§ 00 · Abstract</div>
       <h1 class="hero-h1">Agentic systems and 15 years of analytics turned into applied ML.</h1>
       <p class="hero-bio">
-        Data Scientist and AI Engineer with 15 years in analytics across finance, telecom, insurance, and gaming. I build applied AI systems, currently prototyping revenue forecasting at <span class="hl">InnoGames</span> with time-series foundation models, PyMC, and Chronos while completing my M.Sc. at Leuphana University. My thesis tests whether covariates compiled from planning text by an LLM agent improve probabilistic revenue forecasts beyond calendar flags alone, evaluated on a self-hosted open-weight stack.
+        Data Scientist and AI Engineer with 15 years in analytics across finance, telecom, insurance, and gaming. I build applied AI systems, currently prototyping revenue forecasting at <span class="hl">InnoGames</span> with TabPFN and Chronos while completing my M.Sc. at Leuphana University. My thesis tests whether covariates compiled from planning text by an LLM agent improve probabilistic revenue forecasts beyond calendar flags alone, evaluated on a self-hosted open-weight stack.
       </p>
       <div class="hero-stats">
         <div><div class="stat-v">15</div><div class="stat-l">years in analytics</div></div>
@@ -883,9 +883,9 @@
     <div>
       <h2 class="feat-h2">Foundation models and agent-compiled text covariates for game revenue.</h2>
       <p class="feat-p">
-        My M.Sc. thesis asks whether covariates compiled from the studio&rsquo;s own planning text &mdash; event calendars, announcement pages, sale briefs, update notes &mdash; improve probabilistic three-month net revenue forecasts at InnoGames beyond the six calendar flags already in use. At each forecast origin, an agent retrieves the latest eligible document revision, a local language model maps it to a fixed schema, and the resulting daily covariates feed a frozen TabPFN-TS-3 forecasting engine.
+        My M.Sc. thesis asks whether an agent that compiles the studio&rsquo;s planning text into forecasting covariates improves probabilistic three-month revenue forecasts at InnoGames beyond the calendar flags already in use.
       </p>
-      <p class="feat-p">The baseline tier is complete: thirteen systems evaluated over 49 monthly forecast origins across three games. Work in progress; submission December 2026. Further details once the thesis is submitted.</p>
+      <p class="feat-p">Work in progress; submission December 2026. Further details once the thesis is submitted.</p>
 
       <div class="methods-lbl">Methods &amp; stack</div>
       <div class="methods-grid">
@@ -895,6 +895,7 @@
         <div class="mc k">Baselines</div>       <div class="mc v">13 systems · 49 monthly origins · 3 games</div>
         <div class="mc k">Metrics</div>         <div class="mc v">MASE · MAPE · CRPS · PIT · Diebold-Mariano</div>
         <div class="mc k">Stack</div>           <div class="mc v">Self-hosted open-weight · one laptop · no cloud training</div>
+        <div class="mc k">Model selection</div> <div class="mc v">Vertex AI model APIs to benchmark frontier models for the agent</div>
         <div class="mc k">Status</div>          <div class="mc v">Experiments · submission Dec 2026</div>
       </div>
 
@@ -906,47 +907,48 @@
         <span>Fig. 2 · Forecasting pipeline (sketch)</span>
         <span>WIP</span>
       </div>
-      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Forecasting pipeline diagram">
+      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Forecasting pipeline: planning text and calendar flags feed a frozen TabPFN-TS-3 engine that produces a three-month probabilistic forecast">
         <defs>
           <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
             <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
           </pattern>
-          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M0 0L10 5L0 10z" fill="#15171A"/>
           </marker>
         </defs>
         <rect width="480" height="360" fill="url(#g)"/>
 
         <!-- PLANNING TEXT -->
-        <rect x="10" y="58" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="60" y="76" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">PLANNING TEXT</text>
-        <text x="60" y="92" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">events · sales · notes</text>
+        <rect x="15" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="75" y="92" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">PLANNING TEXT</text>
+        <text x="75" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">events · sales · notes</text>
 
         <!-- AGENT -->
-        <rect x="190" y="58" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="76" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AGENT</text>
-        <text x="240" y="92" font-family="IBM Plex Mono,monospace" font-size="8" fill="#656A71" text-anchor="middle">retrieve · extract</text>
-
-        <!-- TabPFN-TS-3 -->
-        <rect x="190" y="178" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="196" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS-3</text>
-        <text x="240" y="212" font-family="IBM Plex Mono,monospace" font-size="8" fill="#656A71" text-anchor="middle">frozen · in-context</text>
+        <rect x="180" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="92" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AGENT</text>
+        <text x="240" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">retrieve · extract</text>
 
         <!-- CALENDAR FLAGS -->
-        <rect x="10" y="298" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="60" y="316" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
-        <text x="60" y="332" font-family="IBM Plex Mono,monospace" font-size="8" fill="#656A71" text-anchor="middle">six binary flags</text>
+        <rect x="15" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="75" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
+        <text x="75" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">six binary flags</text>
+
+        <!-- TabPFN-TS-3 -->
+        <rect x="180" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS-3</text>
+        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">frozen · in-context</text>
 
         <!-- FORECAST -->
-        <rect x="370" y="178" width="100" height="44" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
-        <text x="420" y="196" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
-        <text x="420" y="212" font-family="IBM Plex Mono,monospace" font-size="8" fill="#F4F4F1" text-anchor="middle">3-month · P10–P90</text>
+        <rect x="345" y="230" width="120" height="52" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
+        <text x="405" y="252" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
+        <text x="405" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#F4F4F1" text-anchor="middle">3-month · P10–P90</text>
 
         <!-- Edges -->
-        <path d="M110 80L190 80" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M240 102L240 178" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M110 320Q175 320 175 220L190 200" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M290 200L370 200" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <path d="M135 96L180 96" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M240 122L240 230" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M135 256L180 256" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M300 256L345 256" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <text x="250" y="180" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71">covariates</text>
       </svg>
     </div>
   </div>
@@ -977,7 +979,7 @@
         <div class="cv-y">Nov 2025 →</div>
         <div>
           <div class="cv-t">Working Student, Analytics · InnoGames</div>
-          <div class="cv-d">Hamburg, hybrid · Microsoft Fabric, Power BI, Hive SQL, StarRocks, Superset · PyMC / Chronos / Vertex AI</div>
+          <div class="cv-d">Hamburg, hybrid · Microsoft Fabric, Power BI, Hive SQL, StarRocks, Superset · TabPFN / PyMC / Vertex AI</div>
         </div>
         <div class="cv-k">Part-time</div>
       </div>
@@ -998,22 +1000,6 @@
         <div class="cv-k">FT</div>
       </div>
       <div class="cv-row">
-        <div class="cv-y">2019–23</div>
-        <div>
-          <div class="cv-t">Financial Analyst · Arkada Company</div>
-          <div class="cv-d">Moscow · telecom market research, valuation, competitor analysis</div>
-        </div>
-        <div class="cv-k">FT</div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-y">2011–19</div>
-        <div>
-          <div class="cv-t">Market Research Analyst · MTS PJSC</div>
-          <div class="cv-d">Moscow · international telecom markets (India, Serbia, Slovenia, Moldova)</div>
-        </div>
-        <div class="cv-k">FT</div>
-      </div>
-      <div class="cv-row">
         <div class="cv-y">2022–23</div>
         <div>
           <div class="cv-t">Data Science and Data Analysis Bootcamps</div>
@@ -1022,12 +1008,28 @@
         <div class="cv-k">Study</div>
       </div>
       <div class="cv-row">
+        <div class="cv-y">2019–23</div>
+        <div>
+          <div class="cv-t">Financial Analyst · Arkada Company</div>
+          <div class="cv-d">Moscow · telecom market research, valuation, competitor analysis</div>
+        </div>
+        <div class="cv-k">FT</div>
+      </div>
+      <div class="cv-row">
         <div class="cv-y">2019–20</div>
         <div>
           <div class="cv-t">Professional retraining in Financial Analysis</div>
           <div class="cv-d">HSE University, Moscow</div>
         </div>
         <div class="cv-k">Study</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">2011–19</div>
+        <div>
+          <div class="cv-t">Market Research Analyst · MTS PJSC</div>
+          <div class="cv-d">Moscow · international telecom markets (India, Serbia, Slovenia, Moldova)</div>
+        </div>
+        <div class="cv-k">FT</div>
       </div>
       <div class="cv-row">
         <div class="cv-y">2006–11</div>

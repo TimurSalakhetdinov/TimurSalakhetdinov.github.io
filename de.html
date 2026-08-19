@@ -832,7 +832,7 @@
       <div class="hero-eyebrow">§ 00 · Zusammenfassung</div>
       <h1 class="hero-h1">Agentische Systeme und 15 Jahre Analytics im angewandten ML-Einsatz.</h1>
       <p class="hero-bio">
-        Data Scientist und AI Engineer mit 15 Jahren in Analytics in Finanzwesen, Telekommunikation, Versicherung und Gaming. Ich entwickle angewandte KI-Systeme und erstelle derzeit bei <span class="hl">InnoGames</span> Prototypen für Umsatzprognosen mit Zeitreihen-Foundation-Modellen, PyMC und Chronos, während ich meinen M.Sc. an der Leuphana Universität abschließe. Meine Abschlussarbeit prüft, ob Kovariaten, die ein LLM-Agent aus Planungsdokumenten kompiliert, probabilistische Umsatzprognosen über reine Kalender-Flags hinaus verbessern, evaluiert auf einem selbst gehosteten Open-Weight-Stack.
+        Data Scientist und AI Engineer mit 15 Jahren in Analytics in Finanzwesen, Telekommunikation, Versicherung und Gaming. Ich entwickle angewandte KI-Systeme und erstelle derzeit bei <span class="hl">InnoGames</span> Prototypen für Umsatzprognosen mit TabPFN und Chronos, während ich meinen M.Sc. an der Leuphana Universität abschließe. Meine Abschlussarbeit prüft, ob Kovariaten, die ein LLM-Agent aus Planungsdokumenten kompiliert, probabilistische Umsatzprognosen über reine Kalender-Flags hinaus verbessern, evaluiert auf einem selbst gehosteten Open-Weight-Stack.
       </p>
       <div class="hero-stats">
         <div><div class="stat-v">15</div><div class="stat-l">Jahre in Analytics</div></div>
@@ -880,9 +880,9 @@
     <div>
       <h2 class="feat-h2">Foundation-Modelle und agentenkompilierte Text-Kovariaten für Spielumsätze.</h2>
       <p class="feat-p">
-        Meine M.Sc.-Abschlussarbeit untersucht, ob Kovariaten, die aus den Planungsdokumenten des Studios kompiliert werden &mdash; Event-Kalender, Ankündigungsseiten, Sale-Briefings, Update-Notes &mdash;, probabilistische Dreimonatsprognosen des Nettoumsatzes bei InnoGames über die bereits genutzten sechs Kalender-Flags hinaus verbessern. Zu jedem Prognosestichtag ruft ein Agent die jeweils zulässige Dokumentversion ab, ein lokales Sprachmodell überführt sie in ein festes Schema, und die daraus abgeleiteten Tages-Kovariaten fließen in eine eingefrorene TabPFN-TS-3-Prognose-Engine.
+        Meine M.Sc.-Abschlussarbeit untersucht, ob ein Agent, der die Planungstexte des Studios zu Prognose-Kovariaten verdichtet, probabilistische Dreimonatsprognosen des Umsatzes bei InnoGames über die bereits genutzten Kalender-Flags hinaus verbessert.
       </p>
-      <p class="feat-p">Die Baseline-Stufe ist abgeschlossen: dreizehn Systeme, evaluiert über 49 monatliche Prognosestichtage in drei Spielen. Noch in Bearbeitung; Abgabe im Dezember 2026. Weitere Details nach Einreichung der Arbeit.</p>
+      <p class="feat-p">Noch in Bearbeitung; Abgabe im Dezember 2026. Weitere Details nach Einreichung der Arbeit.</p>
 
       <div class="methods-lbl">Methoden &amp; Stack</div>
       <div class="methods-grid">
@@ -892,6 +892,7 @@
         <div class="mc k">Baselines</div>       <div class="mc v">13 Systeme · 49 monatliche Stichtage · 3 Spiele</div>
         <div class="mc k">Metriken</div>        <div class="mc v">MASE · MAPE · CRPS · PIT · Diebold-Mariano</div>
         <div class="mc k">Stack</div>           <div class="mc v">Selbst gehostet, Open-Weight · ein Laptop · kein Cloud-Training</div>
+        <div class="mc k">Modellauswahl</div>   <div class="mc v">Vertex-AI-Modell-APIs zum Benchmarking von Frontier-Modellen für den Agenten</div>
         <div class="mc k">Status</div>          <div class="mc v">Experimente · Abgabe Dez. 2026</div>
       </div>
 
@@ -903,47 +904,48 @@
         <span>Fig. 2 · Prognose-Pipeline (Entwurf)</span>
         <span>WIP</span>
       </div>
-      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Forecasting pipeline diagram">
+      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Forecasting pipeline: planning text and calendar flags feed a frozen TabPFN-TS-3 engine that produces a three-month probabilistic forecast">
         <defs>
           <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
             <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
           </pattern>
-          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M0 0L10 5L0 10z" fill="#15171A"/>
           </marker>
         </defs>
         <rect width="480" height="360" fill="url(#g)"/>
 
         <!-- PLANNING TEXT -->
-        <rect x="10" y="58" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="60" y="76" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">PLANNING TEXT</text>
-        <text x="60" y="92" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">events · sales · notes</text>
+        <rect x="15" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="75" y="92" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">PLANNING TEXT</text>
+        <text x="75" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">events · sales · notes</text>
 
         <!-- AGENT -->
-        <rect x="190" y="58" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="76" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AGENT</text>
-        <text x="240" y="92" font-family="IBM Plex Mono,monospace" font-size="8" fill="#656A71" text-anchor="middle">retrieve · extract</text>
-
-        <!-- TabPFN-TS-3 -->
-        <rect x="190" y="178" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="196" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS-3</text>
-        <text x="240" y="212" font-family="IBM Plex Mono,monospace" font-size="8" fill="#656A71" text-anchor="middle">frozen · in-context</text>
+        <rect x="180" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="92" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AGENT</text>
+        <text x="240" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">retrieve · extract</text>
 
         <!-- CALENDAR FLAGS -->
-        <rect x="10" y="298" width="100" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="60" y="316" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
-        <text x="60" y="332" font-family="IBM Plex Mono,monospace" font-size="8" fill="#656A71" text-anchor="middle">six binary flags</text>
+        <rect x="15" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="75" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
+        <text x="75" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">six binary flags</text>
+
+        <!-- TabPFN-TS-3 -->
+        <rect x="180" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS-3</text>
+        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">frozen · in-context</text>
 
         <!-- FORECAST -->
-        <rect x="370" y="178" width="100" height="44" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
-        <text x="420" y="196" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
-        <text x="420" y="212" font-family="IBM Plex Mono,monospace" font-size="8" fill="#F4F4F1" text-anchor="middle">3-month · P10–P90</text>
+        <rect x="345" y="230" width="120" height="52" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
+        <text x="405" y="252" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
+        <text x="405" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#F4F4F1" text-anchor="middle">3-month · P10–P90</text>
 
         <!-- Edges -->
-        <path d="M110 80L190 80" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M240 102L240 178" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M110 320Q175 320 175 220L190 200" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M290 200L370 200" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <path d="M135 96L180 96" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M240 122L240 230" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M135 256L180 256" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M300 256L345 256" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <text x="250" y="180" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71">covariates</text>
       </svg>
     </div>
   </div>
@@ -974,7 +976,7 @@
         <div class="cv-y">Nov 2025 →</div>
         <div>
           <div class="cv-t">Werkstudent, Analytics · InnoGames</div>
-          <div class="cv-d">Hamburg, hybrid · Microsoft Fabric, Power BI, Hive SQL, StarRocks, Superset · PyMC / Chronos / Vertex AI</div>
+          <div class="cv-d">Hamburg, hybrid · Microsoft Fabric, Power BI, Hive SQL, StarRocks, Superset · TabPFN / PyMC / Vertex AI</div>
         </div>
         <div class="cv-k">Teilzeit</div>
       </div>
@@ -995,22 +997,6 @@
         <div class="cv-k">VZ</div>
       </div>
       <div class="cv-row">
-        <div class="cv-y">2019–23</div>
-        <div>
-          <div class="cv-t">Finanzanalyst · Arkada Company</div>
-          <div class="cv-d">Moskau · Telekommunikations-Marktforschung, Bewertung, Wettbewerbsanalyse</div>
-        </div>
-        <div class="cv-k">VZ</div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-y">2011–19</div>
-        <div>
-          <div class="cv-t">Marktforschungsanalyst · MTS PJSC</div>
-          <div class="cv-d">Moskau · internationale Telekommunikationsmärkte (Indien, Serbien, Slowenien, Moldau)</div>
-        </div>
-        <div class="cv-k">VZ</div>
-      </div>
-      <div class="cv-row">
         <div class="cv-y">2022–23</div>
         <div>
           <div class="cv-t">Bootcamps Data Science und Datenanalyse</div>
@@ -1019,12 +1005,28 @@
         <div class="cv-k">Studium</div>
       </div>
       <div class="cv-row">
+        <div class="cv-y">2019–23</div>
+        <div>
+          <div class="cv-t">Finanzanalyst · Arkada Company</div>
+          <div class="cv-d">Moskau · Telekommunikations-Marktforschung, Bewertung, Wettbewerbsanalyse</div>
+        </div>
+        <div class="cv-k">VZ</div>
+      </div>
+      <div class="cv-row">
         <div class="cv-y">2019–20</div>
         <div>
           <div class="cv-t">Berufliche Weiterbildung in Finanzanalyse</div>
           <div class="cv-d">HSE Universität, Moskau</div>
         </div>
         <div class="cv-k">Studium</div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-y">2011–19</div>
+        <div>
+          <div class="cv-t">Marktforschungsanalyst · MTS PJSC</div>
+          <div class="cv-d">Moskau · internationale Telekommunikationsmärkte (Indien, Serbien, Slowenien, Moldau)</div>
+        </div>
+        <div class="cv-k">VZ</div>
       </div>
       <div class="cv-row">
         <div class="cv-y">2006–11</div>
