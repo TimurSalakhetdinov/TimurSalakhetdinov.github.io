@@ -1,15 +1,18 @@
-# Timur Salakhetdinov — Portfolio Website
+# Timur Salakhetdinov - Portfolio Website
 
 Personal portfolio site live at [timursalakhetdinov.com](https://timursalakhetdinov.com).
 
 ## About
 
-Data Scientist & AI Engineer. M.Sc. Management & Data Science candidate at Leuphana University with GPA 1.8. Currently at InnoGames building a stateful multi-agent revenue forecasting system using LangGraph, PuppyGraph, and TimesFM on GCP.
+AI Engineer and Data Scientist focused on LLM agent systems in production: planning, tool use, and automated verification. Backed by time-series forecasting (M.Sc. thesis at Leuphana University on net revenue forecasting at InnoGames) and ten years of analytics in telecom, finance, insurance, and gaming.
+
+M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to Mar 2027 (expected), GPA 1.9, Deutschlandstipendium scholar. Available full time in Germany from April 2027.
 
 ## Featured Projects
 
 | Project | Description |
 |---|---|
+| Power BI agentic toolkit | Multi-agent Claude Code toolkit that plans, implements, and verifies Power BI dashboard changes (PBIP/TMDL) without step-by-step human input |
 | [ChefTreff AI Hackathon 2025](https://github.com/TimurSalakhetdinov/Hackathon-2025) | Computer vision app to identify broken objects |
 | [Pareto/NBD Model](https://github.com/TimurSalakhetdinov/Abe_2009_model_implementation) | Hierarchical Bayesian Pareto/NBD model (Abe 2009) on CDNOW dataset |
 | [Applied Statistical Analysis](https://github.com/TimurSalakhetdinov/Applied-Statistical-Analysis) | Bayesian inference & time series modeling with PyMC |
@@ -19,18 +22,22 @@ Data Scientist & AI Engineer. M.Sc. Management & Data Science candidate at Leuph
 
 ## Tech Stack
 
-**Languages:** Python · SQL (MS SQL, Hive) · Cypher (Neo4j)
+**Languages:** Python (NumPy, Pandas, Scikit-Learn) · SQL (MS SQL Server, Hive, StarRocks)
 
-**AI & ML:** LangGraph · Agentic AI · RAG · TimesFM · Prophet · Bayesian Inference · PyMC · Scikit-Learn · CatBoost
+**LLM & Agents:** LangGraph · Google ADK · Claude Code (agents, skills, plugins) · MCP · tool calling · RAG
 
-**Tools & Platforms:** Microsoft Fabric · Power BI · GCP (BigQuery ML, Vertex AI) · PuppyGraph · Apache Superset · Docker · Git
+**ML & Forecasting:** TabPFN · Chronos · TimesFM · LightGBM · PyMC · PyTorch
+
+**Methods:** time-series forecasting · A/B testing · cohort and churn analysis · customer segmentation
+
+**Tools & Platforms:** Microsoft Fabric · Power BI · Apache Superset · GCP (Vertex AI) · Docker · Git
 
 ## Contact
 
 - Email: [timsalakhetdinov@gmail.com](mailto:timsalakhetdinov@gmail.com)
-- LinkedIn: [linkedin.com/in/stimur](https://linkedin.com/in/stimur)
+- LinkedIn: [linkedin.com/in/timursalakhetdinov](https://www.linkedin.com/in/timursalakhetdinov)
 - GitHub: [github.com/TimurSalakhetdinov](https://github.com/TimurSalakhetdinov)
 
 ## Built With
 
-[Strata](https://html5up.net/strata) by HTML5 UP · [Font Awesome](https://fontawesome.com) · [Formspree](https://formspree.io)
+Hand-written HTML / CSS / vanilla JS. No trackers, no framework.
