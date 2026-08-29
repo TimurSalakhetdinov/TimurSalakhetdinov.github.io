@@ -618,25 +618,11 @@
     .author-photo-wrap picture { display: block; width: 100%; height: 100%; }
     .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
     .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
-    .proj-detail { margin-top: 16px; border-top: 1px solid var(--rule); }
-    .proj-detail > div {
-      display: grid; grid-template-columns: 110px 1fr; gap: 16px;
-      padding: 10px 0; border-bottom: 1px solid var(--rule);
-    }
-    .proj-detail > div:last-child { border-bottom: none; }
-    .proj-detail dt {
-      font-family: var(--mono); font-size: 10px; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ink-muted); padding-top: 2px;
-    }
-    .proj-detail dd { font-family: var(--sans); font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
-    .proj-detail code {
-      font-family: var(--mono); font-size: 12px; background: var(--paper);
-      border: 1px solid var(--rule); padding: 1px 5px; color: var(--ink);
-    }
     .proj-thumb-svg { background: #F4F4F1; display: flex; justify-content: center; padding: 8px 0; }
     .proj-thumb-svg svg { width: 124px; max-width: 100%; }
-    @media (max-width: 900px) {
-      .proj-detail > div { grid-template-columns: 1fr; gap: 4px; }
+    .proj-blurb code {
+      font-family: var(--mono); font-size: 12px; background: var(--paper);
+      border: 1px solid var(--rule); padding: 1px 5px; color: var(--ink);
     }
     .proj-methods { display: flex; flex-direction: column; gap: 6px; }
     .method-tag {
@@ -1190,29 +1176,7 @@
       </div>
       <div>
         <h3 class="proj-h3">Agentic toolkit for Power BI report changes</h3>
-        <p class="proj-blurb">A multi-agent Claude Code toolkit, now used across the analytics team, that plans, implements, and verifies Power BI dashboard changes in PBIP/TMDL source files without step-by-step human input. You describe the change; the system works out what to touch, makes the edit, and then proves it landed.</p>
-        <dl class="proj-detail">
-          <div>
-            <dt>The loop</dt>
-            <dd>Plan, approve, build, verify, split across four agents. A planner reads the report source and drafts the change. A builder applies it once the plan is approved. A verifier checks the result. A cleanup reviewer removes scaffolding and half-finished edits before anything is handed back.</dd>
-          </div>
-          <div>
-            <dt>Four skills</dt>
-            <dd>The toolkit ships with the change orchestration itself, the accumulated PBIP/TMDL failure modes collected as they were hit, git version control for PBIP projects, and hand-authored PBIR bookmarks.</dd>
-          </div>
-          <div>
-            <dt>The write gate</dt>
-            <dd>The most interesting failure to design around. Editing PBIP files while Power BI Desktop is holding unsaved changes means the user's next save silently overwrites the edits with Desktop's stale in-memory copy. Validation still passes. The reload still reports success. The report renders the old visuals. No error appears anywhere, which is what makes it dangerous. So the gate is <code>hasUnsavedChanges: false</code> before writing, not before saving.</dd>
-          </div>
-          <div>
-            <dt>Verification</dt>
-            <dd>The verifier is read-only by construction. It runs live DAX spot checks and captures page screenshots instead of trusting static validation, because static validation is exactly what the write gate showed will happily pass on a broken result.</dd>
-          </div>
-          <div>
-            <dt>Where it stops</dt>
-            <dd>It never publishes to Fabric. Publishing stays a manual step, deliberately.</dd>
-          </div>
-        </dl>
+        <p class="proj-blurb">A multi-agent Claude Code toolkit, now used across the analytics team, that plans, implements, and verifies Power BI dashboard changes (PBIP/TMDL) without step-by-step human input. Four agents run a plan, approve, build, verify loop, with four shipped skills covering the change orchestration, the accumulated PBIP/TMDL failure modes, git for PBIP projects, and hand-authored PBIR bookmarks. Writes are gated on <code>hasUnsavedChanges: false</code>, since editing while Power BI Desktop holds unsaved changes lets the next save silently overwrite them with no error anywhere, and the read-only verifier confirms the result with live DAX spot checks and page screenshots rather than static validation. Publishing to Fabric stays a manual step.</p>
       </div>
       <div class="proj-methods"><span class="method-tag">Claude Code</span><span class="method-tag">Multi-Agent</span><span class="method-tag">PBIP / TMDL</span><span class="method-tag">DAX</span><span class="method-tag">Power BI</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Solo · in production</div></div>
