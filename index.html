@@ -618,12 +618,7 @@
     .author-photo-wrap picture { display: block; width: 100%; height: 100%; }
     .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
     .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
-    .proj-thumb-svg { background: #F4F4F1; display: flex; justify-content: center; padding: 8px 0; }
-    .proj-thumb-svg svg { width: 124px; max-width: 100%; }
-    .proj-blurb code {
-      font-family: var(--mono); font-size: 12px; background: var(--paper);
-      border: 1px solid var(--rule); padding: 1px 5px; color: var(--ink);
-    }
+    .proj-thumb-svg { background: #F4F4F1; }
     .proj-methods { display: flex; flex-direction: column; gap: 6px; }
     .method-tag {
       font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
@@ -1152,33 +1147,27 @@
     <div class="proj-row">
       <div><div class="proj-id">P-007</div><div class="proj-status">In daily use</div></div>
       <div class="proj-thumb proj-thumb-svg">
-        <svg viewBox="0 0 140 200" style="width:100%;height:auto;display:block;" role="img" aria-label="Diagram of the agent loop: plan, approve, build behind a write gate, verify, cleanup review.">
-          <rect width="140" height="200" fill="#F4F4F1"/>
-          <g font-family="IBM Plex Mono,monospace" font-size="8" font-weight="500" fill="#15171A" text-anchor="middle">
-            <rect x="22" y="8" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="24">PLAN</text>
-            <rect x="22" y="48" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="64">APPROVE</text>
-            <rect x="22" y="88" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="104">BUILD</text>
-            <rect x="22" y="128" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="144">VERIFY</text>
-            <rect x="22" y="168" width="96" height="24" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="184" fill="#F4F4F1">CLEANUP</text>
-          </g>
-          <g stroke="#15171A" stroke-width="1">
-            <path d="M70 32L70 48"/><path d="M70 72L70 88"/><path d="M70 112L70 128"/><path d="M70 152L70 168"/>
-          </g>
-          <g font-family="IBM Plex Mono,monospace" font-size="6" fill="#656A71">
-            <text x="76" y="84">write gate</text>
+        <svg viewBox="0 0 140 88" style="width:100%;height:auto;display:block;" role="img" aria-label="Diagram of the agent loop: plan, approve, build, verify, cleanup review.">
+          <rect width="140" height="88" fill="#F4F4F1"/>
+          <g font-family="IBM Plex Mono,monospace" font-size="7" font-weight="500" fill="#15171A" text-anchor="middle">
+            <rect x="6" y="6" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="36" y="19">PLAN</text>
+            <rect x="74" y="6" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="104" y="19">APPROVE</text>
+            <rect x="6" y="34" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="36" y="47">BUILD</text>
+            <rect x="74" y="34" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="104" y="47">VERIFY</text>
+            <rect x="6" y="62" width="128" height="20" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="0.8"/>
+            <text x="70" y="75" fill="#F4F4F1">CLEANUP</text>
           </g>
         </svg>
       </div>
       <div>
         <h3 class="proj-h3">Agentic toolkit for Power BI report changes</h3>
-        <p class="proj-blurb">A multi-agent Claude Code toolkit, now used across the analytics team, that plans, implements, and verifies Power BI dashboard changes (PBIP/TMDL) without step-by-step human input. Four agents run a plan, approve, build, verify loop, with four shipped skills covering the change orchestration, the accumulated PBIP/TMDL failure modes, git for PBIP projects, and hand-authored PBIR bookmarks. Writes are gated on <code>hasUnsavedChanges: false</code>, since editing while Power BI Desktop holds unsaved changes lets the next save silently overwrite them with no error anywhere, and the read-only verifier confirms the result with live DAX spot checks and page screenshots rather than static validation. Publishing to Fabric stays a manual step.</p>
+        <p class="proj-blurb">Multi-agent Claude Code toolkit used across the analytics team, planning, implementing, and verifying Power BI dashboard changes in PBIP/TMDL without step-by-step human input.</p>
       </div>
-      <div class="proj-methods"><span class="method-tag">Claude Code</span><span class="method-tag">Multi-Agent</span><span class="method-tag">PBIP / TMDL</span><span class="method-tag">DAX</span><span class="method-tag">Power BI</span></div>
+      <div class="proj-methods"><span class="method-tag">Claude Code</span><span class="method-tag">Multi-Agent</span><span class="method-tag">PBIP / TMDL</span><span class="method-tag">Power BI</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Solo · in production</div></div>
     </div>
 

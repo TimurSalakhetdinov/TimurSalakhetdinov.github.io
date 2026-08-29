@@ -624,12 +624,7 @@
     .author-photo-wrap picture { display: block; width: 100%; height: 100%; }
     .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
     .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
-    .proj-thumb-svg { background: #F4F4F1; display: flex; justify-content: center; padding: 8px 0; }
-    .proj-thumb-svg svg { width: 124px; max-width: 100%; }
-    .proj-blurb code {
-      font-family: var(--mono); font-size: 12px; background: var(--paper);
-      border: 1px solid var(--rule); padding: 1px 5px; color: var(--ink);
-    }
+    .proj-thumb-svg { background: #F4F4F1; }
     .proj-methods { display: flex; flex-direction: column; gap: 6px; }
     .method-tag {
       font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
@@ -1149,33 +1144,27 @@
     <div class="proj-row">
       <div><div class="proj-id">P-007</div><div class="proj-status">Im täglichen Einsatz</div></div>
       <div class="proj-thumb proj-thumb-svg">
-        <svg viewBox="0 0 140 200" style="width:100%;height:auto;display:block;" role="img" aria-label="Diagramm der Agentenschleife: planen, freigeben, bauen hinter einem Schreib-Gate, verifizieren, Cleanup-Review.">
-          <rect width="140" height="200" fill="#F4F4F1"/>
-          <g font-family="IBM Plex Mono,monospace" font-size="8" font-weight="500" fill="#15171A" text-anchor="middle">
-            <rect x="22" y="8" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="24">PLAN</text>
-            <rect x="22" y="48" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="64">APPROVE</text>
-            <rect x="22" y="88" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="104">BUILD</text>
-            <rect x="22" y="128" width="96" height="24" fill="#FFFFFF" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="144">VERIFY</text>
-            <rect x="22" y="168" width="96" height="24" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
-            <text x="70" y="184" fill="#F4F4F1">CLEANUP</text>
-          </g>
-          <g stroke="#15171A" stroke-width="1">
-            <path d="M70 32L70 48"/><path d="M70 72L70 88"/><path d="M70 112L70 128"/><path d="M70 152L70 168"/>
-          </g>
-          <g font-family="IBM Plex Mono,monospace" font-size="6" fill="#656A71">
-            <text x="76" y="84">Schreib-Gate</text>
+        <svg viewBox="0 0 140 88" style="width:100%;height:auto;display:block;" role="img" aria-label="Diagramm der Agentenschleife: planen, freigeben, bauen, verifizieren, Cleanup-Review.">
+          <rect width="140" height="88" fill="#F4F4F1"/>
+          <g font-family="IBM Plex Mono,monospace" font-size="7" font-weight="500" fill="#15171A" text-anchor="middle">
+            <rect x="6" y="6" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="36" y="19">PLAN</text>
+            <rect x="74" y="6" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="104" y="19">APPROVE</text>
+            <rect x="6" y="34" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="36" y="47">BUILD</text>
+            <rect x="74" y="34" width="60" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
+            <text x="104" y="47">VERIFY</text>
+            <rect x="6" y="62" width="128" height="20" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="0.8"/>
+            <text x="70" y="75" fill="#F4F4F1">CLEANUP</text>
           </g>
         </svg>
       </div>
       <div>
         <h3 class="proj-h3">Agentisches Toolkit für Power-BI-Report-Änderungen</h3>
-        <p class="proj-blurb">Ein Multi-Agenten-Toolkit auf Basis von Claude Code, das inzwischen im ganzen Analytics-Team genutzt wird: Es plant, implementiert und verifiziert Änderungen an Power-BI-Dashboards (PBIP/TMDL) ohne Schritt-für-Schritt-Anleitung. Vier Agenten durchlaufen eine Schleife aus Planen, Freigeben, Bauen und Verifizieren, dazu vier mitgelieferte Skills für die Änderungs-Orchestrierung, die gesammelten PBIP/TMDL-Fehlerbilder, Git-Versionierung für PBIP-Projekte und handgeschriebene PBIR-Lesezeichen. Geschrieben wird nur bei <code>hasUnsavedChanges: false</code>, denn wer bearbeitet, während Power BI Desktop ungespeicherte Änderungen hält, verliert diese beim nächsten Speichern still und ohne Fehlermeldung. Der nur lesende Verifier bestätigt das Ergebnis mit Live-DAX-Stichproben und Seiten-Screenshots statt mit statischer Validierung. Das Publizieren nach Fabric bleibt ein manueller Schritt.</p>
+        <p class="proj-blurb">Multi-Agenten-Toolkit auf Basis von Claude Code, im ganzen Analytics-Team genutzt: Es plant, implementiert und verifiziert Power-BI-Dashboard-Änderungen in PBIP/TMDL ohne Schritt-für-Schritt-Anleitung.</p>
       </div>
-      <div class="proj-methods"><span class="method-tag">Claude Code</span><span class="method-tag">Multi-Agent</span><span class="method-tag">PBIP / TMDL</span><span class="method-tag">DAX</span><span class="method-tag">Power BI</span></div>
+      <div class="proj-methods"><span class="method-tag">Claude Code</span><span class="method-tag">Multi-Agent</span><span class="method-tag">PBIP / TMDL</span><span class="method-tag">Power BI</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Solo · in Produktion</div></div>
     </div>
 
