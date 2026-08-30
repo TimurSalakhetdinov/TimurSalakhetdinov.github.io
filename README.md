@@ -4,7 +4,7 @@ Personal portfolio site live at [timursalakhetdinov.com](https://timursalakhetdi
 
 ## About
 
-AI Engineer and Data Scientist specialising in LLM agent systems for analytics workflows. At InnoGames I develop agent-based tools that automate controlled changes to Power BI reports and convert planning documents into inputs for revenue forecasts. I also work on probabilistic time-series forecasting and analytics infrastructure, including an M.Sc. thesis at Leuphana University on net revenue forecasting, drawing on ten years of experience across telecommunications, finance, insurance, and gaming.
+AI Engineer and Data Scientist specialising in LLM agent systems for analytics workflows. At InnoGames I develop agent-based tools for implementing and validating Power BI report changes and build time-series forecasting workflows with foundation models such as TabPFN, including an LLM agent that converts versioned planning documents into forecasting covariates. I also contribute to analytics infrastructure, drawing on ten years of experience across telecommunications, finance, insurance, and gaming.
 
 M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to Mar 2027 (expected), GPA 1.9, Deutschlandstipendium scholar. Available full time in Germany from April 2027.
 
