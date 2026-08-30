@@ -4,7 +4,7 @@ Personal portfolio site live at [timursalakhetdinov.com](https://timursalakhetdi
 
 ## About
 
-AI Engineer and Data Scientist focused on LLM agent systems in production: planning, tool use, and automated verification. Backed by time-series forecasting (M.Sc. thesis at Leuphana University on net revenue forecasting at InnoGames) and ten years of analytics in telecom, finance, insurance, and gaming.
+AI Engineer and Data Scientist specialising in LLM agent systems for analytics workflows. At InnoGames I develop agent-based tools that automate controlled changes to Power BI reports and convert planning documents into inputs for revenue forecasts. I also work on probabilistic time-series forecasting and analytics infrastructure, including an M.Sc. thesis at Leuphana University on net revenue forecasting, drawing on ten years of experience across telecommunications, finance, insurance, and gaming.
 
 M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to Mar 2027 (expected), GPA 1.9, Deutschlandstipendium scholar. Available full time in Germany from April 2027.
 
@@ -12,7 +12,7 @@ M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to 
 
 | Project | Description |
 |---|---|
-| Power BI agentic toolkit | Multi-agent Claude Code toolkit that plans, implements, and verifies Power BI dashboard changes (PBIP/TMDL) without step-by-step human input |
+| Power BI agent toolkit | Multi-agent Claude Code toolkit that plans, implements, and validates Power BI dashboard changes (PBIP/TMDL) without step-by-step human input |
 | [ChefTreff AI Hackathon 2025](https://github.com/TimurSalakhetdinov/Hackathon-2025) | Computer vision app to identify broken objects |
 | [Pareto/NBD Model](https://github.com/TimurSalakhetdinov/Abe_2009_model_implementation) | Hierarchical Bayesian Pareto/NBD model (Abe 2009) on CDNOW dataset |
 | [Applied Statistical Analysis](https://github.com/TimurSalakhetdinov/Applied-Statistical-Analysis) | Bayesian inference & time series modeling with PyMC |
