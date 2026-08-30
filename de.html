@@ -626,6 +626,9 @@
     .proj-thumb img { width: 100%; height: auto; display: block; filter: saturate(.4) contrast(1.05); }
     .author-photo-wrap picture { display: block; width: 100%; height: 100%; }
     .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
+    .proj-thumb > a { display: block; }
+    .proj-h3 a { color: inherit; text-decoration: none; }
+    .proj-h3 a:hover { text-decoration: underline; }
     .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
     .proj-thumb-svg { background: #F4F4F1; }
     .proj-methods { display: flex; flex-direction: column; gap: 6px; }
@@ -1176,17 +1179,17 @@
     <div class="proj-row">
       <div><div class="proj-id">P-006</div><div class="proj-status">ChefTreff AI</div></div>
       <div class="proj-thumb">
-        <picture>
+        <a href="https://chef-treff.de/hackathon/" target="_blank" rel="noopener external"><picture>
           <source srcset="images/thumbs/02.webp" type="image/webp">
           <img src="images/thumbs/02.jpeg"
                alt="Projektvorschau für den ChefTreff AI Hackathon: Gründer-Assistent auf Basis von Google ADK."
                width="800" height="417"
                loading="lazy" decoding="async"
                style="object-position: top;">
-        </picture>
+        </picture></a>
       </div>
       <div>
-        <h3 class="proj-h3">ChefTreff AI Hackathon: Gründer-Assistent</h3>
+        <h3 class="proj-h3"><a href="https://chef-treff.de/hackathon/" target="_blank" rel="noopener external">ChefTreff AI Hackathon: Gründer-Assistent</a></h3>
         <p class="proj-blurb">Multi-Agenten-Assistent, der Gründerinnen und Gründer bei der Unternehmensgründung in Deutschland unterstützt: Businessplan, Marketingplan und rechtliche Dokumentation.</p>
       </div>
       <div class="proj-methods"><span class="method-tag">Google ADK</span><span class="method-tag">Multi-Agent</span><span class="method-tag">LLM</span></div>
@@ -1273,17 +1276,17 @@
     <div class="proj-row">
       <div><div class="proj-id">P-001</div><div class="proj-status">Hackathon</div></div>
       <div class="proj-thumb">
-        <picture>
+        <a href="https://github.com/TimurSalakhetdinov/Hackathon-2025" target="_blank" rel="noopener external"><picture>
           <source srcset="images/thumbs/02.webp" type="image/webp">
           <img src="images/thumbs/02.jpeg"
                alt="Projektvorschau zur Produkterkennungs-Challenge beim ChefTreff AI Hackathon."
                width="800" height="417"
                loading="lazy" decoding="async"
                style="object-position: top;">
-        </picture>
+        </picture></a>
       </div>
       <div>
-        <h3 class="proj-h3">ChefTreff AI Hackathon: Product Detection</h3>
+        <h3 class="proj-h3"><a href="https://github.com/TimurSalakhetdinov/Hackathon-2025" target="_blank" rel="noopener external">ChefTreff AI Hackathon: Product Detection</a></h3>
         <p class="proj-blurb">In 24 Stunden entwickelt: eine Computer-Vision-Pipeline zur Erkennung beschädigter oder defekter Objekte in Produktbildern.</p>
       </div>
       <div class="proj-methods"><span class="method-tag">PyTorch</span><span class="method-tag">CNN</span><span class="method-tag">CV</span></div>
