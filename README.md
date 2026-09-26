@@ -24,13 +24,13 @@ M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to 
 
 **Languages:** Python (NumPy, Pandas, Scikit-Learn) · SQL (MS SQL Server, Hive, StarRocks)
 
-**LLM & Agents:** LangGraph · Google ADK · Claude Code (agents, skills, plugins) · MCP · tool calling · RAG
+**LLM & Agents:** LangGraph · Claude Code (agents, skills, plugins) · MCP · tool calling · RAG
 
 **ML & Forecasting:** TabPFN · Chronos · TimesFM · LightGBM · PyMC · PyTorch
 
 **Methods:** time-series forecasting · A/B testing · cohort and churn analysis · customer segmentation
 
-**Tools & Platforms:** Microsoft Fabric · Power BI · Apache Superset · GCP (Vertex AI) · Docker · Git
+**Tools & Platforms:** Microsoft Fabric · Power BI · Apache Superset · Docker · Git
 
 ## Contact
 
