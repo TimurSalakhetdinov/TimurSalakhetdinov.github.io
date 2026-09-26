@@ -856,8 +856,7 @@
       <div class="hero-eyebrow">§ 00 · Zusammenfassung</div>
       <h1 class="hero-h1">LLM-Agentensysteme für Analytics und Prognosen.</h1>
       <p class="hero-bio">
-        AI Engineer und Data Scientist mit Schwerpunkt auf LLM-Agentensystemen für Analytics-Workflows. Bei <span class="hl">InnoGames</span> entwickle ich eine agentenbasierte Lösung für Zeitreihenprognosen, die Foundation-Modelle wie TabPFN mit einem LLM-Agenten kombiniert, um betriebliche Planungsinformationen in die Prognosen einzubeziehen. Außerdem entwickle ich einen agentenbasierten Workflow, der Power-BI-Berichte erstellt, Berichtsänderungen umsetzt und die Ergebnisse validiert. Ich bringe zehn Jahre Analytics-Erfahrung aus Telekommunikation, Finanzwesen, Versicherung und Gaming mit.
-      </p>
+        AI Engineer und Data Scientist mit Schwerpunkt auf LLM-Agentensystemen für Analytics-Workflows. Bei <span class="hl">InnoGames</span> entwickle ich Prognose-Workflows, die untersuchen, wie betriebliche Planungstexte über strukturierte LLM-Extraktionen, Rohtext-Merkmale und Embeddings in Umsatzprognosen einfließen können. Dieses Unternehmensprojekt bildet zugleich die Grundlage meiner M.Sc.-Abschlussarbeit an der Leuphana Universität. Außerdem entwickle ich agentenbasierte Werkzeuge zum Erstellen, Ändern und Validieren von Power-BI-Berichten. Ich bringe zehn Jahre Analytics-Erfahrung aus Telekommunikation, Finanzwesen, Versicherung und Gaming mit.</p>
       <div class="hero-stats">
         <div><div class="stat-v">10</div><div class="stat-l">Jahre in Analytics</div></div>
         <div><div class="stat-v">1,9</div><div class="stat-l">M.Sc. Note (Leuphana)</div></div>
@@ -902,21 +901,22 @@
 
   <div class="feat-body">
     <div>
-      <h2 class="feat-h2">Foundation-Modelle und agentenkompilierte Text-Kovariaten für Spielumsätze.</h2>
+      <h2 class="feat-h2">Wie Planungstexte Umsatzprognosen für Spiele unterstützen können.</h2>
       <p class="feat-p">
-        Meine M.Sc.-Abschlussarbeit untersucht, ob Kovariaten, die ein LLM-Agent aus den Planungsdokumenten des Studios extrahiert, die Nettoumsatzprognose für einen Zeitraum von drei Monaten gegenüber den bei InnoGames derzeit verwendeten kalenderbasierten Merkmalen verbessern.
-      </p>
+        Mein Unternehmensprojekt bei InnoGames, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, untersucht, ob und wie versionierte Planungstexte zusätzliche Informationen über Kalendermerkmale hinaus für Dreimonatsprognosen des Nettoumsatzes liefern. Verglichen werden agentenkompilierte strukturierte Kovariaten, Rohtext-Merkmale und Embeddings. Kalenderbasierte Referenzen und Kontrollen mit vertauschten Texten trennen den Beitrag des Dokumentinhalts vom zeitlichen Auftreten.</p>
       <p class="feat-p">Die Experimente sind abgeschlossen; derzeit verfasse ich die Abschlussarbeit für die Abgabe im Dezember 2026.</p>
 
       <div class="methods-lbl">Methoden &amp; Stack</div>
       <div class="methods-grid">
-        <div class="mc k">Domäne</div>          <div class="mc v">Zeitreihenprognose</div>
-        <div class="mc k">Engine</div>          <div class="mc v">TabPFN-TS-3.5 (eingefroren, in-context)</div>
-        <div class="mc k">Kovariaten</div>      <div class="mc v">Agentenkompiliert aus versionierten Planungstexten</div>
-        <div class="mc k">Baselines</div>       <div class="mc v">13 Systeme · 49 monatliche Stichtage · 3 Spiele</div>
-        <div class="mc k">Metriken</div>        <div class="mc v">MASE · MAPE · Diebold-Mariano</div>
-        <div class="mc k">Stack</div>           <div class="mc v">Selbst gehostet, Open-Weight · kein Cloud-Training</div>
-        <div class="mc k">Modellauswahl</div>   <div class="mc v">Open-Weight-Modelle für die Hauptversuche ausgewählt · Frontier-APIs für explorative Vergleiche</div>
+        <div class="mc k">Domäne</div>          <div class="mc v">Dreimonatsprognosen des Nettoumsatzes</div>
+        <div class="mc k">Engine</div>          <div class="mc v">TabPFN-TS mit eingefrorenem TabPFN-3.5-Checkpoint</div>
+        <div class="mc k">Texteingaben</div>    <div class="mc v">Agentenkompilierte Felder · Rohtext-Merkmale · Embeddings</div>
+        <div class="mc k">Kontrollen</div>      <div class="mc v">Kalenderbasierte Referenz · Placebos mit vertauschten Texten</div>
+        <div class="mc k">Benchmark</div>       <div class="mc v">Separater Baseline-Vergleich zur Auswahl der Referenz je Spiel</div>
+        <div class="mc k">Backtest</div>        <div class="mc v">3 Spiele · 49 monatliche Stichtage: 26 Entwicklung, 23 Test</div>
+        <div class="mc k">Evaluation</div>      <div class="mc v">MASE · MAPE · 90%-Prognoseintervalle · Zuverlässigkeit des Agenten</div>
+        <div class="mc k">Datenprüfung</div>    <div class="mc v">Nur am Prognosestichtag verfügbare Dokumentversionen</div>
+        <div class="mc k">Stack</div>           <div class="mc v">Lokale Open-Weight-Modelle · eingefrorene Prognosemodelle</div>
         <div class="mc k">Status</div>          <div class="mc v">Schreibphase · Abgabe Dez. 2026</div>
       </div>
 
@@ -925,10 +925,10 @@
 
     <div class="diagram-panel">
       <div class="diagram-cap">
-        <span>Fig. 2 · Prognose-Pipeline (Entwurf)</span>
+        <span>Fig. 2 · Agentenkompilierte Texteingaben</span>
         
       </div>
-      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Forecasting pipeline: planning text and calendar flags feed a frozen TabPFN-TS-3.5 engine that produces a three-month forecast">
+      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Agentenkompilierte Texteingaben: Ein LLM extrahiert strukturierte Kovariaten aus am Prognosestichtag verfügbaren Planungsdokumenten für Umsatzprognosen mit TabPFN-TS.">
         <defs>
           <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
             <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
@@ -954,10 +954,10 @@
         <text x="75" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
         <text x="75" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">six binary flags</text>
 
-        <!-- TabPFN-TS-3.5 -->
+        <!-- TabPFN-TS -->
         <rect x="180" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS-3.5</text>
-        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">frozen · in-context</text>
+        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS</text>
+        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">TabPFN-3.5 · frozen</text>
 
         <!-- FORECAST -->
         <rect x="345" y="230" width="120" height="52" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
@@ -988,7 +988,7 @@
   <div class="about-body fi">
     <div>
       <p class="about-lead">LLM-Agentensysteme für Analytics, ergänzt durch Zeitreihenprognosen mit Foundation-Modellen.</p>
-      <p class="about-p">Bei InnoGames arbeite ich an mehreren Analytics- und KI-Initiativen. Bei InnoGames habe ich eine agentenbasierte Prognoselösung entwickelt, in der ein LLM versionierte Planungsdokumente in Kovariaten für Nettoumsatzprognosen mit TabPFN-TS-3.5 überführt. Dieses Unternehmensprojekt bildet zugleich die Grundlage meiner M.Sc.-Abschlussarbeit an der Leuphana Universität. Außerdem habe ich ein Multi-Agenten-Toolkit auf Basis von Claude Code entwickelt, mit dem Power-BI-Modelle und -Berichte erstellt und geändert werden können, inklusive Freigabe-, Validierungs- und Eskalationsschritten. Weitere Aufgaben umfassen Dashboards für Engagement und Monetarisierung, A/B-Test- und Churn-Analysen sowie die Migration des täglichen Reportings für sechs Spiele zu Microsoft Fabric.</p>
+      <p class="about-p">Bei InnoGames arbeite ich an mehreren Analytics- und KI-Initiativen. Ich habe eine Evaluationspipeline für Umsatzprognosen entwickelt, die strukturierte LLM-Extraktionen, Rohtext-Merkmale und Embeddings aus versionierten Planungsdokumenten mit kalenderbasierten Prognosen und Kontrollen mit vertauschten Texten vergleicht. Dieses Unternehmensprojekt bildet zugleich die Grundlage meiner M.Sc.-Abschlussarbeit an der Leuphana Universität. Außerdem habe ich ein Multi-Agenten-Toolkit auf Basis von Claude Code entwickelt, mit dem Power-BI-Modelle und -Berichte erstellt und geändert werden können, inklusive Freigabe-, Validierungs- und Eskalationsschritten. Weitere Aufgaben umfassen Dashboards für Engagement und Monetarisierung, A/B-Test- und Churn-Analysen sowie die Migration des täglichen Reportings für sechs Spiele zu Microsoft Fabric.</p>
       <p class="about-p">Derzeit schließe ich meinen M.Sc. in Management &amp; Data Science an der Leuphana Universität als Deutschlandstipendiat ab und arbeite parallel bei InnoGames an Analytics und der Entwicklung von Agentensystemen. Ab April 2027 stehe ich für Vollzeitpositionen als AI Engineer oder Data Scientist in Deutschland zur Verfügung.</p>
     </div>
 
@@ -1159,7 +1159,7 @@
     <div class="proj-row">
       <div><div class="proj-id">P-008</div><div class="proj-status">Schreibphase</div></div>
       <div class="proj-thumb proj-thumb-svg">
-        <svg viewBox="0 0 140 88" style="width:100%;height:auto;display:block;" role="img" aria-label="Prognose-Workflow: Planungstexte werden über einen LLM-Agenten und Kovariaten in eine Umsatzprognose mit TabPFN-TS-3.5 überführt.">
+        <svg viewBox="0 0 140 88" style="width:100%;height:auto;display:block;" role="img" aria-label="Agentenkompilierte Texteingaben für Umsatzprognosen mit TabPFN-TS; Rohtext-Merkmale und Embeddings werden separat untersucht.">
           <rect width="140" height="88" fill="#F4F4F1"/>
           <g font-family="IBM Plex Mono,monospace" font-size="7" font-weight="500" fill="#15171A" text-anchor="middle">
             <rect x="4" y="10" width="38" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
@@ -1170,15 +1170,15 @@
             <text x="115" y="23">KOVAR.</text>
             <path d="M42 20h7M85 20h7" stroke="#15171A" stroke-width="0.8"/>
             <rect x="25" y="52" width="90" height="24" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="0.8"/>
-            <text x="70" y="67" fill="#F4F4F1">TABPFN-TS-3.5</text>
+            <text x="70" y="67" fill="#F4F4F1">TABPFN-TS</text>
             <path d="M115 30v11H70v9" stroke="#15171A" stroke-width="0.8" fill="none"/>
           </g>
         </svg>
       </div>
       <div>
         <h3 class="proj-h3">Agentenbasierte Prognosen für Spielumsätze</h3>
-        <p class="proj-blurb">Unternehmensprojekt bei InnoGames und M.Sc.-Abschlussarbeit an der Leuphana: Untersucht wird, ob LLM-extrahierte Planungskovariaten Dreimonatsprognosen des Nettoumsatzes mit TabPFN-TS-3.5 verbessern. Die Evaluation umfasst 13 Systeme, 49 monatliche Prognosestichtage und drei Spiele.</p>
-        <div class="proj-methods"><span class="method-tag">TabPFN-TS-3.5</span><span class="method-tag">LLM-Agent</span><span class="method-tag">Zeitreihen</span><span class="method-tag">Open-Weight-Modelle</span></div>
+        <p class="proj-blurb">Unternehmensprojekt bei InnoGames und M.Sc.-Abschlussarbeit an der Leuphana: Verglichen werden strukturierte LLM-Extraktionen, Rohtext-Merkmale und Embeddings als Eingaben für Umsatzprognosen. Kalenderbasierte Referenzen und Kontrollen mit vertauschten Texten prüfen den Beitrag des Dokumentinhalts; ein separater Baseline-Benchmark legt die Vergleichsmodelle fest.</p>
+        <div class="proj-methods"><span class="method-tag">TabPFN-TS</span><span class="method-tag">LLM-Agent</span><span class="method-tag">Zeitreihen</span><span class="method-tag">Open-Weight-Modelle</span></div>
       </div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Unternehmensprojekt · M.Sc.-Abschlussarbeit</div></div>
     </div>
@@ -1368,7 +1368,7 @@
       <ul class="contact-fit-list">
         <li>Versicherungs- und Rückversicherungs-Analytics. Underwriting-Segmentierung bei Absolute Insurance und aktuelle bayesianische Prognoseverfahren, anwendbar auf den Münchner Versicherungs-Cluster und darüber hinaus.</li>
         <li>Gaming und Consumer Products. Prototypen für Umsatzprognosen und Aufbau von Analytics-Infrastruktur bei InnoGames in Hamburg, inklusive Migration nach Microsoft Fabric und Power-BI-Dashboards.</li>
-        <li>KI-native Startups und angewandte KI-Labs mit Fokus auf LLM-Systeme, Agenten-Architekturen und Retrieval. Ich habe ein Multi-Agenten-Toolkit entwickelt und eingeführt, das ein Analytics-Team täglich nutzt, und meine Abschlussarbeit entwickelt einen Agenten, der Planungstexte in Eingaben für Umsatzprognosen überführt.</li>
+        <li>KI-native Startups und angewandte KI-Labs mit Fokus auf LLM-Systeme, Agenten-Architekturen und Retrieval. Ich habe ein Multi-Agenten-Toolkit entwickelt und eingeführt, das ein Analytics-Team täglich nutzt, und mein Unternehmensprojekt für Umsatzprognosen, zugleich meine M.Sc.-Abschlussarbeit, vergleicht verschiedene Wege, Planungstexte in Prognosen einzubeziehen.</li>
         <li>Telekommunikations- und Netzwerk-Analytics. Acht Jahre bei MTS mit Marktanalyse und M&amp;A für die Märkte Indien, Serbien, Slowenien und Moldau, relevant für Telekommunikationsunternehmen und Netzbetreiber, unter anderem in München.</li>
         <li>Global agierende Tech-Firmen und Plattformteams in Hamburg, München und Düsseldorf, in denen Prognosen, angewandtes ML und produktive Analytics-Lösungen produktübergreifend skalieren.</li>
         <li>Startups und Scale-ups, bei denen produktives ML und Agentensysteme das Kernprodukt bilden und kein Pilotprojekt bleiben.</li>
