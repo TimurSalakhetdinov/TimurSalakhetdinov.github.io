@@ -594,7 +594,7 @@
     .work { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
     .proj-table { border: 1px solid var(--rule); background: var(--bg); }
     .proj-thead {
-      display: grid; grid-template-columns: 100px 140px 1fr 140px 120px;
+      display: grid; grid-template-columns: 72px 144px minmax(0, 1fr) 112px;
       gap: 24px; background: var(--paper); padding: 12px 24px;
       border-bottom: 1px solid var(--rule);
       font-family: var(--mono); font-size: 10px;
@@ -602,7 +602,7 @@
     }
     .proj-thead span:last-child { text-align: right; }
     .proj-row {
-      display: grid; grid-template-columns: 100px 140px 1fr 140px 120px;
+      display: grid; grid-template-columns: 72px 144px minmax(0, 1fr) 112px;
       gap: 24px; padding: 24px; align-items: start;
       border-bottom: 1px solid var(--rule);
       color: inherit; text-decoration: none;
@@ -612,9 +612,12 @@
     .proj-row:hover { background: var(--paper); }
     .proj-id { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 500; }
     .proj-status { font-family: var(--mono); font-size: 10px; color: var(--ink-muted); margin-top: 4px; letter-spacing: .05em; }
-    .proj-thumb { background: var(--paper); border: 1px solid var(--rule); overflow: hidden; }
+    .proj-thumb { width: 100%; aspect-ratio: 8 / 5; background: var(--paper); border: 1px solid var(--rule); overflow: hidden; }
+    .proj-row > * { min-width: 0; }
+    .proj-thumb > a, .proj-thumb picture { height: 100%; }
+    .proj-thumb svg { height: 100% !important; }
     .proj-thumb picture { display: block; width: 100%; }
-    .proj-thumb img { width: 100%; height: auto; display: block; filter: saturate(.4) contrast(1.05); }
+    .proj-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.4) contrast(1.05); }
     .author-photo-wrap picture { display: block; width: 100%; height: 100%; }
     .proj-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
     .proj-thumb > a { display: block; }
@@ -622,7 +625,7 @@
     .proj-h3 a:hover { text-decoration: underline; }
     .proj-blurb { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
     .proj-thumb-svg { background: #F4F4F1; }
-    .proj-methods { display: flex; flex-direction: column; gap: 6px; }
+    .proj-methods { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
     .method-tag {
       font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
       padding: 3px 8px; border: 1px solid var(--rule);
@@ -697,6 +700,15 @@
     .fi { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
     .fi.in { opacity: 1; transform: none; }
 
+    @media (min-width: 901px) and (max-width: 1180px) {
+      .proj-thead { display: none; }
+      .proj-row { grid-template-columns: 144px minmax(0, 1fr); gap: 16px 24px; }
+      .proj-row > :nth-child(1) { grid-column: 1; grid-row: 1; }
+      .proj-row > :nth-child(2) { grid-column: 1; grid-row: 2; }
+      .proj-row > :nth-child(3) { grid-column: 2; grid-row: 1 / span 2; }
+      .proj-row > :nth-child(4) { grid-column: 2; text-align: left; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1540px) {
       .nav { padding: 16px 28px; grid-template-columns: auto auto; }
@@ -728,7 +740,8 @@
       .langs-row  { gap: 16px 24px; }
 
       .proj-thead   { display: none; }
-      .proj-row     { grid-template-columns: 1fr; gap: 12px; }
+      .proj-row     { grid-template-columns: 1fr; gap: 16px; }
+      .proj-thumb   { max-width: 240px; }
       .proj-yr-col  { text-align: left; }
       .proj-methods { flex-direction: row; flex-wrap: wrap; }
       .proj-note    { display: none; }
@@ -1143,7 +1156,7 @@
 
   <div class="proj-table fi">
     <div class="proj-thead">
-      <span>ID</span><span>Preview</span><span>Title &amp; abstract</span><span>Methods</span><span>Year / Role</span>
+      <span>ID</span><span>Preview</span><span>Title &amp; abstract</span><span>Year / Role</span>
     </div>
 
     <div class="proj-row">
@@ -1153,7 +1166,7 @@
           <rect width="140" height="88" fill="#F4F4F1"/>
           <g font-family="IBM Plex Mono,monospace" font-size="7" font-weight="500" fill="#15171A" text-anchor="middle">
             <rect x="4" y="10" width="38" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
-            <text x="23" y="23">PLAN TEXT</text>
+            <text x="23" y="23">TEXT</text>
             <rect x="51" y="10" width="34" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
             <text x="68" y="23">LLM</text>
             <rect x="94" y="10" width="42" height="20" fill="#FFFFFF" stroke="#15171A" stroke-width="0.8"/>
@@ -1166,10 +1179,10 @@
         </svg>
       </div>
       <div>
-        <h3 class="proj-h3">Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates</h3>
-        <p class="proj-blurb">Company project at InnoGames and M.Sc. thesis at Leuphana University: evaluates whether an LLM agent can turn versioned planning documents into covariates that improve three-month net revenue forecasts. The study compares 13 forecasting systems across 49 monthly origins and three games.</p>
+        <h3 class="proj-h3">Agentic forecasting for game revenue</h3>
+        <p class="proj-blurb">InnoGames company project and Leuphana M.Sc. thesis: tests whether LLM-extracted planning covariates improve three-month net revenue forecasts with TabPFN-TS-3.5. Evaluation covers 13 systems, 49 monthly origins and three games.</p>
+        <div class="proj-methods"><span class="method-tag">TabPFN-TS-3.5</span><span class="method-tag">LLM agent</span><span class="method-tag">Time series</span><span class="method-tag">Open-weight models</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">TabPFN-TS-3.5</span><span class="method-tag">LLM agent</span><span class="method-tag">Time series</span><span class="method-tag">Open-weight models</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Company project · M.Sc. thesis</div></div>
     </div>
 
@@ -1195,8 +1208,8 @@
       <div>
         <h3 class="proj-h3">Agentic toolkit for Power BI report changes</h3>
         <p class="proj-blurb">Multi-agent Claude Code toolkit used across the analytics team, planning, implementing, and verifying Power BI dashboard changes in PBIP/TMDL without step-by-step human input.</p>
+        <div class="proj-methods"><span class="method-tag">Claude Code</span><span class="method-tag">Multi-Agent</span><span class="method-tag">PBIP / TMDL</span><span class="method-tag">Power BI</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">Claude Code</span><span class="method-tag">Multi-Agent</span><span class="method-tag">PBIP / TMDL</span><span class="method-tag">Power BI</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Solo</div></div>
     </div>
 
@@ -1215,8 +1228,8 @@
       <div>
         <h3 class="proj-h3"><a href="https://chef-treff.de/hackathon/" target="_blank" rel="noopener external">ChefTreff AI Hackathon: Founder Assistant</a></h3>
         <p class="proj-blurb">Multi-agent assistant that helps founders launch a company in Germany, covering business plan, marketing plan, and legal documentation.</p>
+        <div class="proj-methods"><span class="method-tag">Multi-Agent</span><span class="method-tag">LLM</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">Multi-Agent</span><span class="method-tag">LLM</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Hackathon · Hamburg</div><a class="proj-link" href="https://chef-treff.de/hackathon/" target="_blank" rel="noopener external">↗ ChefTreff hackathon</a></div>
     </div>
 
@@ -1235,8 +1248,8 @@
       <div>
         <h3 class="proj-h3">Knowledge Graph Question Answering</h3>
         <p class="proj-blurb">SPARQL-based question answering over structured knowledge graphs, enabling natural language queries over RDF knowledge bases.</p>
+        <div class="proj-methods"><span class="method-tag">SPARQL</span><span class="method-tag">RDF</span><span class="method-tag">NLP</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">SPARQL</span><span class="method-tag">RDF</span><span class="method-tag">NLP</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Team project</div><div class="proj-link">↗ KGQA repo</div></div>
     </a>
 
@@ -1254,8 +1267,8 @@
       <div>
         <h3 class="proj-h3">KVG ML Route Modelling</h3>
         <p class="proj-blurb">Applied ML to model and predict transportation routes for a regional transit partner, combining geospatial data with predictive modelling.</p>
+        <div class="proj-methods"><span class="method-tag">ML</span><span class="method-tag">Geospatial</span><span class="method-tag">Forecasting</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">ML</span><span class="method-tag">Geospatial</span><span class="method-tag">Forecasting</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Team project</div><div class="proj-link">↗ KVG model repo</div></div>
     </a>
 
@@ -1273,8 +1286,8 @@
       <div>
         <h3 class="proj-h3">Neo4j Graph Analysis of Artist Influence Networks</h3>
         <p class="proj-blurb">Graph database solution using Neo4j and Cypher to analyse artists' influence and cluster musical lineages.</p>
+        <div class="proj-methods"><span class="method-tag">Neo4j</span><span class="method-tag">Cypher</span><span class="method-tag">Graph</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">Neo4j</span><span class="method-tag">Cypher</span><span class="method-tag">Graph</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2025</div><div class="proj-role">Team project</div><div class="proj-link">↗ Artist graph repo</div></div>
     </a>
 
@@ -1292,8 +1305,8 @@
       <div>
         <h3 class="proj-h3">Hierarchical Bayesian Pareto/NBD: Replication of Abe (2009)</h3>
         <p class="proj-blurb">Implemented and validated the hierarchical Bayesian Pareto/NBD model from Abe (2009) on the canonical CDNOW dataset.</p>
+        <div class="proj-methods"><span class="method-tag">PyMC</span><span class="method-tag">MCMC</span><span class="method-tag">Bayesian</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">PyMC</span><span class="method-tag">MCMC</span><span class="method-tag">Bayesian</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2025</div><div class="proj-role">Team project</div><div class="proj-link">↗ Pareto/NBD repo</div></div>
     </a>
 
@@ -1312,8 +1325,8 @@
       <div>
         <h3 class="proj-h3"><a href="https://github.com/TimurSalakhetdinov/Hackathon-2025" target="_blank" rel="noopener external">ChefTreff AI Hackathon: Product Detection</a></h3>
         <p class="proj-blurb">Built in 24 hours: a computer vision pipeline for identifying broken or damaged objects from product imagery.</p>
+        <div class="proj-methods"><span class="method-tag">PyTorch</span><span class="method-tag">CNN</span><span class="method-tag">CV</span></div>
       </div>
-      <div class="proj-methods"><span class="method-tag">PyTorch</span><span class="method-tag">CNN</span><span class="method-tag">CV</span></div>
       <div class="proj-yr-col"><div class="proj-yr">2025</div><div class="proj-role">Hackathon</div><a class="proj-link" href="https://github.com/TimurSalakhetdinov/Hackathon-2025" target="_blank" rel="noopener external">↗ ChefTreff repo</a><a class="proj-link" href="https://chef-treff.de/hackathon/" target="_blank" rel="noopener external">↗ ChefTreff hackathon</a></div>
     </div>
   </div>
