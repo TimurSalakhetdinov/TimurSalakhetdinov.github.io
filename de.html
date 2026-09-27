@@ -1351,44 +1351,6 @@
   document.querySelectorAll('.fi').forEach(el => io.observe(el));
 </script>
 
-<!-- Medium latest posts -->
-<script>
-(async () => {
-  const username = 'timursalakhetdinov';
-
-  const url = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
-  const grid = document.getElementById('medium-posts');
-  const rule = grid.querySelector('.posts-rule');
-
-  try {
-    const resp = await fetch(url);
-    const json = await resp.json();
-    const posts = (json.items || []).slice(0, 4);
-
-    if (posts.length === 0) {
-      document.querySelector('.writing').style.display = 'none';
-      return;
-    }
-    posts.forEach(post => {
-      const date = new Date(post.pubDate).toISOString().slice(0, 10);
-      const tag  = (post.categories && post.categories[0]) || 'Article';
-      const card = document.createElement('a');
-      card.href    = post.link;
-      card.className = 'post-link fi in';
-      card.target  = '_blank';
-      card.rel     = 'noopener';
-      card.innerHTML = `
-        <div class="post-meta">
-          <span class="post-tag">${tag}</span>
-          <span class="post-date">${date}</span>
-        </div>
-        <h3 class="post-h3">${post.title}</h3>`;
-      grid.insertBefore(card, rule);
-    });
-  } catch (e) {
-    document.querySelector('.writing').style.display = 'none';
-  }
-})();
-</script>
+<!-- Medium feed disabled while the Writing section is hidden. -->
 </body>
 </html>
