@@ -119,4 +119,18 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/construction-defect-detection-de.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/construction-defect-detection.html"/>
   </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/kvg-school-bus-routing.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/kvg-school-bus-routing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/kvg-school-bus-routing-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/kvg-school-bus-routing.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/kvg-school-bus-routing-de.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/kvg-school-bus-routing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/kvg-school-bus-routing-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/kvg-school-bus-routing.html"/>
+  </url>
 </urlset>
