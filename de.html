@@ -348,7 +348,7 @@
       background: var(--bg);
       font-family: var(--mono); font-size: 12px; letter-spacing: .02em;
     }
-    .nav-brand { display: flex; align-items: center; gap: 14px; }
+    .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
     .nav-mark {
       width: 28px; height: 28px; border-radius: 2px; flex-shrink: 0;
       background: var(--ink); color: var(--bg);
@@ -371,6 +371,7 @@
       width: 6px; height: 6px; border-radius: 50%;
       background: var(--green); flex-shrink: 0;
     }
+    .nav-toggle { display: none; }
     .lang-toggle { display: flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; border: 1px solid var(--rule); padding: 3px 8px; }
     .lang-toggle a { color: var(--ink-muted); text-decoration: none; transition: color .15s; }
     .lang-toggle a:hover { color: var(--ink); }
@@ -707,15 +708,93 @@
       .proj-row > :nth-child(4) { grid-column: 2; text-align: left; }
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 1540px) {
-      .nav { padding: 16px 28px; grid-template-columns: auto auto; }
-      .nav-links { display: none; }
+    /* ── Responsive Nav ── */
+    @media (max-width: 1240px) {
+      .nav { padding: 16px 36px; gap: 16px; }
+      .nav-role { display: none; }
+      .nav-links { gap: 20px; }
+    }
+
+    @media (max-width: 1040px) {
+      .nav-status { display: none; }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-role { display: none; }
+      .nav-status { display: none; }
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--paper);
+        border: 1px solid var(--rule);
+        padding: 6px 12px;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: var(--ink);
+        cursor: pointer;
+        border-radius: 2px;
+        transition: background .15s, border-color .15s;
+      }
+      .nav-toggle:hover {
+        background: var(--bg);
+        border-color: var(--rule-strong);
+      }
+      .nav-toggle:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .nav-toggle-icon {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        width: 12px;
+        height: 10px;
+      }
+      .nav-toggle-icon span {
+        display: block;
+        height: 1.5px;
+        background: currentColor;
+        transition: transform .2s ease, opacity .2s ease;
+      }
+      .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:first-child {
+        transform: translateY(2.25px) rotate(45deg);
+      }
+      .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:last-child {
+        transform: translateY(-2.25px) rotate(-45deg);
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--rule);
+        padding: 18px 24px 22px;
+        flex-direction: column;
+        gap: 14px;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      }
+      .nav-links.is-open {
+        display: flex;
+      }
+      .nav-links li a {
+        font-size: 14px;
+        padding: 6px 0;
+      }
     }
 
     @media (max-width: 900px) {
-      .nav { padding: 16px 28px; grid-template-columns: auto auto; }
-      .nav-links { display: none; }
 
       .hero    { padding: 48px 28px 40px; }
       .featured, .about, .skills, .work, .writing { padding: 52px 28px; }
@@ -812,17 +891,16 @@
 
 <!-- Nav -->
 <header class="nav">
-  <div class="nav-brand">
+  <a class="nav-brand" href="/de" aria-label="Timur Salakhetdinov Startseite">
     <div class="nav-mark">ts</div>
     <span class="nav-name">Timur Salakhetdinov</span>
     <span class="nav-role">/ ai engineer · data scientist</span>
-  </div>
+  </a>
   <nav aria-label="Abschnitte">
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about"><span class="nav-num">§01</span><span>Über mich</span></a></li>
       <li><a href="#skills"><span class="nav-num">§02</span><span>Kenntnisse</span></a></li>
       <li><a href="#work"><span class="nav-num">§03</span><span>Projekte</span></a></li>
-      <li><a href="#writing"><span class="nav-num">§04</span><span>Artikel</span></a></li>
       <li><a href="#contact"><span class="nav-num">§05</span><span>Kontakt</span></a></li>
     </ul>
   </nav>
@@ -836,6 +914,12 @@
       <span class="nav-dot"></span>
       <span>verfügbar ab Apr. 2027 · Deutschland</span>
     </div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Navigationsmenü umschalten" data-menu-text="Menü" data-close-text="Schließen">
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span><span></span>
+      </span>
+      <span class="nav-toggle-label">Menü</span>
+    </button>
   </div>
 </header>
 
@@ -1269,7 +1353,10 @@
 
   <div class="proj-footer fi">
     <span class="proj-note">* Vorschaubilder entsättigt für einheitliches Erscheinungsbild</span>
-    <a href="https://github.com/TimurSalakhetdinov?tab=repositories" class="btn-repos" target="_blank" rel="noopener">Alle Repositories auf GitHub →</a>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="/projects/de" class="btn-repos">Alle Projekte in der Übersicht →</a>
+      <a href="https://github.com/TimurSalakhetdinov?tab=repositories" class="btn-repos" target="_blank" rel="noopener">Alle Repositories auf GitHub →</a>
+    </div>
   </div>
 </section>
 
@@ -1349,6 +1436,42 @@
     { threshold: 0.07 }
   );
   document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (navToggle && navLinks) {
+    const toggleLabel = navToggle.querySelector('.nav-toggle-label');
+    const closeText = navToggle.getAttribute('data-close-text') || 'Schließen';
+    const menuText = navToggle.getAttribute('data-menu-text') || 'Menü';
+
+    function setMenuState(open) {
+      navToggle.setAttribute('aria-expanded', String(open));
+      navLinks.classList.toggle('is-open', open);
+      if (toggleLabel) toggleLabel.textContent = open ? closeText : menuText;
+    }
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      setMenuState(!isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenuState(false));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target) && navToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        navToggle.focus();
+      }
+    });
+  }
 </script>
 
 <!-- Medium feed disabled while the Writing section is hidden. -->

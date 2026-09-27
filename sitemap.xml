@@ -20,12 +20,31 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/"/>
   </url>
   <url>
+    <loc>https://timursalakhetdinov.com/projects/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/de</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/"/>
+  </url>
+  <url>
     <loc>https://timursalakhetdinov.com/impressum.html</loc>
     <lastmod>2026-09-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/impressum.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/imprint.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/imprint.html"/>
   </url>
   <url>
     <loc>https://timursalakhetdinov.com/imprint.html</loc>
@@ -34,6 +53,7 @@
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/impressum.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/imprint.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/imprint.html"/>
   </url>
   <url>
     <loc>https://timursalakhetdinov.com/datenschutz.html</loc>
@@ -42,6 +62,7 @@
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/datenschutz.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/privacy.html"/>
   </url>
   <url>
     <loc>https://timursalakhetdinov.com/privacy.html</loc>
@@ -50,6 +71,7 @@
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/datenschutz.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/privacy.html"/>
   </url>
   <url>
     <loc>https://timursalakhetdinov.com/projects/knowledge-graph-question-answering.html</loc>
@@ -98,12 +120,14 @@
     <lastmod>2026-09-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/text-informed-forecasting.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/text-informed-forecasting-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/text-informed-forecasting.html"/>
   </url>
   <url>
     <loc>https://timursalakhetdinov.com/projects/text-informed-forecasting-de.html</loc>
     <lastmod>2026-09-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/text-informed-forecasting.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/text-informed-forecasting-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/text-informed-forecasting.html"/>
   </url>
   <url>
     <loc>https://timursalakhetdinov.com/projects/construction-defect-detection.html</loc>
