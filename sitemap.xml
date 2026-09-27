@@ -51,4 +51,58 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/datenschutz.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/privacy.html"/>
   </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/knowledge-graph-question-answering.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/knowledge-graph-question-answering.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/knowledge-graph-question-answering-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/knowledge-graph-question-answering.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/knowledge-graph-question-answering-de.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/knowledge-graph-question-answering.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/knowledge-graph-question-answering-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/knowledge-graph-question-answering.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/artist-influence-networks.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/artist-influence-networks.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/artist-influence-networks-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/artist-influence-networks.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/artist-influence-networks-de.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/artist-influence-networks.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/artist-influence-networks-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/artist-influence-networks.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/bayesian-pareto-nbd.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/bayesian-pareto-nbd.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/bayesian-pareto-nbd-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/bayesian-pareto-nbd.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/bayesian-pareto-nbd-de.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/bayesian-pareto-nbd.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/bayesian-pareto-nbd-de.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/projects/bayesian-pareto-nbd.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/text-informed-forecasting.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/text-informed-forecasting.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/text-informed-forecasting-de.html"/>
+  </url>
+  <url>
+    <loc>https://timursalakhetdinov.com/projects/text-informed-forecasting-de.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/projects/text-informed-forecasting.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/projects/text-informed-forecasting-de.html"/>
+  </url>
 </urlset>
