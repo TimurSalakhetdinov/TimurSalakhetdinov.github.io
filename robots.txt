@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /Archive/
 
 Sitemap: https://timursalakhetdinov.com/sitemap.xml
