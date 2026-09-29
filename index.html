@@ -328,7 +328,13 @@
       --mono:  'IBM Plex Mono', ui-monospace, monospace;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 76px;
+    }
+    section[id] {
+      scroll-margin-top: 76px;
+    }
     body {
       background: var(--bg);
       color: var(--ink);
@@ -723,6 +729,8 @@
     }
 
     @media (max-width: 860px) {
+      html { scroll-padding-top: 68px; }
+      section[id] { scroll-margin-top: 68px; }
       .nav {
         padding: 14px 24px;
         display: flex;
