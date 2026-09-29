@@ -331,7 +331,7 @@
       scroll-behavior: smooth;
     }
     section[id] {
-      scroll-margin-top: 69px;
+      scroll-margin-top: 0;
     }
     body {
       background: var(--bg);
@@ -715,7 +715,6 @@
 
     /* ── Responsive Nav ── */
     @media (max-width: 1240px) {
-      section[id] { scroll-margin-top: 61px; }
       .nav { padding: 16px 36px; gap: 16px; }
       .nav-role { display: none; }
       .nav-links { gap: 20px; }
@@ -726,7 +725,7 @@
     }
 
     @media (max-width: 860px) {
-      section[id] { scroll-margin-top: 57px; }
+      section[id] { scroll-margin-top: 14px; }
       .nav {
         padding: 14px 24px;
         display: flex;
@@ -947,7 +946,7 @@
       <div class="hero-eyebrow">§ 00 · Zusammenfassung</div>
       <h1 class="hero-h1">LLM-Agentensysteme für Analytics und Prognosen.</h1>
       <p class="hero-bio">
-        AI Engineer und Data Scientist mit Schwerpunkt auf LLM-Agentensystemen für Analytics-Workflows. Bei <span class="hl">InnoGames</span> entwickle ich Prognose-Workflows, die untersuchen, wie betriebliche Planungstexte über strukturierte LLM-Extraktionen, Rohtext-Merkmale und Embeddings in Umsatzprognosen einfließen können. Dieses Unternehmensprojekt bildet zugleich die Grundlage meiner M.Sc.-Abschlussarbeit an der Leuphana Universität. Außerdem entwickle ich agentenbasierte Werkzeuge zum Erstellen, Ändern und Validieren von Power-BI-Berichten. Ich bringe zehn Jahre Analytics-Erfahrung aus Telekommunikation, Finanzwesen, Versicherung und Gaming mit.</p>
+        AI Engineer und Data Scientist mit Schwerpunkt auf Analytics Engineering, Zeitreihenprognosen mit Foundation-Modellen und LLM-Agentensystemen. Bei <span class="hl">InnoGames</span> liegt mein Hauptfokus auf durchgängiger Power-BI-Datenmodellierung, Reporting und der Migration von Analytics für sechs Spiele zu Microsoft Fabric, ergänzt durch ein Claude-Code-Multi-Agenten-Toolkit zur automatisierten PBIP/TMDL-Berichtserstellung. Parallel dazu zielt mein Unternehmensprojekt und meine M.Sc.-Abschlussarbeit an der Leuphana Universität darauf ab, die Genauigkeit und Unsicherheitsintervalle von Dreimonats-Nettoumsatzprognosen mittels eingefrorener Foundation-Modelle (TabPFN-TS, Zero-Shot) und Kalender-Flags zu verbessern und den Mehrwert agentenkompilierter Text-Kovariaten aus Planungsdokumenten zu erforschen. Ich bringe zehn Jahre Analytics-Erfahrung aus Gaming, Telekommunikation, Finanzwesen und Versicherung mit.</p>
       <div class="hero-stats">
         <div><div class="stat-v">10</div><div class="stat-l">Jahre in Analytics</div></div>
         <div><div class="stat-v">1,9</div><div class="stat-l">M.Sc. Note (Leuphana)</div></div>
@@ -992,10 +991,10 @@
 
   <div class="feat-body">
     <div>
-      <h2 class="feat-h2">Wie Planungstexte Umsatzprognosen für Spiele unterstützen können.</h2>
+      <h2 class="feat-h2">Umsatzprognosen für Free-to-Play-Spiele mit Foundation-Modellen und agentenkompilierten Text-Kovariaten</h2>
       <p class="feat-p">
-        Mein Unternehmensprojekt bei InnoGames, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, untersucht, ob und wie versionierte Planungstexte zusätzliche Informationen über Kalendermerkmale hinaus für Dreimonatsprognosen des Nettoumsatzes liefern. Verglichen werden agentenkompilierte strukturierte Kovariaten, Rohtext-Merkmale und Embeddings. Kalenderbasierte Referenzen und Kontrollen mit vertauschten Texten trennen den Beitrag des Dokumentinhalts vom zeitlichen Auftreten.</p>
-      <p class="feat-p">Die Experimente sind abgeschlossen; derzeit verfasse ich die Abschlussarbeit für die Abgabe im Dezember 2026.</p>
+        Mein Unternehmensprojekt bei InnoGames, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, zielt darauf ab, die Genauigkeit und die Prognoseintervalle von Dreimonats-Nettoumsatzprognosen mittels eines eingefrorenen tabellarischen Foundation-Modells (TabPFN-TS) ohne aufgabenspezifisches Nachtraining (Zero-Shot) zu verbessern. Die Arbeit untersucht, ob und wie agentenkompilierte Kovariaten, Rohtext-Merkmale und Embeddings aus versionierten Planungstexten einen messbaren Mehrwert über Kalender-Flags hinaus liefern – abgesichert durch strenge Vintage-Guards und placebokontrollierte Benchmarks, um echten Textinhalt von rein zeitlichen Effekten zu trennen.</p>
+      <p class="feat-p">Die Experimente über 49 monatliche Stichtage zeigen, dass das eingefrorene Foundation-Modell mit Kalender-Flags die bestehenden Produktionsprognosen bei allen untersuchten Spielen übertrifft; derzeit verfasse ich die Abschlussarbeit für die Abgabe im Dezember 2026.</p>
 
       <div class="methods-lbl">Methoden &amp; Stack</div>
       <div class="methods-grid">
@@ -1078,9 +1077,10 @@
 
   <div class="about-body fi">
     <div>
-      <p class="about-lead">LLM-Agentensysteme für Analytics, ergänzt durch Zeitreihenprognosen mit Foundation-Modellen.</p>
-      <p class="about-p">Bei InnoGames arbeite ich an mehreren Analytics- und KI-Initiativen. Ich habe eine Evaluationspipeline für Umsatzprognosen entwickelt, die strukturierte LLM-Extraktionen, Rohtext-Merkmale und Embeddings aus versionierten Planungsdokumenten mit kalenderbasierten Prognosen und Kontrollen mit vertauschten Texten vergleicht. Dieses Unternehmensprojekt bildet zugleich die Grundlage meiner M.Sc.-Abschlussarbeit an der Leuphana Universität. Außerdem habe ich ein Multi-Agenten-Toolkit auf Basis von Claude Code entwickelt, mit dem Power-BI-Modelle und -Berichte erstellt und geändert werden können, inklusive Freigabe-, Validierungs- und Eskalationsschritten. Weitere Aufgaben umfassen Dashboards für Engagement und Monetarisierung, A/B-Test- und Churn-Analysen sowie die Migration des täglichen Reportings für sechs Spiele zu Microsoft Fabric.</p>
-      <p class="about-p">Derzeit schließe ich meinen M.Sc. in Management &amp; Data Science an der Leuphana Universität als Deutschlandstipendiat ab und arbeite parallel bei InnoGames an Analytics und der Entwicklung von Agentensystemen. Ab April 2027 stehe ich für Vollzeitpositionen als AI Engineer oder Data Scientist in Deutschland zur Verfügung.</p>
+      <p class="about-lead">Datenmodellierung, Power-BI-Analytics und Microsoft-Fabric-Pipelines, erweitert um LLM-Agentensysteme und Zeitreihenprognosen mit Foundation-Modellen.</p>
+      <p class="about-p">Bei InnoGames liegt mein Hauptfokus auf Business Intelligence und Data Engineering in Power BI und Microsoft Fabric. Ich entwerfe semantische Datenmodelle, entwickle umfassende Reportings und Dashboards für Spieler-Engagement und Monetarisierung für sechs Live-Spiele, führe A/B-Test- sowie Churn-Analysen durch und verantworte die Migration des täglichen Berichtswesens zu Microsoft Fabric. Um diesen Workflow zu beschleunigen und abzusichern, habe ich ein Claude-Code-Multi-Agenten-Toolkit für die automatisierte Erstellung und Pflege von PBIP/TMDL-Berichten mit Freigabe-, Validierungs- und Eskalationsmechanismen entwickelt.</p>
+      <p class="about-p">Parallel dazu untersucht mein Unternehmensprojekt und meine M.Sc.-Abschlussarbeit an der Leuphana Universität die Verbesserung der Prognosegenauigkeit und kalibrierter Unsicherheitsintervalle mittels eingefrorener Foundation-Modelle (TabPFN-TS) ohne aufgabenspezifisches Training, kombiniert mit Kalender-Flags und der Erforschung agentenkompilierter Text-Kovariaten aus Planungsdokumenten.</p>
+      <p class="about-p">Derzeit schließe ich meinen M.Sc. in Management &amp; Data Science an der Leuphana Universität als Deutschlandstipendiat ab. Ab April 2027 stehe ich für Vollzeitpositionen als AI Engineer oder Data Scientist in Deutschland zur Verfügung.</p>
     </div>
 
     <div class="cv-table">
@@ -1253,8 +1253,8 @@
         <svg viewBox="0 0 240 150" style="width:100%;height:100%;display:block;" role="img" aria-label="Umsatzprognose: historische Beobachtungen und ein prognostizierter Verlauf mit Unsicherheitsband."><rect width="240" height="150" fill="#F4F4F1"/><rect x="142" y="22" width="78" height="106" fill="#E4EBF1"/><g stroke="#D7D9D7" stroke-width="1"><path d="M22 44H220M22 72H220M22 100H220"/></g><path d="M22 24V128H220" stroke="#858B91" stroke-width="1.5" fill="none"/><path d="M142 22V128" stroke="#858B91" stroke-width="1.5" stroke-dasharray="4 5"/><path d="M142 64L160 52L178 42L198 31L220 26V68L198 72L178 81L160 87L142 88Z" fill="#B7CDDF"/><path d="M22 110L40 103L58 111L76 87L94 94L112 68L130 80L142 76" stroke="#555E67" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M142 76L160 69L178 62L198 51L220 47" stroke="#075593" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="142" cy="76" r="5" fill="#075593" stroke="#F4F4F1" stroke-width="2"/></svg>
       </div>
       <div>
-        <h3 class="proj-h3">Agentenbasierte Prognosen für Spielumsätze</h3>
-        <p class="proj-blurb">Unternehmensprojekt bei InnoGames und M.Sc.-Abschlussarbeit an der Leuphana: Verglichen werden strukturierte LLM-Extraktionen, Rohtext-Merkmale und Embeddings als Eingaben für Umsatzprognosen. Kalenderbasierte Referenzen und Kontrollen mit vertauschten Texten prüfen den Beitrag des Dokumentinhalts; ein separater Baseline-Benchmark legt die Vergleichsmodelle fest.</p>
+        <h3 class="proj-h3">Spielumsatzprognosen mit Foundation-Modellen</h3>
+        <p class="proj-blurb">Unternehmensprojekt bei InnoGames und Leuphana-M.Sc.-Abschlussarbeit: Verbesserung der Genauigkeit und Unsicherheitsintervalle von Dreimonats-Nettoumsatzprognosen mit einem eingefrorenen tabellarischen Foundation-Modell (TabPFN-TS, Zero-Shot) und Kalender-Flags, sowie Untersuchung agentenkompilierter Planungsdaten.</p>
         <div class="proj-methods"><span class="method-tag">TabPFN-TS</span><span class="method-tag">LLM-Agent</span><span class="method-tag">Zeitreihen</span><span class="method-tag">Open-Weight-Modelle</span></div>
       </div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Unternehmensprojekt · M.Sc.-Abschlussarbeit</div><div class="proj-link">Projekt ansehen →</div></div>

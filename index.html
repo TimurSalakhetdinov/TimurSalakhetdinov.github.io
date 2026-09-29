@@ -332,7 +332,7 @@
       scroll-behavior: smooth;
     }
     section[id] {
-      scroll-margin-top: 69px;
+      scroll-margin-top: 0;
     }
     body {
       background: var(--bg);
@@ -718,7 +718,6 @@
 
     /* ── Responsive Nav ── */
     @media (max-width: 1240px) {
-      section[id] { scroll-margin-top: 61px; }
       .nav { padding: 16px 36px; gap: 16px; }
       .nav-role { display: none; }
       .nav-links { gap: 20px; }
@@ -729,7 +728,7 @@
     }
 
     @media (max-width: 860px) {
-      section[id] { scroll-margin-top: 57px; }
+      section[id] { scroll-margin-top: 14px; }
       .nav {
         padding: 14px 24px;
         display: flex;
@@ -951,7 +950,7 @@
       <div class="hero-eyebrow">§ 00 · Abstract</div>
       <h1 class="hero-h1">LLM agent systems for analytics and forecasting.</h1>
       <p class="hero-bio">
-        AI Engineer and Data Scientist specialising in LLM agent systems for analytics workflows. At <span class="hl">InnoGames</span>, I build forecasting workflows that test how business planning text can inform revenue predictions through structured LLM extractions, raw-text features and embeddings. This company project also forms the basis of my M.Sc. thesis at Leuphana University. I also develop agentic tools for building, changing and validating Power BI reports. I bring ten years of analytics experience across telecommunications, finance, insurance, and gaming.</p>
+        AI Engineer and Data Scientist specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At <span class="hl">InnoGames</span>, my core work centers on end-to-end Power BI data modeling, reporting, and migrating analytics across six games to Microsoft Fabric, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. In parallel, my company project and M.Sc. thesis at Leuphana University focuses on improving 3-month net revenue forecast accuracy and calibrated uncertainty intervals using frozen foundation models (TabPFN-TS, zero task-specific retraining) and calendar flags, researching whether agent-compiled planning text covariates add measurable increment beyond calendar timing. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.</p>
       <div class="hero-stats">
         <div><div class="stat-v">10</div><div class="stat-l">years in analytics</div></div>
         <div><div class="stat-v">1.9</div><div class="stat-l">M.Sc. GPA (Leuphana)</div></div>
@@ -996,10 +995,10 @@
 
   <div class="feat-body">
     <div>
-      <h2 class="feat-h2">How planning text informs game revenue forecasts.</h2>
+      <h2 class="feat-h2">Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates</h2>
       <p class="feat-p">
-        My company project at InnoGames, also my M.Sc. thesis at Leuphana University, tests whether and how versioned planning text adds information beyond calendar flags in three-month net revenue forecasts. It compares agent-compiled structured covariates, raw-text features and embeddings, using calendar-only references and shuffled-text controls to distinguish document content from timing.</p>
-      <p class="feat-p">Experiments are complete; I am writing up the thesis for submission in December 2026.</p>
+        My company project at InnoGames, also my M.Sc. thesis at Leuphana University, aims to improve 3-month net revenue forecast accuracy and calibrated prediction intervals using a frozen tabular foundation model (TabPFN-TS) with zero task-specific retraining. The research tests whether and how agent-compiled covariates, raw-text features, and embeddings from versioned planning text add measurable value beyond calendar flags, using strict vintage guards and placebo-controlled benchmarks to distinguish genuine document content from calendar timing.</p>
+      <p class="feat-p">Experiments across 49 monthly origins demonstrate that the frozen foundation forecaster with calendar flags outperforms existing production forecasts across all evaluated games; I am currently writing up the thesis for submission in December 2026.</p>
 
       <div class="methods-lbl">Methods &amp; stack</div>
       <div class="methods-grid">
@@ -1082,9 +1081,10 @@
 
   <div class="about-body fi">
     <div>
-      <p class="about-lead">LLM agent systems for analytics, complemented by time-series forecasting with foundation models.</p>
-      <p class="about-p">At InnoGames, my work spans several analytics and AI initiatives. I developed a forecasting evaluation pipeline that tests structured LLM extractions, raw-text features and embeddings from versioned planning documents against calendar-only forecasts and shuffled-text controls. This company project also forms the basis of my M.Sc. thesis at Leuphana University. I have also built a Claude Code multi-agent toolkit for creating and updating Power BI models and reports, with approval, validation, and escalation controls. Other work includes dashboards for game engagement and monetization, A/B-test and churn analyses, and migrating daily reporting for six games to Microsoft Fabric.</p>
-      <p class="about-p">I am completing an M.Sc. in Management &amp; Data Science at Leuphana University as a Deutschlandstipendium scholar, alongside my analytics and agent development work at InnoGames. From April 2027 I am available for full-time AI Engineer and Data Scientist roles in Germany.</p>
+      <p class="about-lead">Data modeling, Power BI analytics, and Microsoft Fabric pipelines, extended with LLM agent systems and foundation model forecasting.</p>
+      <p class="about-p">At InnoGames, my core work centers on business intelligence and data engineering in Power BI and Microsoft Fabric. I design semantic data models, build comprehensive reporting suites and dashboards for player engagement and monetization across six live games, conduct A/B-test and churn analyses, and lead daily reporting migrations into Microsoft Fabric. To accelerate and govern this workflow, I developed a Claude Code multi-agent toolkit for automated PBIP/TMDL model and report creation, with built-in approval, schema validation, and escalation controls.</p>
+      <p class="about-p">Alongside my analytics work, my company project and M.Sc. thesis at Leuphana University focuses on improving revenue forecast accuracy and calibrated uncertainty intervals using frozen foundation models (TabPFN-TS) without task-specific training, combined with calendar flags and researching whether agent-compiled planning text covariates add measurable increment beyond calendar timing.</p>
+      <p class="about-p">I am completing an M.Sc. in Management &amp; Data Science at Leuphana University as a Deutschlandstipendium scholar. From April 2027, I am available for full-time AI Engineer and Data Scientist roles in Germany.</p>
     </div>
 
     <div class="cv-table">
@@ -1257,8 +1257,8 @@
         <svg viewBox="0 0 240 150" style="width:100%;height:100%;display:block;" role="img" aria-label="Revenue forecasting: historical observations and a projected trend with an uncertainty band."><rect width="240" height="150" fill="#F4F4F1"/><rect x="142" y="22" width="78" height="106" fill="#E4EBF1"/><g stroke="#D7D9D7" stroke-width="1"><path d="M22 44H220M22 72H220M22 100H220"/></g><path d="M22 24V128H220" stroke="#858B91" stroke-width="1.5" fill="none"/><path d="M142 22V128" stroke="#858B91" stroke-width="1.5" stroke-dasharray="4 5"/><path d="M142 64L160 52L178 42L198 31L220 26V68L198 72L178 81L160 87L142 88Z" fill="#B7CDDF"/><path d="M22 110L40 103L58 111L76 87L94 94L112 68L130 80L142 76" stroke="#555E67" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M142 76L160 69L178 62L198 51L220 47" stroke="#075593" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="142" cy="76" r="5" fill="#075593" stroke="#F4F4F1" stroke-width="2"/></svg>
       </div>
       <div>
-        <h3 class="proj-h3">Agentic forecasting for game revenue</h3>
-        <p class="proj-blurb">InnoGames company project and Leuphana M.Sc. thesis: tests structured LLM extractions, raw-text features and embeddings as inputs to revenue forecasts. Calendar-only references and shuffled-text controls test what document content adds beyond timing; a separate baseline benchmark establishes the comparators.</p>
+        <h3 class="proj-h3">Game revenue forecasting with foundation models</h3>
+        <p class="proj-blurb">InnoGames company project and Leuphana M.Sc. thesis: improving 3-month net revenue forecast accuracy and prediction intervals using a frozen tabular foundation model (TabPFN-TS, zero task-specific retraining) with calendar flags, and testing whether agent-compiled planning text covariates add measurable increment beyond calendar timing.</p>
         <div class="proj-methods"><span class="method-tag">TabPFN-TS</span><span class="method-tag">LLM agent</span><span class="method-tag">Time series</span><span class="method-tag">Open-weight models</span></div>
       </div>
       <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Company project · M.Sc. thesis</div><div class="proj-link">View project →</div></div>
