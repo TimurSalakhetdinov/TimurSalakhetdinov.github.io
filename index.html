@@ -330,10 +330,9 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 76px;
     }
     section[id] {
-      scroll-margin-top: 76px;
+      scroll-margin-top: 69px;
     }
     body {
       background: var(--bg);
@@ -719,6 +718,7 @@
 
     /* ── Responsive Nav ── */
     @media (max-width: 1240px) {
+      section[id] { scroll-margin-top: 61px; }
       .nav { padding: 16px 36px; gap: 16px; }
       .nav-role { display: none; }
       .nav-links { gap: 20px; }
@@ -729,8 +729,7 @@
     }
 
     @media (max-width: 860px) {
-      html { scroll-padding-top: 68px; }
-      section[id] { scroll-margin-top: 68px; }
+      section[id] { scroll-margin-top: 57px; }
       .nav {
         padding: 14px 24px;
         display: flex;
