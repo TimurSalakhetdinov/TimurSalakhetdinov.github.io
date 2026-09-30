@@ -22,3 +22,5 @@ nav a:hover{color:#075593;text-decoration:underline}
 .archive-tags{display:flex;flex-wrap:wrap;gap:6px}
 .archive-tags span{border:1px solid #d1d4ce;padding:2px 8px;font:11px/1.6 Mono,monospace;background:#f4f4f1}
 .archive-link{font:12px/1.5 Mono,monospace;color:#075593;white-space:nowrap}
+
+.flow-steps{list-style:none;padding:0;margin:24px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;counter-reset:step}.flow-step{position:relative;border:1px solid #c5cdcf;background:#f8f8f5;padding:12px 12px 14px;min-width:0;counter-increment:step}.flow-step:before{content:counter(step,decimal-leading-zero);display:block;font:12px/1.6 Mono,monospace;color:#626b71;margin-bottom:4px}.flow-step:not(:last-child):after{content:'';position:absolute;right:-22px;top:50%;width:16px;border-top:1px solid #aab3b8}.flow-step strong{display:block;font-size:15px;font-weight:normal;color:#075593;line-height:1.4}.flow-step small{display:block;font-size:13px;line-height:1.5;color:#485159;margin-top:6px}@media(max-width:650px){.flow-steps{grid-template-columns:1fr;gap:10px;margin:16px 0}.flow-step:not(:last-child):after{display:none}}
