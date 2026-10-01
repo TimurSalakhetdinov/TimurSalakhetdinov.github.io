@@ -121,15 +121,37 @@
 </head>
 <body>
 
-<header>
-  <a class="brand" href="/">ts / Timur Salakhetdinov</a>
-  <nav aria-label="Navigation">
-    <a href="/projects/" aria-current="page" style="color:#075593;font-weight:500;">Projects</a>
-    <a href="/#about">About</a>
-    <a href="/#skills">Skills</a>
-    <a href="/#contact">Contact</a>
-    <a href="/projects/de" hreflang="de">DE</a>
+<header class="nav">
+  <a class="nav-brand" href="/" aria-label="Timur Salakhetdinov Home">
+    <div class="nav-mark">ts</div>
+    <span class="nav-name">Timur Salakhetdinov</span>
+    <span class="nav-role">/ ai engineer · data scientist</span>
+  </a>
+  <nav aria-label="Sections">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#about"><span class="nav-num">§01</span><span>About</span></a></li>
+      <li><a href="/#skills"><span class="nav-num">§02</span><span>Skills</span></a></li>
+      <li><a href="/projects/" aria-current="page"><span class="nav-num">§03</span><span>Projects</span></a></li>
+      <li><a href="/#contact"><span class="nav-num">§04</span><span>Contact</span></a></li>
+    </ul>
   </nav>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <span class="lang-active">EN</span>
+      <span class="lang-sep">·</span>
+      <a href="/projects/de" hreflang="de">DE</a>
+    </div>
+    <div class="nav-status">
+      <span class="nav-dot"></span>
+      <span>available from Apr 2027 · Germany</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu" data-menu-text="Menu" data-close-text="Close">
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span><span></span>
+      </span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+  </div>
 </header>
 
 <main>
@@ -351,5 +373,6 @@
   <a href="/privacy.html">Privacy</a>
 </footer>
 
+<script src="/assets/js/site-nav.js" defer></script>
 </body>
 </html>

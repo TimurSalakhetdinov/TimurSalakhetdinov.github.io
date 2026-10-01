@@ -121,15 +121,37 @@
 </head>
 <body>
 
-<header>
-  <a class="brand" href="/de">ts / Timur Salakhetdinov</a>
-  <nav aria-label="Navigation">
-    <a href="/projects/de" aria-current="page" style="color:#075593;font-weight:500;">Projekte</a>
-    <a href="/de#about">Über mich</a>
-    <a href="/de#skills">Kenntnisse</a>
-    <a href="/de#contact">Kontakt</a>
-    <a href="/projects/" hreflang="en">EN</a>
+<header class="nav">
+  <a class="nav-brand" href="/de" aria-label="Timur Salakhetdinov Startseite">
+    <div class="nav-mark">ts</div>
+    <span class="nav-name">Timur Salakhetdinov</span>
+    <span class="nav-role">/ ai engineer · data scientist</span>
+  </a>
+  <nav aria-label="Abschnitte">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/de#about"><span class="nav-num">§01</span><span>Über mich</span></a></li>
+      <li><a href="/de#skills"><span class="nav-num">§02</span><span>Kenntnisse</span></a></li>
+      <li><a href="/projects/de" aria-current="page"><span class="nav-num">§03</span><span>Projekte</span></a></li>
+      <li><a href="/de#contact"><span class="nav-num">§04</span><span>Kontakt</span></a></li>
+    </ul>
   </nav>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <a href="/projects/" hreflang="en">EN</a>
+      <span class="lang-sep">·</span>
+      <span class="lang-active">DE</span>
+    </div>
+    <div class="nav-status">
+      <span class="nav-dot"></span>
+      <span>verfügbar ab Apr. 2027 · Deutschland</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Navigationsmenü umschalten" data-menu-text="Menü" data-close-text="Schließen">
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span><span></span>
+      </span>
+      <span class="nav-toggle-label">Menü</span>
+    </button>
+  </div>
 </header>
 
 <main>
@@ -351,5 +373,6 @@
   <a href="/datenschutz.html">Datenschutz</a>
 </footer>
 
+<script src="/assets/js/site-nav.js" defer></script>
 </body>
 </html>
