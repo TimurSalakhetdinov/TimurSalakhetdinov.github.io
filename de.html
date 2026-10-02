@@ -482,6 +482,8 @@
 
     /* ── Featured ── */
     .featured { padding: 60px 64px; border-bottom: 1px solid var(--rule); }
+    .work .featured { padding: 0 0 56px; margin-bottom: 56px; border-bottom: 1px solid var(--rule); }
+    .feat-link { display: inline-block; margin-top: 20px; }
     .feat-head {
       display: flex; justify-content: space-between; align-items: baseline;
       margin-bottom: 40px;
@@ -1153,12 +1155,28 @@
   </div>
 </section>
 
-<!-- Featured / Thesis -->
-<section class="featured">
+<!-- Work -->
+<section class="work" id="work">
+  <div class="sec-head fi">
+    <div class="sec-head-l">
+      <span class="sec-num">§ 03</span>
+      <span class="sec-title">Projekte</span>
+      <h2 class="sec-h2">Ausgewählte Projekte: LLM-Agentensysteme, Wissensgraphen und bayesianische Modellierung</h2>
+    </div>
+    <span class="sec-right">10 Einträge · Arbeit, Open Source &amp; Studienarbeiten</span>
+  </div>
+
+
+  <div class="work-intro fi">
+    <p class="work-intro-eyebrow">Wofür ich arbeite</p>
+    <p class="work-intro-p">Meine Projekte umfassen LLM-Agentensysteme, Zeitreihenprognosen, bayesianische Modellierung und Wissensgraph-Anwendungen. Dazu zählen ein Multi-Agenten-Toolkit, das von einem Analytics-Team genutzt wird, ein Frage-Antwort-System über Wissensgraphen, ein hierarchisches bayesianisches Modell für den Customer Lifetime Value und ein Multi-Agenten-Assistent für Unternehmensgründungen.</p>
+  </div>
+
+  <div class="featured featured-in-work fi">
   <div class="feat-head">
     <div class="feat-head-l">
       <span class="feat-sec-label">§ Abschlussarbeit · Hauptprojekt</span>
-      <span class="feat-meta">M.Sc. · InnoGames · Abgabe Dez. 2026</span>
+      <span class="feat-meta">P-010 · M.Sc. · InnoGames · Abgabe Dez. 2026</span>
     </div>
     <span class="feat-badge">Industriepartner · InnoGames</span>
   </div>
@@ -1185,6 +1203,8 @@
       </div>
 
       <div class="feat-foot">M.Sc.-Abschlussarbeit · Leuphana Universität Lüneburg · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · Betreuer Dr. Debayan Banerjee und Jonas Scharfenberger · Schreibphase</div>
+
+      <a href="/projects/text-informed-forecasting-de.html" class="btn-repos feat-link">Projektseite ansehen →</a>
     </div>
 
     <div class="diagram-panel">
@@ -1237,42 +1257,12 @@
       </svg>
     </div>
   </div>
-</section>
-
-<!-- Work -->
-<section class="work" id="work">
-  <div class="sec-head fi">
-    <div class="sec-head-l">
-      <span class="sec-num">§ 03</span>
-      <span class="sec-title">Projekte</span>
-      <h2 class="sec-h2">Ausgewählte Projekte: LLM-Agentensysteme, Wissensgraphen und bayesianische Modellierung</h2>
-    </div>
-    <span class="sec-right">10 Einträge · Arbeit, Open Source &amp; Studienarbeiten</span>
-  </div>
-
-
-  <div class="work-intro fi">
-    <p class="work-intro-eyebrow">Wofür ich arbeite</p>
-    <p class="work-intro-p">Meine Projekte umfassen LLM-Agentensysteme, Zeitreihenprognosen, bayesianische Modellierung und Wissensgraph-Anwendungen. Dazu zählen ein Multi-Agenten-Toolkit, das von einem Analytics-Team genutzt wird, ein Frage-Antwort-System über Wissensgraphen, ein hierarchisches bayesianisches Modell für den Customer Lifetime Value und ein Multi-Agenten-Assistent für Unternehmensgründungen.</p>
   </div>
 
   <div class="proj-table fi">
     <div class="proj-thead">
       <span>ID</span><span>Vorschau</span><span>Titel &amp; Zusammenfassung</span><span>Jahr / Rolle</span>
     </div>
-
-    <a href="/projects/text-informed-forecasting-de.html" class="proj-row">
-      <div><div class="proj-id">P-010</div><div class="proj-status">Schreibphase</div></div>
-      <div class="proj-thumb proj-thumb-svg">
-        <svg viewBox="0 0 240 150" style="width:100%;height:100%;display:block;" role="img" aria-label="Umsatzprognose: historische Beobachtungen und ein prognostizierter Verlauf mit Unsicherheitsband."><rect width="240" height="150" fill="#F4F4F1"/><rect x="142" y="22" width="78" height="106" fill="#E4EBF1"/><g stroke="#D7D9D7" stroke-width="1"><path d="M22 44H220M22 72H220M22 100H220"/></g><path d="M22 24V128H220" stroke="#858B91" stroke-width="1.5" fill="none"/><path d="M142 22V128" stroke="#858B91" stroke-width="1.5" stroke-dasharray="4 5"/><path d="M142 64L160 52L178 42L198 31L220 26V68L198 72L178 81L160 87L142 88Z" fill="#B7CDDF"/><path d="M22 110L40 103L58 111L76 87L94 94L112 68L130 80L142 76" stroke="#555E67" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M142 76L160 69L178 62L198 51L220 47" stroke="#075593" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="142" cy="76" r="5" fill="#075593" stroke="#F4F4F1" stroke-width="2"/></svg>
-      </div>
-      <div>
-        <h3 class="proj-h3">Spielumsatzprognosen mit Foundation-Modellen</h3>
-        <p class="proj-blurb">Unternehmensprojekt bei InnoGames und Leuphana-M.Sc.-Abschlussarbeit: Verbesserung der Genauigkeit und Unsicherheitsintervalle von Dreimonats-Nettoumsatzprognosen mit einem eingefrorenen tabellarischen Foundation-Modell (TabPFN-TS, Zero-Shot) und Kalender-Flags, sowie Untersuchung agentenkompilierter Planungsdaten.</p>
-        <div class="proj-methods"><span class="method-tag">TabPFN-TS</span><span class="method-tag">LLM-Agent</span><span class="method-tag">Zeitreihen</span><span class="method-tag">Open-Weight-Modelle</span></div>
-      </div>
-      <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Unternehmensprojekt · M.Sc.-Abschlussarbeit</div><div class="proj-link">Projekt ansehen →</div></div>
-    </a>
 
     <a href="/projects/fuel-price-forecasting-de.html" class="proj-row">
       <div><div class="proj-id">P-009</div><div class="proj-status">Prior Labs</div></div>
