@@ -826,6 +826,12 @@
       .feat-head   { flex-direction: column; gap: 8px; align-items: flex-start; }
       .feat-head-l { flex-direction: column; gap: 4px; }
       .feat-body   { grid-template-columns: 1fr; }
+      /* Mobile order: text, methods table, diagram, footnote, project link */
+      .feat-body   { display: flex; flex-direction: column; gap: 0; }
+      .feat-body > div:first-child { display: contents; }
+      .feat-body .diagram-panel { order: 1; margin-top: 32px; }
+      .feat-body .feat-foot, .feat-body .feat-link { order: 2; }
+      .feat-body .feat-link { align-self: flex-start; }
       .feat-h2     { font-size: 34px; }
 
       .about-body  { grid-template-columns: 1fr; }
