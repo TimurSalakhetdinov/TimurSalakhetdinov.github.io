@@ -993,92 +993,6 @@
   </div>
 </section>
 
-<!-- Featured / Thesis -->
-<section class="featured">
-  <div class="feat-head">
-    <div class="feat-head-l">
-      <span class="feat-sec-label">§ Abschlussarbeit · Hauptprojekt</span>
-      <span class="feat-meta">M.Sc. · InnoGames · Abgabe Dez. 2026</span>
-    </div>
-    <span class="feat-badge">Industriepartner · InnoGames</span>
-  </div>
-
-  <div class="feat-body">
-    <div>
-      <h2 class="feat-h2">Umsatzprognosen für Free-to-Play-Spiele mit Foundation-Modellen und agentenkompilierten Text-Kovariaten</h2>
-      <p class="feat-p">
-        Mein Unternehmensprojekt bei InnoGames, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, zielt darauf ab, die Genauigkeit und die Prognoseintervalle von Dreimonats-Nettoumsatzprognosen mittels eines eingefrorenen tabellarischen Foundation-Modells (TabPFN-TS) ohne aufgabenspezifisches Nachtraining (Zero-Shot) zu verbessern. Die Arbeit untersucht, ob und wie agentenkompilierte Kovariaten, Rohtext-Merkmale und Embeddings aus versionierten Planungstexten einen messbaren Mehrwert über Kalender-Flags hinaus liefern – abgesichert durch strenge Vintage-Guards und placebokontrollierte Benchmarks, um echten Textinhalt von rein zeitlichen Effekten zu trennen.</p>
-      <p class="feat-p">Die Experimente über 49 monatliche Stichtage zeigen, dass das eingefrorene Foundation-Modell mit Kalender-Flags die bestehenden Produktionsprognosen bei allen untersuchten Spielen übertrifft; derzeit verfasse ich die Abschlussarbeit für die Abgabe im Dezember 2026.</p>
-
-      <div class="methods-lbl">Methoden &amp; Stack</div>
-      <div class="methods-grid">
-        <div class="mc k">Domäne</div>          <div class="mc v">Dreimonatsprognosen des Nettoumsatzes</div>
-        <div class="mc k">Engine</div>          <div class="mc v">TabPFN-TS mit eingefrorenem TabPFN-3.5-Checkpoint</div>
-        <div class="mc k">Texteingaben</div>    <div class="mc v">Agentenkompilierte Felder · Rohtext-Merkmale · Embeddings</div>
-        <div class="mc k">Kontrollen</div>      <div class="mc v">Kalenderbasierte Referenz · Placebos mit vertauschten Texten</div>
-        <div class="mc k">Benchmark</div>       <div class="mc v">Separater Baseline-Vergleich zur Auswahl der Referenz je Spiel</div>
-        <div class="mc k">Backtest</div>        <div class="mc v">3 Spiele · 49 monatliche Stichtage: 26 Entwicklung, 23 Test</div>
-        <div class="mc k">Evaluation</div>      <div class="mc v">MASE · MAPE · 90%-Prognoseintervalle · Zuverlässigkeit des Agenten</div>
-        <div class="mc k">Datenprüfung</div>    <div class="mc v">Nur am Prognosestichtag verfügbare Dokumentversionen</div>
-        <div class="mc k">Stack</div>           <div class="mc v">Lokale Open-Weight-Modelle · eingefrorene Prognosemodelle</div>
-        <div class="mc k">Status</div>          <div class="mc v">Schreibphase · Abgabe Dez. 2026</div>
-      </div>
-
-      <div class="feat-foot">M.Sc.-Abschlussarbeit · Leuphana Universität Lüneburg · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · Betreuer Dr. Debayan Banerjee und Jonas Scharfenberger · Schreibphase</div>
-    </div>
-
-    <div class="diagram-panel">
-      <div class="diagram-cap">
-        <span>Fig. 2 · Agentenkompilierte Texteingaben</span>
-        
-      </div>
-      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Agentenkompilierte Texteingaben: Ein LLM extrahiert strukturierte Kovariaten aus am Prognosestichtag verfügbaren Planungsdokumenten für Umsatzprognosen mit TabPFN-TS.">
-        <defs>
-          <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
-          </pattern>
-          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M0 0L10 5L0 10z" fill="#15171A"/>
-          </marker>
-        </defs>
-        <rect width="480" height="360" fill="url(#g)"/>
-
-        <!-- PLANNING TEXT -->
-        <rect x="15" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="75" y="92" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">PLANNING TEXT</text>
-        <text x="75" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">events · sales · notes</text>
-
-        <!-- AGENT -->
-        <rect x="180" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="92" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AGENT</text>
-        <text x="240" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">retrieve · extract</text>
-
-        <!-- CALENDAR FLAGS -->
-        <rect x="15" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="75" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
-        <text x="75" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">six binary flags</text>
-
-        <!-- TabPFN-TS -->
-        <rect x="180" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS</text>
-        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">TabPFN-3.5 · frozen</text>
-
-        <!-- FORECAST -->
-        <rect x="345" y="230" width="120" height="52" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
-        <text x="405" y="252" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
-        <text x="405" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#F4F4F1" text-anchor="middle">3-month forecast</text>
-
-        <!-- Edges -->
-        <path d="M135 96L180 96" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M240 122L240 230" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M135 256L180 256" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M300 256L345 256" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <text x="250" y="180" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71">covariates</text>
-      </svg>
-    </div>
-  </div>
-</section>
-
 <!-- About -->
 <section class="about" id="about">
   <div class="sec-head fi">
@@ -1236,6 +1150,92 @@
     <div class="lang-item"><span class="lang-n">Englisch</span><span class="lang-l">C1 · IELTS 8.0</span></div>
     <div class="lang-item"><span class="lang-n">Deutsch</span><span class="lang-l">B2</span></div>
     <div class="lang-item"><span class="lang-n">Russisch</span><span class="lang-l">Muttersprache</span></div>
+  </div>
+</section>
+
+<!-- Featured / Thesis -->
+<section class="featured">
+  <div class="feat-head">
+    <div class="feat-head-l">
+      <span class="feat-sec-label">§ Abschlussarbeit · Hauptprojekt</span>
+      <span class="feat-meta">M.Sc. · InnoGames · Abgabe Dez. 2026</span>
+    </div>
+    <span class="feat-badge">Industriepartner · InnoGames</span>
+  </div>
+
+  <div class="feat-body">
+    <div>
+      <h2 class="feat-h2">Umsatzprognosen für Free-to-Play-Spiele mit Foundation-Modellen und agentenkompilierten Text-Kovariaten</h2>
+      <p class="feat-p">
+        Mein Unternehmensprojekt bei InnoGames, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, zielt darauf ab, die Genauigkeit und die Prognoseintervalle von Dreimonats-Nettoumsatzprognosen mittels eines eingefrorenen tabellarischen Foundation-Modells (TabPFN-TS) ohne aufgabenspezifisches Nachtraining (Zero-Shot) zu verbessern. Die Arbeit untersucht, ob und wie agentenkompilierte Kovariaten, Rohtext-Merkmale und Embeddings aus versionierten Planungstexten einen messbaren Mehrwert über Kalender-Flags hinaus liefern – abgesichert durch strenge Vintage-Guards und placebokontrollierte Benchmarks, um echten Textinhalt von rein zeitlichen Effekten zu trennen.</p>
+      <p class="feat-p">Die Experimente über 49 monatliche Stichtage zeigen, dass das eingefrorene Foundation-Modell mit Kalender-Flags die bestehenden Produktionsprognosen bei allen untersuchten Spielen übertrifft; derzeit verfasse ich die Abschlussarbeit für die Abgabe im Dezember 2026.</p>
+
+      <div class="methods-lbl">Methoden &amp; Stack</div>
+      <div class="methods-grid">
+        <div class="mc k">Domäne</div>          <div class="mc v">Dreimonatsprognosen des Nettoumsatzes</div>
+        <div class="mc k">Engine</div>          <div class="mc v">TabPFN-TS mit eingefrorenem TabPFN-3.5-Checkpoint</div>
+        <div class="mc k">Texteingaben</div>    <div class="mc v">Agentenkompilierte Felder · Rohtext-Merkmale · Embeddings</div>
+        <div class="mc k">Kontrollen</div>      <div class="mc v">Kalenderbasierte Referenz · Placebos mit vertauschten Texten</div>
+        <div class="mc k">Benchmark</div>       <div class="mc v">Separater Baseline-Vergleich zur Auswahl der Referenz je Spiel</div>
+        <div class="mc k">Backtest</div>        <div class="mc v">3 Spiele · 49 monatliche Stichtage: 26 Entwicklung, 23 Test</div>
+        <div class="mc k">Evaluation</div>      <div class="mc v">MASE · MAPE · 90%-Prognoseintervalle · Zuverlässigkeit des Agenten</div>
+        <div class="mc k">Datenprüfung</div>    <div class="mc v">Nur am Prognosestichtag verfügbare Dokumentversionen</div>
+        <div class="mc k">Stack</div>           <div class="mc v">Lokale Open-Weight-Modelle · eingefrorene Prognosemodelle</div>
+        <div class="mc k">Status</div>          <div class="mc v">Schreibphase · Abgabe Dez. 2026</div>
+      </div>
+
+      <div class="feat-foot">M.Sc.-Abschlussarbeit · Leuphana Universität Lüneburg · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · Betreuer Dr. Debayan Banerjee und Jonas Scharfenberger · Schreibphase</div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-cap">
+        <span>Fig. 2 · Agentenkompilierte Texteingaben</span>
+        
+      </div>
+      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Agentenkompilierte Texteingaben: Ein LLM extrahiert strukturierte Kovariaten aus am Prognosestichtag verfügbaren Planungsdokumenten für Umsatzprognosen mit TabPFN-TS.">
+        <defs>
+          <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
+          </pattern>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0L10 5L0 10z" fill="#15171A"/>
+          </marker>
+        </defs>
+        <rect width="480" height="360" fill="url(#g)"/>
+
+        <!-- PLANNING TEXT -->
+        <rect x="15" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="75" y="92" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">PLANNING TEXT</text>
+        <text x="75" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">events · sales · notes</text>
+
+        <!-- AGENT -->
+        <rect x="180" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="92" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AGENT</text>
+        <text x="240" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">retrieve · extract</text>
+
+        <!-- CALENDAR FLAGS -->
+        <rect x="15" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="75" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
+        <text x="75" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">six binary flags</text>
+
+        <!-- TabPFN-TS -->
+        <rect x="180" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS</text>
+        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">TabPFN-3.5 · frozen</text>
+
+        <!-- FORECAST -->
+        <rect x="345" y="230" width="120" height="52" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
+        <text x="405" y="252" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
+        <text x="405" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#F4F4F1" text-anchor="middle">3-month forecast</text>
+
+        <!-- Edges -->
+        <path d="M135 96L180 96" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M240 122L240 230" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M135 256L180 256" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M300 256L345 256" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <text x="250" y="180" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71">covariates</text>
+      </svg>
+    </div>
   </div>
 </section>
 
