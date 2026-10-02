@@ -1,0 +1,41 @@
+name: Update revision date
+
+# Runs after every push to main, including merged pull requests, and stamps
+# today's date into the homepage "Last revision" and footer fields (EN/DE).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-revision-date
+  cancel-in-progress: false
+
+jobs:
+  stamp:
+    # Skip the commit this workflow makes itself.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set revision date
+        run: python scripts/update_revision_date.py
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet; then
+            echo "Revision date already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: update revision date [skip ci]"
+          git push
