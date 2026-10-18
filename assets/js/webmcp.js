@@ -20,6 +20,7 @@
   window.__tsWebMcpRegistered = true;
 
   var SITE_URL = 'https://timursalakhetdinov.com/';
+  var CV_URL = 'https://timursalakhetdinov.com/cv.pdf';
 
   var DATA = {
     profile: {
@@ -35,7 +36,8 @@
         { name: 'German', level: 'B2' },
         { name: 'Russian', level: 'Native' }
       ],
-      siteUrl: SITE_URL
+      siteUrl: SITE_URL,
+      cvUrl: CV_URL
     },
 
     skills: {
@@ -265,7 +267,8 @@
       contact: {
         email: 'timsalakhetdinov@gmail.com',
         linkedin: 'https://www.linkedin.com/in/timursalakhetdinov'
-      }
+      },
+      cvUrl: CV_URL
     },
 
     contact: {
@@ -273,7 +276,8 @@
       linkedin: 'https://www.linkedin.com/in/timursalakhetdinov',
       github: 'https://github.com/TimurSalakhetdinov',
       medium: 'https://medium.com/@timursalakhetdinov',
-      website: SITE_URL
+      website: SITE_URL,
+      cvUrl: CV_URL
     }
   };
 
@@ -305,7 +309,7 @@
 
   safeRegister({
     name: 'get_profile',
-    description: 'Get a quick overview of who Timur Salakhetdinov is: name, headline, summary, current role, education, availability, location, spoken languages, and the site URL. Use this first when an AI agent, recruiter, or potential collaborator wants a general introduction to Timur before looking at his skills, experience, or projects.',
+    description: 'Get a quick overview of who Timur Salakhetdinov is: name, headline, summary, current role, education, availability, location, spoken languages, the site URL, and a link to his CV (PDF). Use this first when an AI agent, recruiter, or potential collaborator wants a general introduction to Timur before looking at his skills, experience, or projects.',
     inputSchema: { type: 'object', properties: {} },
     annotations: { readOnlyHint: true },
     execute: function () {
@@ -381,7 +385,7 @@
 
   safeRegister({
     name: 'get_hiring_info',
-    description: "Find out what kind of roles Timur Salakhetdinov is open to, his availability/start date, preferred locations, employment type, the sectors his experience fits best, and how to contact or apply. Use this when a recruiter, hiring manager, or hiring bot wants to know whether and how to reach out to him about a job opportunity.",
+    description: "Find out what kind of roles Timur Salakhetdinov is open to, his availability/start date, preferred locations, employment type, the sectors his experience fits best, how to contact or apply, and a link to his CV (PDF). Use this when a recruiter, hiring manager, or hiring bot wants to know whether and how to reach out to him about a job opportunity.",
     inputSchema: { type: 'object', properties: {} },
     annotations: { readOnlyHint: true },
     execute: function () {
@@ -391,7 +395,7 @@
 
   safeRegister({
     name: 'get_contact',
-    description: "Get Timur Salakhetdinov's professional contact channels: email, LinkedIn, GitHub, Medium, and his website. Use this when an agent, recruiter, or collaborator needs a direct way to reach him.",
+    description: "Get Timur Salakhetdinov's professional contact channels: email, LinkedIn, GitHub, Medium, his website, and a link to his CV (PDF). Use this when an agent, recruiter, or collaborator needs a direct way to reach him.",
     inputSchema: { type: 'object', properties: {} },
     annotations: { readOnlyHint: true },
     execute: function () {
