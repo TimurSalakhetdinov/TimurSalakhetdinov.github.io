@@ -1,0 +1,55 @@
+{
+  "site": "https://timursalakhetdinov.com/",
+  "script": "https://timursalakhetdinov.com/assets/js/webmcp.js",
+  "tools": [
+    {
+      "name": "get_profile",
+      "description": "Get a quick overview of who Timur Salakhetdinov is: name, headline, summary, current role, education, availability, location, spoken languages, and the site URL. Use this first when an AI agent, recruiter, or potential collaborator wants a general introduction to Timur before looking at his skills, experience, or projects.",
+      "inputSchema": { "type": "object", "properties": {} },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_skills",
+      "description": "Get Timur Salakhetdinov's technical skills, grouped exactly as shown on the site (Languages, LLM & Agents, ML & Forecasting, Methods, Tools & Platforms), each with a self-assessed proficiency from 1 to 5, plus spoken languages. Use this when a recruiter or hiring agent needs to check whether his skill set matches a role, or a potential collaborator wants to assess technical fit for a project.",
+      "inputSchema": { "type": "object", "properties": {} },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_experience",
+      "description": "Get Timur Salakhetdinov's work history and education as listed on the site, including organisation, title, dates, location, type, and a short description for each role or degree. Use this when a recruiter, hiring agent, or ATS/CV-screening tool is building a candidate profile, or when anyone wants to understand his career background in analytics, data science, and AI engineering.",
+      "inputSchema": { "type": "object", "properties": {} },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "list_projects",
+      "description": "List Timur Salakhetdinov's selected projects and research (LLM agent systems, foundation model forecasting, Bayesian modelling, knowledge graphs, and computer vision), each with a title, short description, tech/tags, year, and a URL to the project page. Optionally pass {query} to filter by a keyword matched against the title, description, or tech (e.g. 'TabPFN', 'LLM', 'Bayesian', 'Neo4j'), and optionally pass {language: 'de'} to get German project page URLs instead of English. Use this when a collaborator is looking for relevant work to team up on, a recruiter wants evidence of applied skills, or an agent is asked 'what has Timur built'.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Optional keyword to filter projects by title, description, or tech/tags (case-insensitive substring match), e.g. 'TabPFN' or 'Bayesian'."
+          },
+          "language": {
+            "type": "string",
+            "enum": ["en", "de"],
+            "description": "Optional language for the returned project URLs. Defaults to 'en'."
+          }
+        }
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_hiring_info",
+      "description": "Find out what kind of roles Timur Salakhetdinov is open to, his availability/start date, preferred locations, employment type, the sectors his experience fits best, and how to contact or apply. Use this when a recruiter, hiring manager, or hiring bot wants to know whether and how to reach out to him about a job opportunity.",
+      "inputSchema": { "type": "object", "properties": {} },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_contact",
+      "description": "Get Timur Salakhetdinov's professional contact channels: email, LinkedIn, GitHub, Medium, and his website. Use this when an agent, recruiter, or collaborator needs a direct way to reach him.",
+      "inputSchema": { "type": "object", "properties": {} },
+      "annotations": { "readOnlyHint": true }
+    }
+  ]
+}
