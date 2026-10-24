@@ -90,6 +90,7 @@
         "Zero-Shot Forecasting",
         "Foundation Models",
         "Chronos",
+        "Chronos-2",
         "TimesFM",
         "LightGBM",
         "PyMC",
@@ -969,7 +970,7 @@
     <div><div class="mk">Location</div><div class="mv">Hamburg, DE</div></div>
     <div><div class="mk">Affiliation</div><div class="mv">InnoGames · Leuphana Uni.</div></div>
     <div><div class="mk">Available</div><div class="mv">April 2027</div></div>
-    <div><div class="mk">Last revision</div><div class="mv">18 October 2026</div></div>
+    <div><div class="mk">Last revision</div><div class="mv">24 October 2026</div></div>
   </div>
 
   <div class="hero-body">
@@ -977,7 +978,7 @@
       <div class="hero-eyebrow">§ 00 · Abstract</div>
       <h1 class="hero-h1">LLM agent systems for analytics and forecasting.</h1>
       <p class="hero-bio">
-        AI Engineer and Data Scientist specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At <a class="hl-link" href="https://www.innogames.com/" target="_blank" rel="noopener external"><span class="hl">InnoGames</span></a>, my core work centers on end-to-end Power BI data modeling, reporting, and migrating analytics across six games to Microsoft Fabric, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. In parallel, my company project and M.Sc. thesis at Leuphana University focuses on improving 3-month net revenue forecast accuracy and calibrated uncertainty intervals using frozen foundation models (TabPFN-TS, zero task-specific retraining) and calendar flags, researching whether agent-compiled planning text covariates add measurable increment beyond calendar timing. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.</p>
+        AI Engineer and Data Scientist specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At <a class="hl-link" href="https://www.innogames.com/" target="_blank" rel="noopener external"><span class="hl">InnoGames</span></a>, my core work centers on end-to-end Power BI data modeling, reporting, and migrating analytics across six games to Microsoft Fabric, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. In parallel, my company project and M.Sc. thesis at Leuphana University forecasts each game's daily net revenue over a 90-day horizon as daily active users times revenue per daily active user, using two frozen foundation models (TabPFN-TS and Chronos-2) with calendar features and no task-specific training, and tests agent-compiled planning-text covariates against a shuffled-text placebo. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.</p>
       <div class="hero-stats">
         <div><div class="stat-v">10</div><div class="stat-l">years in analytics</div></div>
         <div><div class="stat-v">CFA</div><div class="stat-l">Level I passed (2021)</div></div>
@@ -1024,7 +1025,7 @@
     <div>
       <p class="about-lead">Data modeling, Power BI analytics, and Microsoft Fabric pipelines, extended with LLM agent systems and foundation model forecasting.</p>
       <p class="about-p">At InnoGames, my core work centers on business intelligence and data engineering in Power BI and Microsoft Fabric. I design semantic data models, build comprehensive reporting suites and dashboards for player engagement and monetization across six live games, conduct A/B-test and churn analyses, and lead daily reporting migrations into Microsoft Fabric. To accelerate and govern this workflow, I developed a Claude Code multi-agent toolkit for automated PBIP/TMDL model and report creation, with built-in approval, schema validation, and escalation controls.</p>
-      <p class="about-p">Alongside my analytics work, my company project and M.Sc. thesis at Leuphana University focuses on improving revenue forecast accuracy and calibrated uncertainty intervals using frozen foundation models (TabPFN-TS) without task-specific training, combined with calendar flags and researching whether agent-compiled planning text covariates add measurable increment beyond calendar timing.</p>
+      <p class="about-p">Alongside my analytics work, my company project and M.Sc. thesis at Leuphana University forecasts daily net revenue over a 90-day horizon from daily active users and revenue per daily active user, using two frozen foundation models (TabPFN-TS and Chronos-2) with calendar features and no task-specific training, and tests agent-compiled planning-text covariates against a shuffled-text placebo.</p>
       <p class="about-p">I am completing an M.Sc. in Management &amp; Data Science at Leuphana University as a Deutschlandstipendium scholar. From April 2027, I am available for full-time AI Engineer and Data Scientist roles in Germany.</p>
     </div>
 
@@ -1036,7 +1037,7 @@
         <div class="cv-y">Nov 2025 →</div>
         <div>
           <div class="cv-t">Working Student, Analytics · <a class="cv-link" href="https://www.innogames.com/" target="_blank" rel="noopener external">InnoGames</a></div>
-          <div class="cv-d">Hamburg, hybrid · TabPFN net revenue forecasting with LLM-extracted text features; multi-agent Claude Code toolkit with a custom MCP server for building and publishing Power BI models and reports in Fabric; Power BI dashboards and an onboarding A/B test with churn analysis in StarRocks; migration of daily reporting to Microsoft Fabric for six major games</div>
+          <div class="cv-d">Hamburg, hybrid · frozen TabPFN-TS and Chronos-2 net revenue forecasts with agent-compiled text covariates; multi-agent Claude Code toolkit with a custom MCP server for building and publishing Power BI models and reports in Fabric; Power BI dashboards and an onboarding A/B test with churn analysis in StarRocks; migration of daily reporting to Microsoft Fabric for six major games</div>
         </div>
         <div class="cv-k">Part-time</div>
       </div>
@@ -1192,24 +1193,24 @@
     <div>
       <h2 class="feat-h2">Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates</h2>
       <p class="feat-p">
-        My company project at InnoGames, also my M.Sc. thesis at Leuphana University, aims to improve 3-month net revenue forecast accuracy and calibrated prediction intervals using a frozen tabular foundation model (TabPFN-TS) with zero task-specific retraining. The research tests whether and how agent-compiled covariates, raw-text features, and embeddings from versioned planning text add measurable value beyond calendar flags, using strict vintage guards and placebo-controlled benchmarks to distinguish genuine document content from calendar timing.</p>
-      <p class="feat-p">Experiments across 49 monthly origins demonstrate that the frozen foundation forecaster with calendar flags outperforms existing production forecasts across all evaluated games; I am currently writing up the thesis for submission in January 2027.</p>
+        My company project at InnoGames, also my M.Sc. thesis at Leuphana University, forecasts each game's daily net revenue as daily active users times revenue per daily active user, day by day over a 90-day horizon. Two frozen time-series foundation models, TabPFN-TS (TabPFN-3.5 checkpoint) and Chronos-2, use calendar features and no task-specific training. An LLM agent compiles covariates from planning documents into a fixed schema, using only versions that existed at each forecast origin, and that text route is tested against a shuffled-text placebo.</p>
+      <p class="feat-p">The held-out evaluation is pending, and the results will be reported in the thesis. Experiments are running; I am writing the thesis for submission in January 2027.</p>
 
       <div class="methods-lbl">Methods &amp; stack</div>
       <div class="methods-grid">
-        <div class="mc k">Domain</div>          <div class="mc v">Three-month net revenue forecasting</div>
-        <div class="mc k">Engine</div>          <div class="mc v">TabPFN-TS with the frozen TabPFN-3.5 checkpoint</div>
-        <div class="mc k">Text inputs</div>     <div class="mc v">Agent-compiled fields · raw-text features · embeddings</div>
-        <div class="mc k">Controls</div>        <div class="mc v">Calendar-only reference · shuffled-text placebos</div>
-        <div class="mc k">Benchmark</div>       <div class="mc v">Separate baseline comparison to select per-game comparators</div>
-        <div class="mc k">Backtest</div>        <div class="mc v">3 games · 49 monthly origins: 26 development, 23 held-out</div>
-        <div class="mc k">Evaluation</div>      <div class="mc v">MASE · MAPE · 90% prediction intervals · agent reliability</div>
+        <div class="mc k">Domain</div>          <div class="mc v">Daily net revenue over a 90-day horizon</div>
+        <div class="mc k">Engine</div>          <div class="mc v">TabPFN-TS (TabPFN-3.5) and Chronos-2, both frozen</div>
+        <div class="mc k">Text inputs</div>     <div class="mc v">Agent-compiled fields</div>
+        <div class="mc k">Controls</div>        <div class="mc v">Shuffled-text placebo</div>
+        <div class="mc k">Benchmark</div>       <div class="mc v">Production forecast · analysts' delivered plan · LightGBM, ARIMA, ETS, seasonal naive</div>
+        <div class="mc k">Backtest</div>        <div class="mc v">3 games · 54 monthly origins · held-out block opened once</div>
+        <div class="mc k">Evaluation</div>      <div class="mc v">MASE (weekly seasonal) · MAPE · plan-to-date error · prediction intervals · selection-aware test</div>
         <div class="mc k">Data guard</div>      <div class="mc v">Only document versions available at the forecast origin</div>
-        <div class="mc k">Stack</div>           <div class="mc v">Local open-weight models · frozen forecasters</div>
-        <div class="mc k">Status</div>          <div class="mc v">Writing · submission Jan 2027</div>
+        <div class="mc k">Stack</div>           <div class="mc v">Ollama · local open-weight models · second backbone check</div>
+        <div class="mc k">Status</div>          <div class="mc v">Experiments running · held-out pending · writing, Jan 2027</div>
       </div>
 
-      <div class="feat-foot">M.Sc. thesis · Leuphana University Lüneburg · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · supervisors Dr. Debayan Banerjee and Jonas Scharfenberger · writing</div>
+      <div class="feat-foot">M.Sc. thesis · Leuphana University Lüneburg · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · supervisors Dr. Debayan Banerjee and Jonas Scharfenberger · experiments running · held-out pending</div>
 
       <a href="/projects/text-informed-forecasting.html" class="btn-repos feat-link">View project page →</a>
     </div>
@@ -1219,7 +1220,7 @@
         <span>Fig. 2 · Agent-compiled text route</span>
         
       </div>
-      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Agent-compiled text route: an LLM extracts structured covariates from origin-available planning documents for TabPFN-TS revenue forecasts.">
+      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Agent-compiled text route: an LLM compiles covariates from origin-available planning documents for TabPFN-TS and Chronos-2 revenue forecasts.">
         <defs>
           <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
             <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
@@ -1245,15 +1246,15 @@
         <text x="75" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
         <text x="75" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">six binary flags</text>
 
-        <!-- TabPFN-TS -->
+        <!-- Engines -->
         <rect x="180" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS</text>
-        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">TabPFN-3.5 · frozen</text>
+        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS · Chronos-2</text>
+        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">both frozen</text>
 
         <!-- FORECAST -->
         <rect x="345" y="230" width="120" height="52" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
         <text x="405" y="252" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
-        <text x="405" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#F4F4F1" text-anchor="middle">3-month forecast</text>
+        <text x="405" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#F4F4F1" text-anchor="middle">90-day forecast</text>
 
         <!-- Edges -->
         <path d="M135 96L180 96" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
@@ -1434,7 +1435,7 @@
       <ul class="contact-fit-list">
         <li>Insurance and reinsurance analytics. Underwriting segmentation at Absolute Insurance and current Bayesian forecasting research, applicable to Munich's insurance cluster and beyond.</li>
         <li>Gaming and consumer products. Revenue forecasting prototypes and analytics infrastructure at InnoGames in Hamburg, including Microsoft Fabric migration and Power BI dashboards.</li>
-        <li>AI-native startups and applied AI labs working on LLM systems, agent architectures, and retrieval. I developed and rolled out a multi-agent toolkit now used daily by an analytics team, and my company forecasting project, also my M.Sc. thesis, compares several ways of using planning text in revenue forecasts.</li>
+        <li>AI-native startups and applied AI labs working on LLM systems, agent architectures, and retrieval. I developed and rolled out a multi-agent toolkit now used daily by an analytics team, and my company forecasting project, also my M.Sc. thesis, tests agent-compiled planning-text covariates in 90-day revenue forecasts against a shuffled-text placebo.</li>
         <li>Telecommunications and network analytics. Eight years at MTS covering market analysis and M&amp;A across the Indian, Serbian, Slovenian, and Moldovan markets, relevant to telecommunications operators and network businesses, including in Munich.</li>
         <li>Global technology firms and platform teams in Munich, Hamburg, Düsseldorf, and Berlin, where forecasting, applied ML, and production analytics scale across products.</li>
         <li>Startups and scale-ups where production ML and agent systems form the core product rather than a pilot.</li>
@@ -1467,7 +1468,7 @@
   <footer class="footer">
     <span>© timur salakhetdinov · 2026</span>
     <span>built with html / css / vanilla js · no trackers</span>
-    <span>v2.1 · last edited 18 October 2026</span>
+    <span>v2.1 · last edited 24 October 2026</span>
     <span><a href="/imprint.html">Imprint</a> · <a href="/privacy.html">Privacy</a></span>
   </footer>
 </section>

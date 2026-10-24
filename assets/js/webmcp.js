@@ -27,7 +27,7 @@
     profile: {
       name: 'Timur Salakhetdinov',
       headline: 'AI Engineer and Data Scientist in Germany (Munich · Hamburg)',
-      summary: 'AI Engineer and Data Scientist specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At InnoGames, my core work centers on end-to-end Power BI data modeling, reporting, and migrating analytics across six games to Microsoft Fabric, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. In parallel, my company project and M.Sc. thesis at Leuphana University focuses on improving 3-month net revenue forecast accuracy and calibrated uncertainty intervals using frozen foundation models (TabPFN-TS, zero task-specific retraining) and calendar flags, researching whether agent-compiled planning text covariates add measurable increment beyond calendar timing. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.',
+      summary: 'AI Engineer and Data Scientist specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At InnoGames, my core work centers on end-to-end Power BI data modeling, reporting, and migrating analytics across six games to Microsoft Fabric, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. In parallel, my company project and M.Sc. thesis at Leuphana University forecasts each game\'s daily net revenue over a 90-day horizon as daily active users times revenue per daily active user, using two frozen foundation models (TabPFN-TS and Chronos-2) with calendar features and no task-specific training, and tests agent-compiled planning-text covariates against a shuffled-text placebo. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.',
       currentRole: 'Working Student, Analytics at InnoGames (Hamburg, hybrid), since November 2025',
       education: 'M.Sc. Management & Data Science, Leuphana Universität Lüneburg (2024–27, expected March 2027), GPA 1.9 (German scale, 1.0 = best), Deutschlandstipendium scholar',
       availability: 'Available for full-time AI Engineer and Data Scientist roles in Germany from April 2027',
@@ -107,7 +107,7 @@
         organisation: 'InnoGames',
         location: 'Hamburg, hybrid',
         type: 'Part-time',
-        description: 'TabPFN net revenue forecasting with LLM-extracted text features; multi-agent Claude Code toolkit with a custom MCP server for building and publishing Power BI models and reports in Fabric; Power BI dashboards and an onboarding A/B test with churn analysis in StarRocks; migration of daily reporting to Microsoft Fabric for six major games.'
+        description: 'Frozen TabPFN-TS and Chronos-2 net revenue forecasts with agent-compiled text covariates; multi-agent Claude Code toolkit with a custom MCP server for building and publishing Power BI models and reports in Fabric; Power BI dashboards and an onboarding A/B test with churn analysis in StarRocks; migration of daily reporting to Microsoft Fabric for six major games.'
       },
       {
         period: '2024–27',
@@ -171,9 +171,9 @@
       {
         id: 'P-010',
         slug: 'text-informed-forecasting',
-        title: 'Game revenue forecasting with foundation models',
-        description: 'Evaluated whether planning text informs TabPFN-TS net revenue forecasts across 49 monthly origins, comparing LLM extractions, raw-text features, and embeddings against calendar and shuffled-text controls.',
-        tech: ['TabPFN-TS', 'LLM agents', 'Time series', 'Open-weight models'],
+        title: 'Game revenue forecasting with two foundation models',
+        description: 'Two frozen foundation forecasters, TabPFN-TS and Chronos-2, with agent-compiled planning-text covariates tested against a shuffled-text placebo, across 54 monthly origins. The held-out evaluation is pending.',
+        tech: ['TabPFN-TS', 'Chronos-2', 'LLM agents', 'Time series', 'Open-weight models'],
         year: 2026
       },
       {
