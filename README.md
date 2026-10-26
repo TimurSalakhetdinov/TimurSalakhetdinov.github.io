@@ -24,7 +24,7 @@ M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to 
 
 **Languages:** Python (NumPy, Pandas, Scikit-Learn) · SQL (MS SQL Server, Hive, StarRocks)
 
-**LLM & Agents:** LangGraph · MCP · tool calling · RAG · coding agents
+**LLM & Agents:** LangGraph · Claude Code (agents, skills, plugins) · MCP · tool calling · RAG
 
 **ML & Forecasting:** TabPFN · Chronos · TimesFM · LightGBM · PyMC · PyTorch
 

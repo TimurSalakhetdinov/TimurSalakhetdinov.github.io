@@ -56,7 +56,7 @@
           group: 'LLM & Agents',
           skills: [
             { name: 'LangGraph', proficiency: 4 },
-            { name: 'Coding agents', proficiency: 5 },
+            { name: 'Claude Code (agents, skills, plugins)', proficiency: 5 },
             { name: 'MCP', proficiency: 4 },
             { name: 'Tool calling', proficiency: 4 },
             { name: 'RAG', proficiency: 4 }
