@@ -529,7 +529,7 @@ def render_index(articles: list[Article]) -> str:
     <span aria-current="page">Writing</span>
   </nav>
 
-  <p class="eyebrow">§ 05 · Articles</p>
+  <p class="eyebrow">§ 04 · Articles</p>
   <h1>Writing</h1>
   <p class="summary">{escape(description)}</p>
 {body}
@@ -735,8 +735,8 @@ def render_page(
       <li><a href="/#about"><span class="nav-num">§01</span><span>About</span></a></li>
       <li><a href="/#skills"><span class="nav-num">§02</span><span>Skills</span></a></li>
       <li><a href="/projects/"><span class="nav-num">§03</span><span>Projects</span></a></li>
-      <li><a href="/#contact"><span class="nav-num">§04</span><span>Contact</span></a></li>
-      <li><a href="/writing/"{current}><span class="nav-num">§05</span><span>Writing</span></a></li>
+      <li><a href="/writing/"{current}><span class="nav-num">§04</span><span>Writing</span></a></li>
+      <li><a href="/#contact"><span class="nav-num">§05</span><span>Contact</span></a></li>
     </ul>
   </nav>
   <div class="nav-right">
