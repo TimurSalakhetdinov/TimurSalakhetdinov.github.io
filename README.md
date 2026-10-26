@@ -4,7 +4,7 @@ Personal portfolio site live at [timursalakhetdinov.com](https://timursalakhetdi
 
 ## About
 
-Data Analyst & Data Scientist specialising in LLM agent systems for analytics workflows. At InnoGames I develop agent-based tools for implementing and validating Power BI report changes and build time-series forecasting workflows with two frozen foundation models, TabPFN-TS and Chronos-2. That company project is also my M.Sc. thesis at Leuphana University: daily net revenue over a 90-day horizon, with agent-compiled planning-text covariates tested against a shuffled-text placebo. The held-out evaluation is pending. I also contribute to analytics infrastructure, drawing on ten years of experience across telecommunications, finance, insurance, and gaming.
+Data Scientist & Data Analyst specialising in LLM agent systems for analytics workflows. At InnoGames I develop agent-based tools for implementing and validating Power BI report changes and build time-series forecasting workflows with two frozen foundation models, TabPFN-TS and Chronos-2. That company project is also my M.Sc. thesis at Leuphana University: daily net revenue over a 90-day horizon, with agent-compiled planning-text covariates tested against a shuffled-text placebo. The held-out evaluation is pending. I also contribute to analytics infrastructure, drawing on ten years of experience across telecommunications, finance, insurance, and gaming.
 
 M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to Mar 2027 (expected), GPA 1.9 (German scale, 1.0 = best), Deutschlandstipendium scholar. Available full time in Germany from April 2027.
 
