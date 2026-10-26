@@ -1,80 +1,120 @@
 name: IndexNow
 
-# After a successful GitHub Pages deployment of main, tell IndexNow (Bing and
-# other participating engines) about new or changed page URLs only.
+# After a push to main, tell IndexNow about new or changed page URLs once
+# GitHub Pages has published that commit. workflow_dispatch runs the same
+# check for the commit you select, compared with its parent.
 #
-# The public key lives at /<32-hex-chars>.txt in the repo root. Its body is
-# exactly that key. .nojekyll turns Jekyll off, and the filename is not
-# underscore-prefixed, so GitHub Pages serves the file as plain text.
-# No repository secrets are required.
+# The built-in Pages workflow (dynamic/pages/pages-build-deployment) shows
+# up in Actions as "pages build and deployment", but it does not emit
+# workflow_run, so this job starts on push and polls the Pages API.
+# Poll: gh api repos/<owner>/<repo>/pages/builds/latest
+# and, when that build is not this commit, deployment statuses.
+# The wait is 10 minutes. A failed or timed-out build is logged and the
+# job exits 0.
+#
+# "Update revision date" may push a follow-up commit. Pushes from
+# github-actions[bot] do not start this workflow (default GITHUB_TOKEN),
+# and the job skips that actor anyway. A diff that only stamps homepage
+# revision dates is skipped, so the same URLs are not submitted twice.
+# Each real push still submits the URLs that push changed. If the date
+# commit cancels this commit's Pages build, a later successful build that
+# contains this commit counts as published.
+#
+# Changed files come from the push event's before..after. The IndexNow key
+# file is c03cb8d3ee7ebfb3ee3b05e3115ef98a.txt. The only credential is
+# GITHUB_TOKEN.
 
 on:
-  workflow_run:
-    workflows:
-      - "pages build and deployment"
-    types:
-      - completed
+  push:
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
+  pages: read
   contents: read
+  deployments: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   ping:
-    if: >-
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.head_branch == 'main'
+    if: "github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'"
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Checkout the deployed commit
+      - name: Checkout the pushed commit
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
 
       - name: Submit changed URLs to IndexNow
         continue-on-error: true
         env:
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          # Automatic GITHUB_TOKEN. gh reads GH_TOKEN. No other secrets.
+          GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          PYTHONUNBUFFERED: "1"
         run: |
           set +e
           python3 << 'PY'
           import json
+          import os
           import re
           import subprocess
+          import time
           import urllib.error
           import urllib.request
           from pathlib import Path
 
           SITE = "https://timursalakhetdinov.com"
           HOST = "timursalakhetdinov.com"
-          HEAD = __import__("os").environ.get("HEAD_SHA", "HEAD").strip()
-          REPO = __import__("os").environ.get("REPO", "").strip()
+          TIMEOUT_SECONDS = 10 * 60
+          POLL_SECONDS = 15
+          # A superseded Pages build is marked errored as soon as the next
+          # commit is pushed. Give the main ref a minute to show that commit
+          # before treating the error as final.
+          FAILURE_CONFIRM_SECONDS = 60
+          DATE_FILES = {"index.html", "de.html"}
+          DATE_LINE = re.compile(
+              "(Last revision|Letzte Aktualisierung|last edited|zuletzt bearbeitet|"
+              "TS \u00b7 \\d{4}|\u00a9 timur salakhetdinov \u00b7 \\d{4})"
+          )
+
+          def log(message):
+              print(message, flush=True)
 
           def run(args):
               return subprocess.run(args, check=False, capture_output=True, text=True)
 
-          def previous_sha():
-              api = (
-                  f"https://api.github.com/repos/{REPO}/actions/workflows/"
-                  "pages-build-deployment/runs?branch=main&status=success&per_page=20"
-              )
+          def repo():
+              return os.environ.get("REPO", "").strip()
+
+          def gh(path):
               try:
-                  with urllib.request.urlopen(api, timeout=20) as resp:
-                      data = json.load(resp)
-                  for item in data.get("workflow_runs", []):
-                      sha = item.get("head_sha") or ""
-                      if sha and sha != HEAD:
-                          print(f"Previous Pages deployment: {sha}")
-                          return sha
-              except Exception as exc:
-                  print(f"Could not read previous Pages deployment ({exc}).")
-              parent = run(["git", "rev-parse", f"{HEAD}^"])
-              if parent.returncode == 0 and parent.stdout.strip():
-                  print(f"Falling back to parent commit: {parent.stdout.strip()}")
-                  return parent.stdout.strip()
-              print("No previous commit; skipping IndexNow.")
-              return ""
+                  result = subprocess.run(
+                      ["gh", "api", path],
+                      check=False,
+                      capture_output=True,
+                      text=True,
+                      timeout=30,
+                  )
+              except subprocess.TimeoutExpired:
+                  log(f"GitHub API timed out: {path}")
+                  return None
+              if result.returncode != 0:
+                  detail = (result.stderr or result.stdout or "").strip()
+                  log(f"GitHub API failed ({path}): {detail[:500]}")
+                  return None
+              try:
+                  return json.loads(result.stdout)
+              except json.JSONDecodeError as exc:
+                  log(f"GitHub API returned invalid JSON ({path}): {exc}")
+                  return None
 
           def show(rev, path):
               result = run(["git", "show", f"{rev}:{path}"])
@@ -130,30 +170,113 @@ jobs:
                   if raw in (path.stem.encode(), path.stem.encode() + b"\n"):
                       matches.append(path)
               if len(matches) != 1:
-                  print(f"Expected one IndexNow key file, found {len(matches)}; skipping.")
+                  log(f"Expected one IndexNow key file, found {len(matches)}; skipping.")
                   return None
               return matches[0].stem
 
-          try:
-              prev = previous_sha()
-              if not prev:
-                  raise SystemExit(0)
-              diff = run(["git", "diff", "--name-only", "--diff-filter=AM", prev, HEAD])
+          def event_payload():
+              path = os.environ.get("GITHUB_EVENT_PATH", "")
+              if not path:
+                  return {}
+              file = Path(path)
+              if not file.is_file():
+                  log(f"Event payload {path} is not available.")
+                  return {}
+              try:
+                  data = json.loads(file.read_text())
+              except Exception as exc:
+                  log(f"Could not read the event payload ({exc}).")
+                  return {}
+              return data if isinstance(data, dict) else {}
+
+          def resolve_range():
+              sha = os.environ.get("SHA", "").strip() or os.environ.get("GITHUB_SHA", "").strip()
+              event_name = (
+                  os.environ.get("EVENT_NAME", "").strip()
+                  or os.environ.get("GITHUB_EVENT_NAME", "").strip()
+              )
+              payload = event_payload()
+              before = str(payload.get("before") or "").strip()
+              after = str(payload.get("after") or "").strip()
+              if event_name == "workflow_dispatch":
+                  log("Manual run: diff the selected commit against its parent.")
+                  if not sha:
+                      log("No commit SHA; skipping IndexNow.")
+                      return "", ""
+                  parent = run(["git", "rev-parse", f"{sha}^"])
+                  if parent.returncode != 0 or not parent.stdout.strip():
+                      log("No parent commit; skipping IndexNow.")
+                      return "", ""
+                  before = parent.stdout.strip()
+                  after = sha
+                  log(f"Diff range {before}..{after}")
+                  return before, after
+              if not before or set(before) <= {"0"}:
+                  log("Push event has no before commit; skipping IndexNow.")
+                  return "", ""
+              if not after:
+                  after = sha
+              if not after:
+                  log("Push event has no after commit; skipping IndexNow.")
+                  return "", ""
+              log(f"Push range {before}..{after}")
+              return before, after
+
+          def commit_available(rev):
+              if run(["git", "cat-file", "-e", f"{rev}^{{commit}}"]).returncode == 0:
+                  return True
+              log(f"Fetching {rev}.")
+              fetched = run(["git", "fetch", "--no-tags", "origin", rev])
+              if fetched.returncode != 0:
+                  log((fetched.stderr or fetched.stdout or "").strip())
+                  return False
+              return run(["git", "cat-file", "-e", f"{rev}^{{commit}}"]).returncode == 0
+
+          def diff_text_is_revision_date_only(files, diff_text):
+              if not files or not files <= DATE_FILES:
+                  return False
+              saw = False
+              for line in diff_text.splitlines():
+                  if line.startswith(("diff --git", "index ", "--- ", "+++ ", "@@", "\\")):
+                      continue
+                  if line[:1] in "+-":
+                      saw = True
+                      if not DATE_LINE.search(line):
+                          return False
+              return saw
+
+          def revision_date_only(before, after):
+              names = run(["git", "diff", "--name-only", before, after])
+              if names.returncode != 0:
+                  return False
+              files = {line.strip() for line in names.stdout.splitlines() if line.strip()}
+              diff = run(["git", "diff", "--unified=0", before, after, "--", *sorted(DATE_FILES)])
               if diff.returncode != 0:
-                  print(diff.stderr.strip() or "git diff failed; skipping IndexNow.")
-                  raise SystemExit(0)
+                  return False
+              if not diff_text_is_revision_date_only(files, diff.stdout):
+                  return False
+              listed = ", ".join(sorted(files))
+              log(f"Only homepage revision dates changed ({listed}).")
+              log("Skipping IndexNow so a date stamp does not submit duplicate URLs.")
+              return True
+
+          def collect_urls(before, after):
+              diff = run(["git", "diff", "--name-only", "--diff-filter=AM", before, after])
+              if diff.returncode != 0:
+                  log(diff.stderr.strip() or "git diff failed; skipping IndexNow.")
+                  return None
               changed = {line.strip() for line in diff.stdout.splitlines() if line.strip()}
-              print("Changed paths:")
+              log("Changed paths:")
               for path in sorted(changed):
-                  print(f"  {path}")
-              sitemap_text = show(HEAD, "sitemap.xml")
+                  log(f"  {path}")
+              sitemap_text = show(after, "sitemap.xml")
               known = sitemap_paths(sitemap_text)
               urls = set()
               for path in sorted(changed):
                   if path.endswith(".html"):
                       urls.add(to_public(path, known))
               if "sitemap.xml" in changed:
-                  old_locs = set(locs(show(prev, "sitemap.xml")))
+                  old_locs = set(locs(show(before, "sitemap.xml")))
                   for loc in locs(sitemap_text):
                       if not loc.startswith(SITE):
                           continue
@@ -163,22 +286,167 @@ jobs:
                       # or the URL itself was added. A lastmod-only edit is not enough.
                       if source in changed or loc not in old_locs:
                           urls.add(loc)
-              ordered = sorted(urls)
-              if not ordered:
-                  print("No changed page URLs; skipping IndexNow request.")
-                  raise SystemExit(0)
-              key = key_material()
-              if not key:
-                  raise SystemExit(0)
+              return sorted(urls)
+
+          def pages_index(sha):
+              found = {}
+              latest = gh(f"repos/{repo()}/pages/builds/latest")
+              if isinstance(latest, dict) and latest.get("commit"):
+                  found[latest["commit"]] = latest
+                  err = ((latest.get("error") or {}).get("message")) or ""
+                  extra = f" error={err}" if err else ""
+                  log(
+                      f"Latest Pages build: commit={latest.get('commit')} "
+                      f"status={latest.get('status')}{extra}"
+                  )
+              else:
+                  log("Could not read pages/builds/latest.")
+              status = (found.get(sha) or {}).get("status")
+              if status in {"built", "queued", "building", "errored"}:
+                  return found
+              listing = gh(f"repos/{repo()}/pages/builds?per_page=100")
+              if isinstance(listing, list):
+                  for item in listing:
+                      commit = (item or {}).get("commit") or ""
+                      if commit and commit not in found:
+                          found[commit] = item
+              elif listing is None:
+                  log("Could not list Pages builds.")
+              return found
+
+          def deployment_state(sha):
+              data = gh(
+                  f"repos/{repo()}/deployments?environment=github-pages"
+                  f"&sha={sha}&per_page=5"
+              )
+              if not isinstance(data, list) or not data:
+                  return "missing"
+              dep_id = data[0].get("id")
+              if not dep_id:
+                  return "missing"
+              statuses = gh(f"repos/{repo()}/deployments/{dep_id}/statuses?per_page=5")
+              if not isinstance(statuses, list) or not statuses:
+                  return "pending"
+              state = (statuses[0].get("state") or "").lower()
+              log(f"Deployment {sha} state={state}")
+              if state in {"success", "inactive"}:
+                  return "success"
+              if state in {"failure", "error"}:
+                  return "failure"
+              if state in {"queued", "pending", "in_progress", "waiting"}:
+                  return "pending"
+              log(f"Unknown deployment state {state!r}; treating it as still running.")
+              return "pending"
+
+          def classify(sha, builds):
+              item = builds.get(sha) or {}
+              pages = item.get("status") or ""
+              if pages == "built":
+                  return "success"
+              # A queued or building Pages record is enough; don't also hit
+              # the deployments API on every poll.
+              if pages in {"queued", "building"}:
+                  return "pending"
+              dep = deployment_state(sha)
+              if dep == "success":
+                  return "success"
+              if dep == "pending":
+                  return "pending"
+              if pages == "errored" or dep == "failure":
+                  message = ((item.get("error") or {}).get("message")) or ""
+                  if message:
+                      log(f"Pages build {sha} errored: {message}")
+                  return "failure"
+              if pages:
+                  log(f"Pages build {sha} status {pages}; still waiting.")
+                  return "pending"
+              return "missing"
+
+          def main_tip():
+              data = gh(f"repos/{repo()}/git/ref/heads/main")
+              if not isinstance(data, dict):
+                  return ""
+              return ((data.get("object") or {}).get("sha") or "").strip()
+
+          def commit_contains(ancestor, descendant, cache):
+              if ancestor == descendant:
+                  return True
+              key = (ancestor, descendant)
+              if key in cache:
+                  return cache[key]
+              data = gh(f"repos/{repo()}/compare/{ancestor}...{descendant}")
+              if not isinstance(data, dict):
+                  return False
+              status = data.get("status")
+              behind = data.get("behind_by", 1)
+              ok = status in {"identical", "ahead"} and behind == 0
+              cache[key] = ok
+              return ok
+
+          def wait_for_pages(sha):
+              log(f"Waiting up to {TIMEOUT_SECONDS // 60} minutes for GitHub Pages to build {sha}.")
+              deadline = time.monotonic() + TIMEOUT_SECONDS
+              started = time.monotonic()
+              cache = {}
+              failure_since = None
+              while True:
+                  builds = pages_index(sha)
+                  state = classify(sha, builds)
+                  tip = main_tip()
+                  covers = False
+                  tip_state = ""
+                  if tip and tip != sha and commit_contains(sha, tip, cache):
+                      covers = True
+                      tip_state = classify(tip, builds)
+                  elapsed = int(time.monotonic() - started)
+                  if covers:
+                      tip_note = f"; later main {tip} is {tip_state} and includes this commit"
+                  elif tip and tip != sha:
+                      tip_note = f"; main tip {tip} does not include this commit"
+                  elif tip:
+                      tip_note = "; main tip is this commit"
+                  else:
+                      tip_note = "; main tip is unknown"
+                  log(f"Pages state for {sha}: {state}{tip_note} ({elapsed}s)")
+                  if state == "success":
+                      log("GitHub Pages has published this commit.")
+                      return True
+                  if covers and tip_state == "success":
+                      log(f"GitHub Pages built later commit {tip}, which includes {sha}.")
+                      return True
+                  terminal_failure = state == "failure" and (not covers or tip_state == "failure")
+                  now = time.monotonic()
+                  if terminal_failure:
+                      if failure_since is None:
+                          failure_since = now
+                          log(
+                              "Pages build failed; waiting briefly in case a follow-up "
+                              "commit is still deploying."
+                          )
+                      if now - failure_since >= FAILURE_CONFIRM_SECONDS:
+                          log("GitHub Pages build failed. Skipping IndexNow.")
+                          return False
+                  else:
+                      failure_since = None
+                  if now >= deadline:
+                      log(
+                          f"Timed out after {TIMEOUT_SECONDS // 60} minutes waiting for "
+                          "GitHub Pages. Skipping IndexNow."
+                      )
+                      return False
+                  remaining = deadline - time.monotonic()
+                  time.sleep(min(POLL_SECONDS, max(0.0, remaining)))
+
+          def post_indexnow(urls, key):
               payload = {
                   "host": HOST,
                   "key": key,
                   "keyLocation": f"{SITE}/{key}.txt",
-                  "urlList": ordered,
+                  "urlList": urls,
               }
-              print("IndexNow urlList:")
-              for url in ordered:
-                  print(f"  {url}")
+              log("IndexNow urlList:")
+              for url in urls:
+                  log(f"  {url}")
               body = json.dumps(payload).encode("utf-8")
               request = urllib.request.Request(
                   "https://api.indexnow.org/indexnow",
@@ -193,13 +461,49 @@ jobs:
               except urllib.error.HTTPError as exc:
                   status = exc.code
                   snippet = exc.read(500).decode("utf-8", "replace")
-              print(f"IndexNow HTTP status: {status}")
+              log(f"IndexNow HTTP status: {status}")
               if snippet.strip():
-                  print(snippet.strip())
-          except SystemExit:
-              pass
-          except Exception as exc:
-              print(f"IndexNow HTTP status: request failed ({exc})")
-          raise SystemExit(0)
+                  log(snippet.strip())
+
+          def main():
+              if not repo():
+                  log("Repository name is missing; skipping IndexNow.")
+                  return
+              before, after = resolve_range()
+              if not before or not after:
+                  return
+              if not commit_available(before) or not commit_available(after):
+                  log("Could not find the diff endpoints; skipping IndexNow.")
+                  return
+              head = run(["git", "rev-parse", "HEAD"])
+              if head.returncode != 0 or head.stdout.strip() != after:
+                  checked = run(["git", "checkout", "--detach", after])
+                  if checked.returncode != 0:
+                      log(checked.stderr.strip() or "Could not check out the push commit; skipping IndexNow.")
+                      return
+              if revision_date_only(before, after):
+                  return
+              urls = collect_urls(before, after)
+              if urls is None:
+                  return
+              if not urls:
+                  log("No changed page URLs; skipping IndexNow request.")
+                  return
+              key = key_material()
+              if not key:
+                  return
+              target = os.environ.get("SHA", "").strip() or after
+              if not wait_for_pages(target):
+                  return
+              post_indexnow(urls, key)
+
+          if __name__ == "__main__":
+              try:
+                  main()
+              except SystemExit:
+                  pass
+              except Exception as exc:
+                  log(f"IndexNow HTTP status: request failed ({exc})")
+              raise SystemExit(0)
           PY
           exit 0
