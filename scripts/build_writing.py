@@ -40,7 +40,7 @@ SITE = "https://timursalakhetdinov.com"
 DEFAULT_OG_IMAGE = f"{SITE}/images/og-cover-v5.jpg"
 DEFAULT_OG_ALT = (
     "Social preview card with a portrait of Timur Salakhetdinov, "
-    "AI Engineer and Data Scientist."
+    "Data Analyst & Data Scientist."
 )
 DEFAULT_OG_WIDTH = "2400"
 DEFAULT_OG_HEIGHT = "1260"
@@ -49,7 +49,8 @@ SECTION_INTRODUCED = "2026-10-26"
 # Newest published articles rendered on the homepages.
 HOME_LATEST_COUNT = 3
 WRITING_BLURB = (
-    "Notes on LLM agent systems, applied machine learning, and time-series forecasting."
+    "Public notes on LLM agent systems, applied machine learning, and "
+    "time-series forecasting, from a data analyst and data scientist in Germany."
 )
 WORDS_PER_MINUTE = 220
 AUTHOR = "Timur Salakhetdinov"
@@ -619,7 +620,7 @@ def render_index(articles: list[Article]) -> str:
         body = f'  <p class="writing-empty">{escape(WRITING_BLURB)} First articles coming soon.</p>'
 
     description = WRITING_BLURB
-    title = "Writing | Timur Salakhetdinov"
+    title = "Writing: LLM agents and forecasting | Timur Salakhetdinov"
     canonical = f"{SITE}/writing/"
     item_list = []
     for position, article in enumerate(articles, start=1):
@@ -881,10 +882,10 @@ def render_page(
 </head>
 <body>
 <header class="nav">
-  <a class="nav-brand" href="/" aria-label="Timur Salakhetdinov Home">
+  <a class="nav-brand" href="/" aria-label="Timur Salakhetdinov, homepage">
     <div class="nav-mark">ts</div>
     <span class="nav-name">Timur Salakhetdinov</span>
-    <span class="nav-role">/ ai engineer · data scientist</span>
+    <span class="nav-role">/ data analyst · data scientist</span>
   </a>
   <nav aria-label="Sections">
     <ul class="nav-links" id="navLinks">
@@ -921,6 +922,7 @@ def render_page(
   <a href="/privacy.html">Privacy</a>
 </footer>
 <script src="/assets/js/site-nav.js" defer></script>{extra_scripts}
+<script data-goatcounter="https://timursalakhetdinov.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
 """
