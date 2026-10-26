@@ -1,0 +1,153 @@
+/* Article and index styles for /writing/. Loaded with project.css. */
+
+.writing-empty {
+  margin: 32px 0 0;
+  max-width: 40rem;
+  color: #626b71;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.substack {
+  margin: 4px 0 0;
+  font: 13px/1.5 Mono, ui-monospace, monospace;
+}
+
+.prose {
+  max-width: 40rem;
+  margin-top: 28px;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose h2 {
+  margin: 1.7em 0 0.45em;
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+.prose h3 {
+  margin: 1.45em 0 0.35em;
+  font: 500 18px/1.4 Plex, Arial, sans-serif;
+  color: #202426;
+}
+
+.prose p {
+  margin: 0.9em 0;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0.85em 0;
+  padding-left: 1.25em;
+}
+
+.prose li {
+  margin: 0.25em 0;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin: 0.2em 0;
+}
+
+.prose blockquote {
+  margin: 1.2em 0;
+  padding-left: 16px;
+  border-left: 2px solid #075593;
+  color: #485159;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid #d1d4ce;
+  margin: 2em 0;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.2em 0;
+  border: 1px solid #d1d4ce;
+}
+
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2em 0;
+  font-size: 15px;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #d1d4ce;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  font: 12px/1.5 Mono, ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  background: #eeeFEA;
+  color: #485159;
+}
+
+.prose :not(pre) > code {
+  font-family: Mono, ui-monospace, monospace;
+  font-size: 0.88em;
+  background: #ebebe5;
+  padding: 0.05em 0.35em;
+}
+
+.prose .highlight {
+  margin: 1.3em 0;
+  padding: 14px 16px;
+  border: 1px solid #d1d4ce;
+  overflow-x: auto;
+}
+
+.prose .highlight pre {
+  margin: 0;
+  background: transparent;
+  font-family: Mono, ui-monospace, monospace;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.prose .highlight code {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  padding: 0;
+}
+
+.prose .math-display {
+  margin: 1.15em 0;
+  overflow-x: auto;
+}
+
+.prose .katex-display {
+  margin: 0;
+}
+
+.archive-meta {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 650px) {
+  .prose {
+    margin-top: 22px;
+  }
+
+  .prose h2 {
+    font-size: 24px;
+  }
+
+  .prose table {
+    display: block;
+    overflow-x: auto;
+  }
+}
