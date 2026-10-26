@@ -27,7 +27,7 @@
     profile: {
       name: 'Timur Salakhetdinov',
       headline: 'Data Scientist & Data Analyst in Germany (Berlin · Hamburg · Munich)',
-      summary: 'Data Scientist & Data Analyst specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At InnoGames, my core work centers on end-to-end Power BI data modeling, reporting, and migrating analytics across six games to Microsoft Fabric, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. Currently testing Microsoft Fabric for analytics workflows. In parallel, my company project and M.Sc. thesis at Leuphana University forecasts each game\'s daily net revenue over a 90-day horizon as daily active users times revenue per daily active user, using two frozen foundation models (TabPFN-TS and Chronos-2) with calendar features and no task-specific training, and tests agent-compiled planning-text covariates against a shuffled-text placebo. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.',
+      summary: 'Data Scientist & Data Analyst specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At InnoGames, my core work centers on end-to-end Power BI data modeling and reporting, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. Currently testing Microsoft Fabric for analytics workflows. In parallel, my company project and M.Sc. thesis at Leuphana University forecasts each game\'s daily net revenue over a 90-day horizon as daily active users times revenue per daily active user, using two frozen foundation models (TabPFN-TS and Chronos-2) with calendar features and no task-specific training, and tests agent-compiled planning-text covariates against a shuffled-text placebo. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.',
       currentRole: 'Working Student, Analytics at InnoGames (Hamburg, hybrid), since November 2025',
       education: 'M.Sc. Management & Data Science, Leuphana Universität Lüneburg (2024–27, expected March 2027), GPA 1.9 (German scale, 1.0 = best), Deutschlandstipendium scholar',
       availability: 'Available for full-time Data Scientist or Data Analyst roles in Germany from April 2027',
@@ -106,7 +106,7 @@
         organisation: 'InnoGames',
         location: 'Hamburg, hybrid',
         type: 'Part-time',
-        description: 'Frozen TabPFN-TS and Chronos-2 net revenue forecasts with agent-compiled text covariates; multi-agent Claude Code toolkit with a custom MCP server for building and publishing Power BI models and reports in Fabric; Power BI dashboards and an onboarding A/B test with churn analysis in StarRocks; migration of daily reporting to Microsoft Fabric for six major games. Currently testing Microsoft Fabric for analytics workflows.'
+        description: 'Frozen TabPFN-TS and Chronos-2 net revenue forecasts with agent-compiled text covariates; multi-agent Claude Code toolkit with a custom MCP server for building and publishing Power BI models and reports in Fabric; Power BI dashboards and an onboarding A/B test with churn analysis in StarRocks. Currently testing Microsoft Fabric for analytics workflows.'
       },
       {
         period: '2024–27',
