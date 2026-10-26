@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Timur Salakhetdinov | Data Scientist &amp; KI-Ingenieur in Deutschland</title>
-  <meta name="description" content="Data Scientist &amp; KI-Ingenieur in Deutschland (München · Hamburg). Power-BI- &amp; Fabric-Modellierung, LLM-Agentensysteme und TabPFN-Prognosen. Verfügbar ab April 2027.">
+  <meta name="description" content="Data Analyst &amp; Data Scientist in Deutschland (Berlin · Hamburg · München). LLM-Agenten, TabPFN-Prognosen, Power BI &amp; Fabric. Verfügbar ab April 2027.">
 
   <link rel="canonical" href="https://timursalakhetdinov.com/de" />
   <link rel="alternate" hreflang="en" href="https://timursalakhetdinov.com/" />
   <link rel="alternate" hreflang="de" href="https://timursalakhetdinov.com/de" />
   <link rel="alternate" hreflang="x-default" href="https://timursalakhetdinov.com/" />
+  <link rel="alternate" type="application/rss+xml" title="Timur Salakhetdinov — Writing" href="/writing/feed.xml">
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://timursalakhetdinov.com/de" />
@@ -17,7 +18,7 @@
   <meta property="og:locale" content="de_DE" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:title" content="Timur Salakhetdinov | Data Scientist &amp; KI-Ingenieur in Deutschland" />
-  <meta property="og:description" content="Data Scientist &amp; KI-Ingenieur in Deutschland (München · Hamburg). Power-BI- &amp; Fabric-Modellierung, LLM-Agentensysteme und TabPFN-Prognosen. Verfügbar ab April 2027." />
+  <meta property="og:description" content="Data Analyst &amp; Data Scientist in Deutschland (Berlin · Hamburg · München). LLM-Agenten, TabPFN-Prognosen, Power BI &amp; Fabric. Verfügbar ab April 2027." />
   <meta property="og:image" content="https://timursalakhetdinov.com/images/og-cover-de-v5.jpg" />
   <meta property="og:image:secure_url" content="https://timursalakhetdinov.com/images/og-cover-de-v5.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -27,10 +28,11 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Timur Salakhetdinov | Data Scientist &amp; KI-Ingenieur in Deutschland" />
-  <meta name="twitter:description" content="Data Scientist &amp; KI-Ingenieur in Deutschland (München · Hamburg). Power-BI- &amp; Fabric-Modellierung, LLM-Agentensysteme und TabPFN-Prognosen. Verfügbar ab April 2027." />
+  <meta name="twitter:description" content="Data Analyst &amp; Data Scientist in Deutschland (Berlin · Hamburg · München). LLM-Agenten, TabPFN-Prognosen, Power BI &amp; Fabric. Verfügbar ab April 2027." />
   <meta name="twitter:image" content="https://timursalakhetdinov.com/images/og-cover-de-v5.jpg" />
   <meta name="twitter:image:alt" content="Social-Preview-Card mit Porträt von Timur Salakhetdinov, KI-Ingenieur und Data Scientist." />
 
+  <!-- sameAs lists LinkedIn, X, and GitHub. Add a Substack profile URL only when one exists; do not insert a placeholder. -->
   <script type="application/ld+json">
   [
     {
@@ -39,7 +41,7 @@
       "@id": "https://timursalakhetdinov.com/#person",
       "name": "Timur Salakhetdinov",
       "jobTitle": "AI Engineer and Data Scientist",
-      "description": "Data Scientist &amp; KI-Ingenieur in Deutschland (München · Hamburg). Power-BI- &amp; Fabric-Modellierung, LLM-Agentensysteme und TabPFN-Prognosen. Verfügbar ab April 2027.",
+      "description": "Data Analyst & Data Scientist in Deutschland (Berlin · Hamburg · München). LLM-Agenten, TabPFN-Prognosen, Power BI & Fabric. Verfügbar ab April 2027.",
       "url": "https://timursalakhetdinov.com/de",
       "image": "https://timursalakhetdinov.com/images/avatar.jpg",
       "email": "mailto:timsalakhetdinov@gmail.com",
@@ -126,6 +128,7 @@
       ],
       "sameAs": [
         "https://www.linkedin.com/in/timursalakhetdinov",
+        "https://x.com/TimTugend",
         "https://github.com/TimurSalakhetdinov",
         "https://medium.com/@timursalakhetdinov"
       ]
@@ -675,23 +678,34 @@
 
     /* ── Writing ── */
     .writing { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
-    .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; min-height: 280px; }
-    .post-link {
-      display: block; padding: 24px 0;
-      border-top: 1px solid var(--rule);
+    .writing-grid {
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .writing-grid[data-count="1"] { grid-template-columns: minmax(0, 1fr); }
+    .writing-grid[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .writing-card {
+      display: flex; flex-direction: column; gap: 12px;
+      min-width: 0; padding: 24px;
+      border: 1px solid var(--rule); background: var(--paper);
       text-decoration: none; color: inherit;
-      transition: opacity .15s;
     }
-    .post-link:hover { opacity: .75; }
-    .post-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-    .post-tag {
-      font-family: var(--mono); font-size: 11px; color: var(--accent);
-      letter-spacing: .05em; padding: 3px 8px;
-      border: 1px solid var(--accent); border-radius: 2px;
+    .writing-card:hover { border-color: var(--rule-strong); }
+    .writing-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .writing-card time {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .05em;
+      color: var(--ink-muted); font-variant-numeric: tabular-nums;
     }
-    .post-date { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); letter-spacing: .05em; font-variant-numeric: tabular-nums; }
-    .post-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
-    .posts-rule { grid-column: 1/-1; border-top: 1px solid var(--rule); }
+    .writing-card h3 {
+      font-family: var(--serif); font-weight: 400; font-size: 22px;
+      line-height: 1.25; letter-spacing: -.01em; color: var(--ink);
+    }
+    .writing-card p {
+      font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .writing-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .writing-more { margin-top: 32px; }
 
     /* ── Contact ── */
     .contact { padding: 80px 64px 60px; background: var(--paper); }
@@ -853,7 +867,17 @@
       .proj-methods { flex-direction: row; flex-wrap: wrap; }
       .proj-note    { display: none; }
 
-      .posts-grid   { grid-template-columns: 1fr; }
+      .writing-grid,
+      .writing-grid[data-count="1"],
+      .writing-grid[data-count="2"] {
+        display: flex; gap: 12px;
+        overflow-x: auto; scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin; scrollbar-color: var(--rule-strong) transparent;
+      }
+      .writing-card { flex: 0 0 86%; scroll-snap-align: start; }
+      .writing-grid[data-count="1"] .writing-card { flex-basis: 100%; }
+
       .contact-h2   { font-size: 40px; }
       .footer { flex-direction: column; gap: 10px; }
     }
@@ -935,7 +959,8 @@
       <li><a href="#about"><span class="nav-num">§01</span><span>Über mich</span></a></li>
       <li><a href="#skills"><span class="nav-num">§02</span><span>Kenntnisse</span></a></li>
       <li><a href="#work"><span class="nav-num">§03</span><span>Projekte</span></a></li>
-      <li><a href="#contact"><span class="nav-num">§04</span><span>Kontakt</span></a></li>
+      <li><a href="/writing/" data-writing-nav><span class="nav-num">§04</span><span>Writing</span></a></li>
+      <li><a href="#contact"><span class="nav-num">§05</span><span>Kontakt</span></a></li>
     </ul>
   </nav>
   <div class="nav-right">
@@ -1397,27 +1422,15 @@
   </div>
 </section>
 
-<!-- Writing -->
-<section class="writing" id="writing" hidden>
-  <div class="sec-head fi">
-    <div class="sec-head-l">
-      <span class="sec-num">§ 04</span>
-      <span class="sec-title">Artikel</span>
-      <h2 class="sec-h2">Beiträge zu LLM-Agentensystemen und angewandtem maschinellem Lernen</h2>
-    </div>
-    <span class="sec-right">Neuestes von medium.com/@timursalakhetdinov</span>
-  </div>
-
-  <div class="posts-grid fi" id="medium-posts">
-    <div class="posts-rule"></div>
-  </div>
-</section>
+<!-- writing:latest:start -->
+<section class="writing" id="writing" hidden></section>
+<!-- writing:latest:end -->
 
 <!-- Contact -->
 <section class="contact" id="contact">
   <div class="sec-head fi">
     <div class="sec-head-l">
-      <span class="sec-num">§ 04</span>
+      <span class="sec-num">§ 05</span>
       <span class="sec-title">Kontakt</span>
     </div>
     <span class="sec-right">Antwort innerhalb von 24 Stunden</span>
@@ -1515,6 +1528,5 @@
   }
 </script>
 
-<!-- Medium feed disabled while the Writing section is hidden. -->
 </body>
 </html>

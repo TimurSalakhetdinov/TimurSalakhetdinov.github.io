@@ -41,3 +41,14 @@ M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to 
 ## Built With
 
 Hand-written HTML / CSS / vanilla JS. No trackers, no framework.
+
+## Writing / articles
+
+Articles are Markdown files in `content/writing/`. Add `content/writing/<slug>.md` with YAML front matter (`title`, `date` as `YYYY-MM-DD`, `description`, `slug`, `tags`, and optional `og_image`, `substack_url`, `updated`, and `related_projects`). Put images in `content/writing/<slug>/`. Files whose names start with `_` are drafts and are not published; `content/writing/_example.md` shows the format.
+
+```bash
+python3 -m pip install -r scripts/requirements-writing.txt
+python3 scripts/build_writing.py
+```
+
+The script writes `writing/index.html`, each `writing/<slug>.html`, and `writing/feed.xml`, and updates the `/writing/` entries in `sitemap.xml`. It also refreshes the homepage Writing block in `index.html` and `de.html` (between the `writing:latest` markers) and the `data-writing-nav` link on every page that shares the nav. With no published articles that block stays hidden and the nav link points at `/writing/`. The first article shows the three newest cards (`HOME_LATEST_COUNT` in `scripts/build_writing.py`) and points the nav at the block. The format is documented in `content/writing/README.md`. Run the script again after edits; a second run with the same sources does not change the output.
