@@ -40,7 +40,7 @@ SITE = "https://timursalakhetdinov.com"
 DEFAULT_OG_IMAGE = f"{SITE}/images/og-cover-v5.jpg"
 DEFAULT_OG_ALT = (
     "Social preview card with a portrait of Timur Salakhetdinov, "
-    "Data Analyst & Data Scientist."
+    "Data Scientist & Data Analyst."
 )
 DEFAULT_OG_WIDTH = "2400"
 DEFAULT_OG_HEIGHT = "1260"
@@ -50,7 +50,7 @@ SECTION_INTRODUCED = "2026-10-26"
 HOME_LATEST_COUNT = 3
 WRITING_BLURB = (
     "Public notes on LLM agent systems, applied machine learning, and "
-    "time-series forecasting, from a data analyst and data scientist in Germany."
+    "time-series forecasting, from a data scientist and data analyst in Germany."
 )
 WORDS_PER_MINUTE = 220
 AUTHOR = "Timur Salakhetdinov"
@@ -885,7 +885,7 @@ def render_page(
   <a class="nav-brand" href="/" aria-label="Timur Salakhetdinov, homepage">
     <div class="nav-mark">ts</div>
     <span class="nav-name">Timur Salakhetdinov</span>
-    <span class="nav-role">/ data analyst · data scientist</span>
+    <span class="nav-role">/ data scientist · data analyst</span>
   </a>
   <nav aria-label="Sections">
     <ul class="nav-links" id="navLinks">
