@@ -44,7 +44,7 @@ Hand-written HTML / CSS / vanilla JS. No trackers, no framework.
 
 ## Writing / articles
 
-Articles are Markdown files in `content/writing/`. Add `content/writing/<slug>.md` with YAML front matter (`title`, `date` as `YYYY-MM-DD`, `description`, `slug`, `tags`, and optional `og_image` and `substack_url`). Put images in `content/writing/<slug>/`. Files whose names start with `_` are drafts and are not published; `content/writing/_example.md` shows the format.
+Articles are Markdown files in `content/writing/`. Add `content/writing/<slug>.md` with YAML front matter (`title`, `date` as `YYYY-MM-DD`, `description`, `slug`, `tags`, and optional `og_image`, `substack_url`, `updated`, and `related_projects`). Put images in `content/writing/<slug>/`. Files whose names start with `_` are drafts and are not published; `content/writing/_example.md` shows the format.
 
 ```bash
 python3 -m pip install -r scripts/requirements-writing.txt

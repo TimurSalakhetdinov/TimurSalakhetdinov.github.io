@@ -1,5 +1,32 @@
 /* Article and index styles for /writing/. Loaded with project.css. */
 
+.related {
+  margin-top: 36px;
+  max-width: 40rem;
+}
+
+.related h2 {
+  margin: 0;
+  font: 500 13px/1.4 Plex, Arial, sans-serif;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #626b71;
+}
+
+.related ul {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related li + li {
+  margin-top: 6px;
+}
+
+.related a {
+  color: #075593;
+}
+
 .writing-empty {
   margin: 32px 0 0;
   max-width: 40rem;

@@ -48,6 +48,9 @@ DEFAULT_OG_HEIGHT = "1260"
 SECTION_INTRODUCED = "2026-10-26"
 # Newest published articles rendered on the homepages.
 HOME_LATEST_COUNT = 3
+WRITING_BLURB = (
+    "Notes on LLM agent systems, applied machine learning, and time-series forecasting."
+)
 WORDS_PER_MINUTE = 220
 AUTHOR = "Timur Salakhetdinov"
 
@@ -55,7 +58,7 @@ IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".avif"}
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DRAFT_SLUG_RE = re.compile(r"^_[a-z0-9]+(?:-[a-z0-9]+)*$")
 REQUIRED_KEYS = ("title", "date", "description", "slug", "tags")
-OPTIONAL_KEYS = ("og_image", "substack_url")
+OPTIONAL_KEYS = ("og_image", "substack_url", "updated", "related_projects")
 ALLOWED_KEYS = set(REQUIRED_KEYS) | set(OPTIONAL_KEYS)
 
 FENCE_RE = re.compile(r"^(`{3,}|~{3,})[^\n]*\n.*?\n\1[ \t]*$", re.M | re.S)
@@ -128,6 +131,8 @@ class Article:
     tags: tuple[str, ...]
     og_image: str | None
     substack_url: str | None
+    updated: date | None
+    related_projects: tuple[str, ...]
     body: str
     html: str
     words: int
@@ -141,6 +146,14 @@ class Article:
     @property
     def iso_date(self) -> str:
         return self.date.isoformat()
+
+    @property
+    def modified(self) -> date:
+        return self.updated or self.date
+
+    @property
+    def iso_modified(self) -> str:
+        return self.modified.isoformat()
 
 
 def main() -> None:
@@ -214,6 +227,14 @@ def parse_article(path: Path, *, draft: bool) -> Article | None:
     tags = parse_tags(path, meta["tags"])
     og_image = optional_text(path, "og_image", meta.get("og_image"))
     substack = optional_text(path, "substack_url", meta.get("substack_url"))
+    if "updated" in meta and meta.get("updated") is not None:
+        try:
+            updated = as_date(meta["updated"])
+        except ValueError as exc:
+            raise SystemExit(f"{path}: updated must be YYYY-MM-DD") from exc
+    else:
+        updated = None
+    related = parse_related(path, meta.get("related_projects"))
     if substack and urlsplit(substack).scheme not in {"http", "https"}:
         raise SystemExit(f"{path}: substack_url must be an http(s) URL")
     if og_image:
@@ -235,6 +256,8 @@ def parse_article(path: Path, *, draft: bool) -> Article | None:
         tags=tags,
         og_image=og_image,
         substack_url=substack,
+        updated=updated,
+        related_projects=related,
         body=body,
         html=rendered,
         words=words,
@@ -255,6 +278,36 @@ def optional_text(path: Path, key: str, value: object) -> str | None:
     if not isinstance(value, str) or not value.strip():
         raise SystemExit(f"{path}: {key} must be a non-empty string when set")
     return value.strip()
+
+
+def parse_related(path: Path, value: object) -> tuple[str, ...]:
+    if value is None:
+        return ()
+    if not isinstance(value, list):
+        raise SystemExit(f"{path}: related_projects must be a list of site paths")
+    items: list[str] = []
+    for item in value:
+        if not isinstance(item, str) or not item.strip():
+            raise SystemExit(f"{path}: each related_projects entry must be a site path")
+        raw = item.strip()
+        if "://" in raw or raw.startswith("//"):
+            raise SystemExit(f"{path}: related_projects entries must be site paths, not URLs")
+        if not raw.startswith("/"):
+            raw = "/" + raw
+        target = map_site_path(urlsplit(raw).path)
+        if not target.is_file():
+            raise SystemExit(f"{path}: related project not found: {raw}")
+        items.append(raw.split("#", 1)[0])
+    return tuple(items)
+
+
+def project_link_title(path: Path) -> str:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    match = re.search(r"<h1\b[^>]*>(.*?)</h1>", text, re.S | re.I)
+    if not match:
+        return path.stem.replace("-", " ")
+    title = re.sub(r"<[^>]+>", "", match.group(1))
+    return html.unescape(re.sub(r"\s+", " ", title)).strip()
 
 
 def parse_tags(path: Path, value: object) -> tuple[str, ...]:
@@ -391,19 +444,80 @@ def count_words(body: str) -> int:
 
 
 def rewrite_images(path: Path, slug: str, rendered: str) -> str:
+    seen = 0
+
     def replace_tag(match: re.Match[str]) -> str:
+        nonlocal seen
         tag = match.group(0)
         src_match = SRC_ATTR_RE.search(tag)
         if not src_match:
             return tag
         src = src_match.group(2)
-        new_src = resolve_image_src(path, slug, src)
-        if new_src == src:
+        new_src, local = locate_image(path, slug, src)
+        if new_src != src:
+            start, end = src_match.span(2)
+            tag = tag[:start] + new_src + tag[end:]
+        attrs = ""
+        if local is not None:
+            width, height = image_size(local)
+            attrs += f' width="{width}" height="{height}"'
+        if seen > 0:
+            attrs += ' loading="lazy" decoding="async"'
+        seen += 1
+        if not attrs:
             return tag
-        start, end = src_match.span(2)
-        return tag[:start] + new_src + tag[end:]
+        if tag.endswith("/>"):
+            return tag[:-2].rstrip() + attrs + " />"
+        return tag[:-1].rstrip() + attrs + ">"
 
     return IMG_TAG_RE.sub(replace_tag, rendered)
+
+
+def locate_image(path: Path, slug: str, src: str) -> tuple[str, Path | None]:
+    split = urlsplit(src)
+    if split.scheme or src.startswith("//"):
+        return src, None
+    if src.startswith("/") or src.startswith("#"):
+        local = None
+        if src.startswith("/"):
+            candidate = map_site_path(split.path)
+            if candidate.is_file() and candidate.suffix.lower() in IMAGE_EXTENSIONS:
+                local = candidate
+        return src, local
+    published = resolve_image_src(path, slug, src)
+    raw_path = unquote(urlsplit(published).path)
+    rel = Path(raw_path)
+    source_root = CONTENT / slug
+    if rel.parts and rel.parts[0] == slug:
+        local = source_root.joinpath(*rel.parts[1:])
+    else:
+        local = source_root / rel
+    return published, local
+
+
+def image_size(path: Path) -> tuple[int, int]:
+    if path.suffix.lower() == ".svg":
+        text = path.read_text(encoding="utf-8", errors="replace")
+        width = re.search(r'\bwidth\s*=\s*["\'](\d+(?:\.\d+)?)', text)
+        height = re.search(r'\bheight\s*=\s*["\'](\d+(?:\.\d+)?)', text)
+        if width and height:
+            return int(float(width.group(1))), int(float(height.group(1)))
+        viewbox = re.search(
+            r'\bviewBox\s*=\s*["\']\s*[-\d.]+\s+[-\d.]+\s+([-\d.]+)\s+([-\d.]+)',
+            text,
+        )
+        if not viewbox:
+            raise SystemExit(f"{path}: SVG has no width/height or viewBox")
+        return int(float(viewbox.group(1))), int(float(viewbox.group(2)))
+    try:
+        from PIL import Image
+    except ImportError as exc:
+        raise SystemExit("Pillow is required to read article image sizes") from exc
+    with Image.open(path) as image:
+        width, height = image.size
+    if width < 1 or height < 1:
+        raise SystemExit(f"{path}: image dimensions are unusable")
+    return width, height
 
 
 def resolve_image_src(path: Path, slug: str, src: str) -> str:
@@ -502,9 +616,9 @@ def render_index(articles: list[Article]) -> str:
         items.append("  </ul>")
         body = "\n".join(items)
     else:
-        body = '  <p class="writing-empty">First articles coming soon.</p>'
+        body = f'  <p class="writing-empty">{escape(WRITING_BLURB)} First articles coming soon.</p>'
 
-    description = "Notes on LLM agent systems, forecasting, and applied machine learning."
+    description = WRITING_BLURB
     title = "Writing | Timur Salakhetdinov"
     canonical = f"{SITE}/writing/"
     item_list = []
@@ -610,12 +724,13 @@ def render_article(article: Article) -> str:
 </script>"""
     article_ld = {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": "BlogPosting",
         "headline": article.title,
         "description": article.description,
         "url": article.url,
-        "mainEntityOfPage": article.url,
+        "mainEntityOfPage": {"@type": "WebPage", "@id": article.url},
         "datePublished": article.iso_date,
+        "dateModified": article.iso_modified,
         "inLanguage": "en",
         "image": og_image,
         "author": {
@@ -652,8 +767,8 @@ def render_article(article: Article) -> str:
   <p class="summary">{escape(article.description)}</p>{tags}{substack}
   <div class="prose">
 {article.html}
-  </div>
-  <p class="source"><a href="/writing/">← All writing</a></p>
+  </div>{render_related(article)}
+  <p class="source"><a href="/">Home</a> · <a href="/writing/">All writing</a></p>
 </main>"""
     return render_page(
         title=title,
@@ -673,6 +788,23 @@ def render_article(article: Article) -> str:
         extra_head=extra_head,
         extra_scripts=extra_scripts,
     )
+
+
+def render_related(article: Article) -> str:
+    if not article.related_projects:
+        return ""
+    items = []
+    for href in article.related_projects:
+        title = project_link_title(map_site_path(urlsplit(href).path))
+        items.append(f'    <li><a href="{escape(href)}">{escape(title)}</a></li>')
+    body = "\n".join(items)
+    return f"""
+  <section class="related">
+    <h2>Related projects</h2>
+    <ul>
+{body}
+    </ul>
+  </section>"""
 
 
 def render_page(
@@ -828,9 +960,13 @@ def update_sitemap(articles: list[Article]) -> None:
     if not SITEMAP.is_file():
         raise SystemExit(f"missing sitemap: {SITEMAP}")
     text = SITEMAP.read_text(encoding="utf-8")
-    index_lastmod = articles[0].iso_date if articles else SECTION_INTRODUCED
+    index_lastmod = (
+        max(article.modified for article in articles).isoformat()
+        if articles
+        else SECTION_INTRODUCED
+    )
     entries = [(f"{SITE}/writing/", index_lastmod)]
-    entries.extend((article.url, article.iso_date) for article in articles)
+    entries.extend((article.url, article.iso_modified) for article in articles)
     wanted = {loc: url_block(loc, lastmod) for loc, lastmod in entries}
     seen: set[str] = set()
 
@@ -975,8 +1111,12 @@ def check_outputs(articles: list[Article]) -> None:
     if articles:
         if "First articles coming soon." in index:
             raise SystemExit("index still shows the empty state")
-    elif "First articles coming soon." not in index:
-        raise SystemExit("empty index is missing its empty state")
+    elif "First articles coming soon." not in index or "time-series forecasting" not in index:
+        raise SystemExit("empty index is missing its description")
+    if "noindex" in index.lower() or 'rel="alternate" hreflang' in index:
+        raise SystemExit("writing index must stay indexable and English-only")
+    if '"@type": "CollectionPage"' not in index:
+        raise SystemExit("writing index is missing CollectionPage JSON-LD")
     feed = (OUT / "feed.xml").read_text(encoding="utf-8")
     ET.fromstring(feed.encode("utf-8"))
     ET.parse(SITEMAP)
@@ -988,9 +1128,21 @@ def check_outputs(articles: list[Article]) -> None:
         page = (OUT / f"{article.slug}.html").read_text(encoding="utf-8")
         if article.url not in page:
             raise SystemExit(f"{article.slug}: canonical URL missing")
-        if '"@type": "Article"' not in page:
-            raise SystemExit(f"{article.slug}: Article JSON-LD missing")
+        if '"@type": "BlogPosting"' not in page:
+            raise SystemExit(f"{article.slug}: BlogPosting JSON-LD missing")
+        if f'"dateModified": "{article.iso_modified}"' not in page:
+            raise SystemExit(f"{article.slug}: dateModified missing")
+        if 'rel="alternate" hreflang' in page:
+            raise SystemExit(f"{article.slug}: writing pages stay English-only, without hreflang")
+        if 'href="/"' not in page or 'href="/writing/"' not in page:
+            raise SystemExit(f"{article.slug}: missing a link home or back to /writing/")
     check_home_and_nav(articles)
+    check_robots()
+    if RSS_LINK not in (ROOT / "index.html").read_text(encoding="utf-8"):
+        raise SystemExit("index.html is missing the writing RSS link")
+    if RSS_LINK not in (ROOT / "de.html").read_text(encoding="utf-8"):
+        raise SystemExit("de.html is missing the writing RSS link")
+    check_site_links()
 
 
 def check_home_and_nav(articles: list[Article]) -> None:
@@ -1039,6 +1191,70 @@ def check_home_and_nav(articles: list[Article]) -> None:
             raise SystemExit(f"{path}: nav href is not {href}")
         if text.count("data-writing-nav") != 1:
             raise SystemExit(f"{path}: expected one data-writing-nav marker")
+
+
+def check_robots() -> None:
+    text = (ROOT / "robots.txt").read_text(encoding="utf-8")
+    if "Sitemap: https://timursalakhetdinov.com/sitemap.xml" not in text:
+        raise SystemExit("robots.txt is missing the sitemap line")
+    for line in text.splitlines():
+        stripped = line.split("#", 1)[0].strip().lower()
+        if stripped.startswith("disallow:") and "/writing" in stripped:
+            raise SystemExit("robots.txt blocks /writing/")
+
+
+def check_site_links() -> None:
+    pages = [
+        path
+        for path in ROOT.rglob("*.html")
+        if ".git" not in path.parts and "assets" not in path.parts
+    ]
+    for path in pages:
+        check_page_links(path)
+
+
+def check_page_links(path: Path) -> None:
+    parser = _LinkParser()
+    parser.feed(path.read_text(encoding="utf-8"))
+    for url in parser.urls:
+        split = urlsplit(url)
+        if split.scheme in {"mailto", "javascript", "data", "tel"}:
+            continue
+        if not url or url.startswith(("mailto:", "javascript:", "data:", "tel:")):
+            continue
+        if split.scheme in {"http", "https"} and not url.startswith(SITE):
+            continue
+        target = resolve_local_url(path, url) if split.path or not split.fragment else path
+        if split.scheme in {"http", "https"} and url.startswith(SITE):
+            target = map_site_path(unquote(split.path))
+        elif url.startswith("/"):
+            target = map_site_path(unquote(split.path))
+        elif split.path:
+            target = (path.parent / unquote(split.path)).resolve()
+        else:
+            target = path
+        if target is None:
+            continue
+        if not target.exists():
+            raise SystemExit(f"{path}: broken link {url} -> {target}")
+        if not split.fragment or target.suffix.lower() not in {".html", ".htm"}:
+            continue
+        text = target.read_text(encoding="utf-8")
+        if split.fragment == "writing":
+            if not writing_section_visible(text):
+                raise SystemExit(f"{path}: {url} points at #writing while that block is hidden")
+            continue
+        if f'id="{split.fragment}"' not in text and f"id='{split.fragment}'" not in text:
+            raise SystemExit(f"{path}: {url} has no matching id on {target}")
+
+
+def writing_section_visible(text: str) -> bool:
+    for match in re.finditer(r"<section\b[^>]*>", text, re.I):
+        tag = match.group(0)
+        if not re.search(r'\bid\s*=\s*["\']writing["\']', tag):
+            continue
+        return not re.search(r"\bhidden\b", tag)
+    return False
 
 
 def check_html_links(path: Path) -> None:

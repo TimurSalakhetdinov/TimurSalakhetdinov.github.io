@@ -25,6 +25,9 @@ tags:
   - agents
 og_image: /images/og-cover-v5.jpg
 substack_url: https://example.substack.com/p/article-title
+updated: 2026-10-26
+related_projects:
+  - /projects/text-informed-forecasting.html
 ---
 ```
 
@@ -37,6 +40,8 @@ substack_url: https://example.substack.com/p/article-title
 | `tags` | yes | YAML list. May be empty. |
 | `og_image` | no | Absolute `https` URL or a site path such as `/images/og-cover-v5.jpg`. If omitted, the site preview image is used. |
 | `substack_url` | no | `http` or `https` URL. Adds an “Also on Substack” link. |
+| `updated` | no | `YYYY-MM-DD`. Used as `dateModified` and as the sitemap `lastmod`. Falls back to `date`. |
+| `related_projects` | no | YAML list of project page paths, such as `/projects/text-informed-forecasting.html`. Rendered as “Related projects”. |
 
 Unknown keys are a build error, so a typo is not silently dropped.
 
