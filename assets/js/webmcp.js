@@ -27,7 +27,7 @@
     profile: {
       name: 'Timur Salakhetdinov',
       headline: 'Data Scientist & Data Analyst in Germany (Berlin · Hamburg · Munich)',
-      summary: 'Data Scientist & Data Analyst specialising in analytics engineering, foundation model forecasting, and LLM agent systems. Currently a Working Student in Analytics at InnoGames in Hamburg, testing Microsoft Fabric for analytics workflows, plus funnel and A/B-test analysis. In parallel, my company project and M.Sc. thesis at Leuphana University forecasts each game\'s daily net revenue over a 90-day horizon as daily active users times revenue per daily active user, using two frozen foundation models (TabPFN-TS and Chronos-2) with calendar features and no task-specific training, and tests agent-compiled planning-text covariates against a shuffled-text placebo. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.',
+      summary: 'Data Scientist & Data Analyst specialising in analytics engineering, foundation model forecasting, and LLM agent systems. At InnoGames, my core work centers on end-to-end Power BI data modeling, reporting, and migrating analytics across six games to Microsoft Fabric, augmented by a Claude Code multi-agent toolkit for automated PBIP/TMDL report authoring. Currently testing Microsoft Fabric for analytics workflows. In parallel, my company project and M.Sc. thesis at Leuphana University forecasts each game\'s daily net revenue over a 90-day horizon as daily active users times revenue per daily active user, using two frozen foundation models (TabPFN-TS and Chronos-2) with calendar features and no task-specific training, and tests agent-compiled planning-text covariates against a shuffled-text placebo. I bring ten years of analytics experience across gaming, telecommunications, finance, and insurance.',
       currentRole: 'Working Student, Analytics at InnoGames (Hamburg, hybrid), since November 2025',
       education: 'M.Sc. Management & Data Science, Leuphana Universität Lüneburg (2024–27, expected March 2027), GPA 1.9 (German scale, 1.0 = best), Deutschlandstipendium scholar',
       availability: 'Available for full-time Data Scientist or Data Analyst roles in Germany from April 2027',
@@ -106,7 +106,7 @@
         organisation: 'InnoGames',
         location: 'Hamburg, hybrid',
         type: 'Part-time',
-        description: 'Testing Microsoft Fabric for analytics workflows, plus funnel and A/B-test analysis.'
+        description: 'Frozen TabPFN-TS and Chronos-2 net revenue forecasts with agent-compiled text covariates; multi-agent Claude Code toolkit with a custom MCP server for building and publishing Power BI models and reports in Fabric; Power BI dashboards and an onboarding A/B test with churn analysis in StarRocks; migration of daily reporting to Microsoft Fabric for six major games. Currently testing Microsoft Fabric for analytics workflows.'
       },
       {
         period: '2024–27',
@@ -194,9 +194,9 @@
       {
         id: 'P-007',
         slug: null,
-        title: 'One-off multi-agent LLM toolkit',
-        description: 'Built a one-off multi-agent LLM toolkit (MCP) to speed up reporting work.',
-        tech: ['MCP', 'Multi-Agent', 'LLM', 'Microsoft Fabric / Power BI'],
+        title: 'Agentic toolkit for Power BI report changes',
+        description: 'Multi-agent Claude Code toolkit used across the analytics team, planning, implementing, and verifying Power BI dashboard changes in PBIP/TMDL without step-by-step human input. In daily use; two-person collaboration.',
+        tech: ['Claude Code', 'Multi-Agent', 'PBIP / TMDL', 'Power BI'],
         year: 2026
       },
       {
@@ -332,7 +332,7 @@
 
   safeRegister({
     name: 'get_experience',
-    description: "Get Timur Salakhetdinov's work history and education in reverse-chronological-ish order as listed on the site, including organisation, title, dates, location, type, and a short description for each role or degree. Use this when a recruiter, hiring agent, or ATS/CV-screening tool is building a candidate profile, or when anyone wants to understand his career background in analytics and data science.",
+    description: "Get Timur Salakhetdinov's work history and education in reverse-chronological-ish order as listed on the site, including organisation, title, dates, location, type, and a short description for each role or degree. Use this when a recruiter, hiring agent, or ATS/CV-screening tool is building a candidate profile, or when anyone wants to understand his career background in analytics, data science, and AI engineering.",
     inputSchema: { type: 'object', properties: {} },
     annotations: { readOnlyHint: true },
     execute: function () {
