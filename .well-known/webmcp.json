@@ -16,7 +16,7 @@
     },
     {
       "name": "get_experience",
-      "description": "Get Timur Salakhetdinov's work history and education as listed on the site, including organisation, title, dates, location, type, and a short description for each role or degree. Use this when a recruiter, hiring agent, or ATS/CV-screening tool is building a candidate profile, or when anyone wants to understand his career background in analytics, data science, and AI engineering.",
+      "description": "Get Timur Salakhetdinov's work history and education as listed on the site, including organisation, title, dates, location, type, and a short description for each role or degree. Use this when a recruiter, hiring agent, or ATS/CV-screening tool is building a candidate profile, or when anyone wants to understand his career background in analytics and data science.",
       "inputSchema": { "type": "object", "properties": {} },
       "annotations": { "readOnlyHint": true }
     },

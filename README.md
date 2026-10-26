@@ -4,7 +4,7 @@ Personal portfolio site live at [timursalakhetdinov.com](https://timursalakhetdi
 
 ## About
 
-Data Scientist & Data Analyst specialising in LLM agent systems for analytics workflows. At InnoGames I develop agent-based tools for implementing and validating Power BI report changes and build time-series forecasting workflows with two frozen foundation models, TabPFN-TS and Chronos-2. That company project is also my M.Sc. thesis at Leuphana University: daily net revenue over a 90-day horizon, with agent-compiled planning-text covariates tested against a shuffled-text placebo. The held-out evaluation is pending. I also contribute to analytics infrastructure, drawing on ten years of experience across telecommunications, finance, insurance, and gaming.
+Data Scientist & Data Analyst specialising in LLM agent systems for analytics workflows. Currently a Working Student in Analytics at InnoGames in Hamburg, testing Microsoft Fabric for analytics workflows, plus funnel and A/B-test analysis. In parallel, the company project is also my M.Sc. thesis at Leuphana University: daily net revenue over a 90-day horizon, with agent-compiled planning-text covariates tested against a shuffled-text placebo. The held-out evaluation is pending. I bring ten years of experience across telecommunications, finance, insurance, and gaming.
 
 M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to Mar 2027 (expected), GPA 1.9 (German scale, 1.0 = best), Deutschlandstipendium scholar. Available full time in Germany from April 2027.
 
@@ -12,7 +12,7 @@ M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to 
 
 | Project | Description |
 |---|---|
-| Power BI agent toolkit | Multi-agent Claude Code toolkit that plans, implements, and validates Power BI dashboard changes (PBIP/TMDL) without step-by-step human input |
+| One-off multi-agent LLM toolkit | Built a one-off multi-agent LLM toolkit (MCP) to speed up reporting work |
 | [ChefTreff AI Hackathon 2025](https://github.com/TimurSalakhetdinov/Hackathon-2025) | Computer vision app to identify broken objects |
 | [Pareto/NBD Model](https://github.com/TimurSalakhetdinov/Abe_2009_model_implementation) | Hierarchical Bayesian Pareto/NBD model (Abe 2009) on CDNOW dataset |
 | [Applied Statistical Analysis](https://github.com/TimurSalakhetdinov/Applied-Statistical-Analysis) | Bayesian inference & time series modeling with PyMC |
@@ -24,13 +24,13 @@ M.Sc. Management & Data Science at Leuphana Universität Lüneburg, Oct 2024 to 
 
 **Languages:** Python (NumPy, Pandas, Scikit-Learn) · SQL (MS SQL Server, Hive, StarRocks)
 
-**LLM & Agents:** LangGraph · Claude Code (agents, skills, plugins) · MCP · tool calling · RAG
+**LLM & Agents:** LangGraph · MCP · tool calling · RAG · coding agents
 
 **ML & Forecasting:** TabPFN · Chronos · TimesFM · LightGBM · PyMC · PyTorch
 
 **Methods:** time-series forecasting · A/B testing · cohort and churn analysis · customer segmentation
 
-**Tools & Platforms:** Microsoft Fabric · Power BI · Apache Superset · Docker · Git
+**Tools & Platforms:** Microsoft Fabric / Power BI · Apache Superset · Docker · Git
 
 ## Contact
 
