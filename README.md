@@ -51,4 +51,4 @@ python3 -m pip install -r scripts/requirements-writing.txt
 python3 scripts/build_writing.py
 ```
 
-The script writes `writing/index.html`, each `writing/<slug>.html`, and `writing/feed.xml`, and updates the `/writing/` entries in `sitemap.xml`. The format is documented in `content/writing/README.md`. Run the script again after edits; a second run with the same sources does not change the output.
+The script writes `writing/index.html`, each `writing/<slug>.html`, and `writing/feed.xml`, and updates the `/writing/` entries in `sitemap.xml`. It also refreshes the homepage Writing block in `index.html` and `de.html` (between the `writing:latest` markers) and the `data-writing-nav` link on every page that shares the nav. With no published articles that block stays hidden and the nav link points at `/writing/`. The first article shows the three newest cards (`HOME_LATEST_COUNT` in `scripts/build_writing.py`) and points the nav at the block. The format is documented in `content/writing/README.md`. Run the script again after edits; a second run with the same sources does not change the output.

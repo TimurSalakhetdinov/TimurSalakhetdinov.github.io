@@ -57,6 +57,6 @@ python3 -m pip install -r scripts/requirements-writing.txt
 python3 scripts/build_writing.py
 ```
 
-The script writes `writing/index.html`, one `writing/<slug>.html` per article, `writing/feed.xml`, and the Pygments stylesheet `assets/css/pygments.css`. It inserts or updates only the `/writing/` entries in `sitemap.xml`. Running it again with the same sources changes nothing.
+The script writes `writing/index.html`, one `writing/<slug>.html` per article, `writing/feed.xml`, and the Pygments stylesheet `assets/css/pygments.css`. It inserts or updates only the `/writing/` entries in `sitemap.xml`. It also fills the homepage Writing block in `index.html` and `de.html`. That block stays hidden until an article is published, then shows the newest three (`HOME_LATEST_COUNT`) as cards and points the nav link at `#writing`. Running it again with the same sources changes nothing.
 
 `writing/` is generated. Edit the Markdown sources, then run the script again.

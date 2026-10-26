@@ -675,23 +675,34 @@
 
     /* ── Writing ── */
     .writing { padding: 70px 64px; border-bottom: 1px solid var(--rule); }
-    .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; min-height: 280px; }
-    .post-link {
-      display: block; padding: 24px 0;
-      border-top: 1px solid var(--rule);
+    .writing-grid {
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .writing-grid[data-count="1"] { grid-template-columns: minmax(0, 1fr); }
+    .writing-grid[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .writing-card {
+      display: flex; flex-direction: column; gap: 12px;
+      min-width: 0; padding: 24px;
+      border: 1px solid var(--rule); background: var(--paper);
       text-decoration: none; color: inherit;
-      transition: opacity .15s;
     }
-    .post-link:hover { opacity: .75; }
-    .post-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-    .post-tag {
-      font-family: var(--mono); font-size: 11px; color: var(--accent);
-      letter-spacing: .05em; padding: 3px 8px;
-      border: 1px solid var(--accent); border-radius: 2px;
+    .writing-card:hover { border-color: var(--rule-strong); }
+    .writing-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .writing-card time {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .05em;
+      color: var(--ink-muted); font-variant-numeric: tabular-nums;
     }
-    .post-date { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); letter-spacing: .05em; font-variant-numeric: tabular-nums; }
-    .post-h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
-    .posts-rule { grid-column: 1/-1; border-top: 1px solid var(--rule); }
+    .writing-card h3 {
+      font-family: var(--serif); font-weight: 400; font-size: 22px;
+      line-height: 1.25; letter-spacing: -.01em; color: var(--ink);
+    }
+    .writing-card p {
+      font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .writing-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .writing-more { margin-top: 32px; }
 
     /* ── Contact ── */
     .contact { padding: 80px 64px 60px; background: var(--paper); }
@@ -853,7 +864,17 @@
       .proj-methods { flex-direction: row; flex-wrap: wrap; }
       .proj-note    { display: none; }
 
-      .posts-grid   { grid-template-columns: 1fr; }
+      .writing-grid,
+      .writing-grid[data-count="1"],
+      .writing-grid[data-count="2"] {
+        display: flex; gap: 12px;
+        overflow-x: auto; scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin; scrollbar-color: var(--rule-strong) transparent;
+      }
+      .writing-card { flex: 0 0 86%; scroll-snap-align: start; }
+      .writing-grid[data-count="1"] .writing-card { flex-basis: 100%; }
+
       .contact-h2   { font-size: 40px; }
       .footer { flex-direction: column; gap: 10px; }
     }
@@ -935,7 +956,7 @@
       <li><a href="#about"><span class="nav-num">§01</span><span>Über mich</span></a></li>
       <li><a href="#skills"><span class="nav-num">§02</span><span>Kenntnisse</span></a></li>
       <li><a href="#work"><span class="nav-num">§03</span><span>Projekte</span></a></li>
-      <li><a href="/writing/"><span class="nav-num">§04</span><span>Writing</span></a></li>
+      <li><a href="/writing/" data-writing-nav><span class="nav-num">§04</span><span>Writing</span></a></li>
       <li><a href="#contact"><span class="nav-num">§05</span><span>Kontakt</span></a></li>
     </ul>
   </nav>
@@ -1398,21 +1419,9 @@
   </div>
 </section>
 
-<!-- Writing -->
-<section class="writing" id="writing" hidden>
-  <div class="sec-head fi">
-    <div class="sec-head-l">
-      <span class="sec-num">§ 04</span>
-      <span class="sec-title">Artikel</span>
-      <h2 class="sec-h2">Beiträge zu LLM-Agentensystemen und angewandtem maschinellem Lernen</h2>
-    </div>
-    <span class="sec-right">Neuestes von medium.com/@timursalakhetdinov</span>
-  </div>
-
-  <div class="posts-grid fi" id="medium-posts">
-    <div class="posts-rule"></div>
-  </div>
-</section>
+<!-- writing:latest:start -->
+<section class="writing" id="writing" hidden></section>
+<!-- writing:latest:end -->
 
 <!-- Contact -->
 <section class="contact" id="contact">
@@ -1516,6 +1525,5 @@
   }
 </script>
 
-<!-- Medium feed disabled while the Writing section is hidden. -->
 </body>
 </html>

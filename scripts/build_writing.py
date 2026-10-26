@@ -4,8 +4,9 @@
 Reads every Markdown file in content/writing/ except README.md and names that
 start with an underscore. Writes writing/index.html, writing/<slug>.html,
 writing/feed.xml, assets/css/pygments.css, and inserts or updates only the
-/writing/ entries in sitemap.xml. A second run with the same sources writes
-identical bytes.
+/writing/ entries in sitemap.xml. Refreshes the homepage Writing block in
+index.html and de.html, and the data-writing-nav href on every page that
+carries the nav. A second run with the same sources writes identical bytes.
 """
 
 from __future__ import annotations
@@ -45,6 +46,8 @@ DEFAULT_OG_WIDTH = "2400"
 DEFAULT_OG_HEIGHT = "1260"
 # lastmod for /writing/ when no article has been published yet.
 SECTION_INTRODUCED = "2026-10-26"
+# Newest published articles rendered on the homepages.
+HOME_LATEST_COUNT = 3
 WORDS_PER_MINUTE = 220
 AUTHOR = "Timur Salakhetdinov"
 
@@ -70,6 +73,19 @@ MONTHS = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
 ]
+DE_MONTHS = [
+    "Januar", "Februar", "März", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Dezember",
+]
+HOME_BLOCK_RE = re.compile(
+    r"<!-- writing:latest:start -->.*?<!-- writing:latest:end -->",
+    re.S,
+)
+NAV_ANCHOR_RE = re.compile(r"<a\b[^>]*\bdata-writing-nav\b[^>]*>")
+HOME_PAGES = (
+    (ROOT / "index.html", "en"),
+    (ROOT / "de.html", "de"),
+)
 WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 RSS_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -141,6 +157,8 @@ def main() -> None:
     write_if_changed(OUT / "feed.xml", render_feed(articles))
     remove_stale(articles)
     update_sitemap(articles)
+    update_home_latest(articles)
+    update_nav_hrefs(bool(articles))
     check_outputs(articles)
     print(f"writing: {len(articles)} article(s)")
 
@@ -549,6 +567,7 @@ def render_index(articles: list[Article]) -> str:
         main=main,
         extra_head="",
         extra_scripts="",
+        has_articles=bool(articles),
     )
 
 
@@ -648,6 +667,7 @@ def render_article(article: Article) -> str:
         image_meta=image_meta,
         published=article.iso_date,
         writing_current=False,
+        has_articles=True,
         json_ld=[article_ld, breadcrumb],
         main=main,
         extra_head=extra_head,
@@ -669,11 +689,15 @@ def render_page(
     extra_head: str,
     extra_scripts: str,
     writing_current: bool,
+    has_articles: bool,
     og_alt: str = DEFAULT_OG_ALT,
     image_meta: str = "",
     published: str | None = None,
 ) -> str:
-    current = ' aria-current="page"' if writing_current else ""
+    # Writing pages use the English project-page form: /#writing once the
+    # homepage block exists, /writing/ while it is hidden.
+    writing_href = "/#writing" if has_articles else "/writing/"
+    current = ' aria-current="page"' if writing_current and not has_articles else ""
     published_meta = ""
     if published:
         published_meta = f'\n  <meta property="article:published_time" content="{escape(published)}">'
@@ -735,7 +759,7 @@ def render_page(
       <li><a href="/#about"><span class="nav-num">§01</span><span>About</span></a></li>
       <li><a href="/#skills"><span class="nav-num">§02</span><span>Skills</span></a></li>
       <li><a href="/projects/"><span class="nav-num">§03</span><span>Projects</span></a></li>
-      <li><a href="/writing/"{current}><span class="nav-num">§04</span><span>Writing</span></a></li>
+      <li><a href="{writing_href}" data-writing-nav{current}><span class="nav-num">§04</span><span>Writing</span></a></li>
       <li><a href="/#contact"><span class="nav-num">§05</span><span>Contact</span></a></li>
     </ul>
   </nav>
@@ -864,6 +888,86 @@ def write_pygments_css() -> None:
     write_if_changed(PYGMENTS_CSS, text)
 
 
+def update_home_latest(articles: list[Article]) -> None:
+    latest = articles[:HOME_LATEST_COUNT]
+    for path, lang in HOME_PAGES:
+        text = path.read_text(encoding="utf-8")
+        if len(HOME_BLOCK_RE.findall(text)) != 1:
+            raise SystemExit(f"{path}: expected one writing:latest block")
+        block = render_home_block(latest, lang)
+        updated = HOME_BLOCK_RE.sub(lambda _match: block, text, count=1)
+        write_if_changed(path, updated)
+
+
+def render_home_block(articles: list[Article], lang: str) -> str:
+    if not articles:
+        inner = '<section class="writing" id="writing" hidden></section>'
+    else:
+        cards = "\n".join(render_home_card(article, lang) for article in articles)
+        more = "Alle Artikel" if lang == "de" else "All articles"
+        inner = f"""<section class="writing" id="writing">
+  <div class="sec-head">
+    <div class="sec-head-l">
+      <span class="sec-num">§ 04</span>
+      <span class="sec-title">Writing</span>
+    </div>
+  </div>
+  <div class="writing-grid" data-count="{len(articles)}">
+{cards}
+  </div>
+  <div class="writing-more">
+    <a href="/writing/" class="btn-repos">{more}</a>
+  </div>
+</section>"""
+    return f"<!-- writing:latest:start -->\n{inner}\n<!-- writing:latest:end -->"
+
+
+def render_home_card(article: Article, lang: str) -> str:
+    shown = format_date_de(article.date) if lang == "de" else format_date(article.date)
+    tags = ""
+    if article.tags:
+        labels = "".join(
+            f'<span class="method-tag">{escape(tag)}</span>' for tag in article.tags[:2]
+        )
+        tags = f'\n      <div class="writing-card-tags">{labels}</div>'
+    return f"""    <a class="writing-card" href="/writing/{escape(article.slug)}.html">
+      <time datetime="{article.iso_date}">{escape(shown)}</time>
+      <h3>{escape(article.title)}</h3>
+      <p>{escape(article.description)}</p>{tags}
+    </a>"""
+
+
+def update_nav_hrefs(has_articles: bool) -> None:
+    for path in nav_pages():
+        text = path.read_text(encoding="utf-8")
+        found = NAV_ANCHOR_RE.findall(text)
+        if len(found) != 1:
+            raise SystemExit(f"{path}: expected one data-writing-nav link, found {len(found)}")
+        href = writing_nav_href(path, has_articles)
+        current = ' aria-current="page"' if href == "/writing/" and path == OUT / "index.html" else ""
+        replacement = f'<a href="{href}" data-writing-nav{current}>'
+        updated = NAV_ANCHOR_RE.sub(replacement, text, count=1)
+        write_if_changed(path, updated)
+
+
+def writing_nav_href(path: Path, has_articles: bool) -> str:
+    if not has_articles:
+        return "/writing/"
+    rel = path.resolve().relative_to(ROOT.resolve()).as_posix()
+    if rel in {"index.html", "de.html"}:
+        return "#writing"
+    if rel == "projects/de.html" or (rel.startswith("projects/") and rel.endswith("-de.html")):
+        return "/de#writing"
+    return "/#writing"
+
+
+def nav_pages() -> list[Path]:
+    pages = [ROOT / "index.html", ROOT / "de.html"]
+    pages.extend(sorted((ROOT / "projects").glob("*.html")))
+    pages.extend(sorted(OUT.glob("*.html")))
+    return pages
+
+
 def check_outputs(articles: list[Article]) -> None:
     if (OUT / "_example.html").exists():
         raise SystemExit("draft _example.md was published")
@@ -886,6 +990,55 @@ def check_outputs(articles: list[Article]) -> None:
             raise SystemExit(f"{article.slug}: canonical URL missing")
         if '"@type": "Article"' not in page:
             raise SystemExit(f"{article.slug}: Article JSON-LD missing")
+    check_home_and_nav(articles)
+
+
+def check_home_and_nav(articles: list[Article]) -> None:
+    latest = articles[:HOME_LATEST_COUNT]
+    for path, lang in HOME_PAGES:
+        text = path.read_text(encoding="utf-8")
+        match = HOME_BLOCK_RE.search(text)
+        if match is None:
+            raise SystemExit(f"{path}: writing:latest block missing")
+        block = match.group(0)
+        if "medium-posts" in block or "medium.com" in block:
+            raise SystemExit(f"{path}: Medium feed markup is still in the Writing block")
+        if latest:
+            if 'id="writing" hidden' in block:
+                raise SystemExit(f"{path}: Writing block is hidden while articles exist")
+            if f'data-count="{len(latest)}"' not in block:
+                raise SystemExit(f"{path}: Writing block card count is not {len(latest)}")
+            more = "Alle Artikel" if lang == "de" else "All articles"
+            if f'<a href="/writing/" class="btn-repos">{more}</a>' not in block:
+                raise SystemExit(f"{path}: missing the {more} link")
+            if block.count('class="writing-card"') != len(latest):
+                raise SystemExit(f"{path}: expected {len(latest)} homepage cards")
+            for article in latest:
+                shown = format_date_de(article.date) if lang == "de" else format_date(article.date)
+                if f'/writing/{article.slug}.html' not in block or shown not in block:
+                    raise SystemExit(f"{path}: missing homepage card for {article.slug}")
+                expected_tags = min(2, len(article.tags))
+                card = block.split(f'/writing/{article.slug}.html', 1)[1].split("</a>", 1)[0]
+                if card.count('class="method-tag"') != expected_tags:
+                    raise SystemExit(f"{path}: {article.slug} should show {expected_tags} tags")
+            for article in articles[HOME_LATEST_COUNT:]:
+                if f'/writing/{article.slug}.html' in block:
+                    raise SystemExit(f"{path}: homepage shows more than {HOME_LATEST_COUNT} articles")
+        else:
+            if 'id="writing" hidden' not in block:
+                raise SystemExit(f"{path}: empty Writing block must stay hidden")
+            if "writing-card" in block or "All articles" in block or "Alle Artikel" in block:
+                raise SystemExit(f"{path}: empty Writing block should not list articles")
+    has_articles = bool(articles)
+    for path in nav_pages():
+        href = writing_nav_href(path, has_articles)
+        text = path.read_text(encoding="utf-8")
+        current = ' aria-current="page"' if href == "/writing/" and path == OUT / "index.html" else ""
+        expected = f'<a href="{href}" data-writing-nav{current}>'
+        if expected not in text:
+            raise SystemExit(f"{path}: nav href is not {href}")
+        if text.count("data-writing-nav") != 1:
+            raise SystemExit(f"{path}: expected one data-writing-nav marker")
 
 
 def check_html_links(path: Path) -> None:
@@ -987,6 +1140,10 @@ def json_script(data: dict[str, object]) -> str:
 
 def format_date(value: date) -> str:
     return f"{value.day} {MONTHS[value.month - 1]} {value.year}"
+
+
+def format_date_de(value: date) -> str:
+    return f"{value.day}. {DE_MONTHS[value.month - 1]} {value.year}"
 
 
 def rfc822(value: date) -> str:
