@@ -31,3 +31,15 @@ header.nav{position:sticky;top:0;z-index:50;max-width:none;margin:0;display:grid
 @media(max-width:1040px){.nav-status{display:none}}
 @media(max-width:860px){header.nav{padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap}.nav-toggle{display:inline-flex;align-items:center;gap:7px;background:#EBEBE5;border:1px solid #CFCFC7;padding:6px 12px;font:11px Mono,monospace;letter-spacing:.05em;text-transform:uppercase;color:#15171A;cursor:pointer;border-radius:2px;transition:background .15s,border-color .15s}.nav-toggle:hover{background:#F4F4F1;border-color:#9C9C92}.nav-toggle:focus-visible{outline:2px solid #075593;outline-offset:2px}.nav-toggle-icon{display:inline-flex;flex-direction:column;justify-content:center;gap:3px;width:12px;height:10px}.nav-toggle-icon span{display:block;height:1.5px;background:currentColor;transition:transform .2s ease,opacity .2s ease}.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:first-child{transform:translateY(2.25px) rotate(45deg)}.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:last-child{transform:translateY(-2.25px) rotate(-45deg)}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#F4F4F1;border-bottom:1px solid #CFCFC7;padding:18px 24px 22px;flex-direction:column;gap:14px;box-shadow:0 12px 28px rgba(0,0,0,.08)}.nav-links.is-open{display:flex}.nav-links li a{font-size:14px;padding:6px 0}}
 @media(max-width:540px){header.nav{padding:14px 20px}}
+.flow-steps.steps-5{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.flow-steps.steps-5 .flow-step:not(:last-child):after{right:-12px;width:8px}
+@media(max-width:900px){.flow-steps.steps-5{grid-template-columns:1fr;gap:10px}.flow-steps.steps-5 .flow-step:not(:last-child):after{display:none}}
+.model-table{width:100%;max-width:650px;border-collapse:collapse;margin:0 0 16px;font-size:15px}
+.model-table th,.model-table td{border-bottom:1px solid #d1d4ce;padding:10px 14px 10px 0;text-align:left;vertical-align:top}
+.model-table th{font:12px/1.4 Mono,monospace;font-weight:400;color:#626b71}
+.video-embed{margin:0 0 16px;max-width:650px}
+.video-embed iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#202426}
+.video-embed figcaption{margin-top:8px;font-size:14px;line-height:1.5}
+.demo-note{margin:0}
+.link-list{margin:0;padding-left:1.2em;max-width:650px}
+.link-list li+li{margin-top:8px}
