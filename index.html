@@ -657,8 +657,6 @@
     }
     .proj-row:last-child { border-bottom: none; }
     .proj-row:hover { background: var(--paper); }
-    .proj-table-lead { margin: 0 0 56px; }
-    .proj-table-lead .proj-status { margin: 0 0 8px; letter-spacing: .03em; }
     .proj-id { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 500; }
     .proj-status { font-family: var(--mono); font-size: 10px; color: var(--ink-muted); margin-top: 4px; letter-spacing: .05em; }
     .proj-thumb { width: 100%; aspect-ratio: 8 / 5; background: var(--paper); border: 1px solid var(--rule); overflow: hidden; }
@@ -763,7 +761,6 @@
     @media (min-width: 901px) and (max-width: 1180px) {
       .proj-thead { display: none; }
       .proj-row { grid-template-columns: 144px minmax(0, 1fr); gap: 16px 24px; }
-      .proj-table-lead .proj-row { grid-template-columns: 144px minmax(0, 1fr); }
       .proj-row > :nth-child(1) { grid-column: 1; grid-row: 1; }
       .proj-row > :nth-child(2) { grid-column: 1; grid-row: 2; }
       .proj-row > :nth-child(3) { grid-column: 2; grid-row: 1 / span 2; }
@@ -891,7 +888,6 @@
 
       .proj-thead   { display: none; }
       .proj-row     { grid-template-columns: 1fr; gap: 16px; }
-      .proj-table-lead .proj-row { grid-template-columns: 1fr; }
       .proj-thumb   { max-width: 240px; }
       .proj-yr-col  { text-align: left; }
       .proj-methods { flex-direction: row; flex-wrap: wrap; }
@@ -1230,20 +1226,6 @@
     <p class="work-intro-p">My projects span LLM agent systems, time-series forecasting, Bayesian modelling, and knowledge-graph applications. They include a multi-agent toolkit used by an analytics team, a knowledge-graph question-answering system, a hierarchical Bayesian customer lifetime value model, and a multi-agent assistant for company founders.</p>
   </div>
 
-  <div class="proj-table proj-table-lead fi">
-    <a href="/projects/meta-game-onboarding-optimizer.html" class="proj-row">
-      <div><div class="proj-id">P-010</div></div>
-      <div class="proj-thumb proj-thumb-svg"><svg viewBox="0 0 240 150" style="width:100%;height:100%;display:block;" role="img" aria-label="Meta Game Onboarding Optimizer: agents that playtest onboarding"><rect width="240" height="150" fill="#F4F4F1"/><rect x="22" y="28" width="104" height="94" rx="4" fill="#FFFFFF" stroke="#9CA3A8" stroke-width="1.5"/><path d="M36 100C52 78 64 86 78 62C92 40 104 70 116 52" fill="none" stroke="#075593" stroke-width="3" stroke-linecap="round"/><circle cx="36" cy="100" r="4" fill="#075593"/><circle cx="116" cy="52" r="4" fill="#075593"/><g fill="#075593"><circle cx="164" cy="40" r="8"/><circle cx="198" cy="75" r="8"/><circle cx="164" cy="110" r="8"/></g><path d="M126 74H150M172 48V62M172 88V102" fill="none" stroke="#A8B6C1" stroke-width="1.5"/></svg></div>
-      <div>
-        <div class="proj-status">P-010 · 2026 Hackathon entry · Meta Global AI Developer Hackathon</div>
-        <h3 class="proj-h3">Meta Game Onboarding Optimizer: agents that playtest onboarding</h3>
-        <p class="proj-blurb">Meta Global AI Developer Hackathon (submitted): a closed loop where Muse playtester agents play a free-to-play browser game, an analyst ranks where new players get stuck, a designer proposes a config fix, and a human must approve before any A/B rerun.</p>
-        <div class="proj-methods"><span class="method-tag">Muse</span><span class="method-tag">SAM 3.1</span><span class="method-tag">Multi-agent</span><span class="method-tag">Playtesting</span></div>
-      </div>
-      <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Hackathon entry</div><div class="proj-link">View project →</div></div>
-    </a>
-  </div>
-
   <div class="featured featured-in-work fi">
   <div class="feat-head">
     <div class="feat-head-l">
@@ -1335,6 +1317,18 @@
     <div class="proj-thead">
       <span>ID</span><span>Preview</span><span>Title &amp; abstract</span><span>Year / Role</span>
     </div>
+
+    <a href="/projects/meta-game-onboarding-optimizer.html" class="proj-row">
+      <div><div class="proj-id">P-010</div></div>
+      <div class="proj-thumb proj-thumb-svg"><svg viewBox="0 0 240 150" style="width:100%;height:100%;display:block;" role="img" aria-label="Meta Game Onboarding Optimizer: agents that playtest onboarding"><rect width="240" height="150" fill="#F4F4F1"/><rect x="22" y="28" width="104" height="94" rx="4" fill="#FFFFFF" stroke="#9CA3A8" stroke-width="1.5"/><path d="M36 100C52 78 64 86 78 62C92 40 104 70 116 52" fill="none" stroke="#075593" stroke-width="3" stroke-linecap="round"/><circle cx="36" cy="100" r="4" fill="#075593"/><circle cx="116" cy="52" r="4" fill="#075593"/><g fill="#075593"><circle cx="164" cy="40" r="8"/><circle cx="198" cy="75" r="8"/><circle cx="164" cy="110" r="8"/></g><path d="M126 74H150M172 48V62M172 88V102" fill="none" stroke="#A8B6C1" stroke-width="1.5"/></svg></div>
+      <div>
+        <div class="proj-status">P-010 · 2026 Hackathon entry · Meta Global AI Developer Hackathon</div>
+        <h3 class="proj-h3">Meta Game Onboarding Optimizer: agents that playtest onboarding</h3>
+        <p class="proj-blurb">Meta Global AI Developer Hackathon (submitted): a closed loop where Muse playtester agents play a free-to-play browser game, an analyst ranks where new players get stuck, a designer proposes a config fix, and a human must approve before any A/B rerun.</p>
+        <div class="proj-methods"><span class="method-tag">Muse</span><span class="method-tag">SAM 3.1</span><span class="method-tag">Multi-agent</span><span class="method-tag">Playtesting</span></div>
+      </div>
+      <div class="proj-yr-col"><div class="proj-yr">2026</div><div class="proj-role">Hackathon entry</div><div class="proj-link">View project →</div></div>
+    </a>
 
     <a href="/projects/fuel-price-forecasting.html" class="proj-row">
       <div><div class="proj-id">P-009</div><div class="proj-status">Prior Labs</div></div>
