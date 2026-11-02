@@ -431,6 +431,32 @@
       font-family: var(--serif); font-size: 44px; font-weight: 400;
       color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums;
     }
+    .hero-stats > div {
+      min-width: 0; container-type: inline-size;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .stat-v.stat-v-long {
+      font-size: 13px; line-height: 1.15; letter-spacing: -0.02em;
+      overflow-wrap: break-word;
+    }
+    @container (min-width: 80px) {
+      .stat-v.stat-v-long { font-size: 14px; }
+    }
+    @container (min-width: 110px) {
+      .stat-v.stat-v-long { font-size: 16px; }
+    }
+    @container (min-width: 145px) {
+      .stat-v.stat-v-long { font-size: 18px; }
+    }
+    @container (min-width: 190px) {
+      .stat-v.stat-v-long { font-size: 22px; }
+    }
+    @container (min-width: 250px) {
+      .stat-v.stat-v-long { font-size: 26px; }
+    }
+    @container (min-width: 340px) {
+      .stat-v.stat-v-long { font-size: 32px; }
+    }
     .stat-l {
       font-family: var(--mono); font-size: 11px;
       letter-spacing: .05em; text-transform: uppercase;
@@ -988,7 +1014,7 @@
     <div><div class="mk">Standort</div><div class="mv">Hamburg, DE</div></div>
     <div><div class="mk">Zugehörigkeit</div><div class="mv">InnoGames · Leuphana Uni.</div></div>
     <div><div class="mk">Verfügbar</div><div class="mv">April 2027</div></div>
-    <div><div class="mk">Letzte Aktualisierung</div><div class="mv">26. Oktober 2026</div></div>
+    <div><div class="mk">Letzte Aktualisierung</div><div class="mv">2. November 2026</div></div>
   </div>
 
   <div class="hero-body">
@@ -996,12 +1022,12 @@
       <div class="hero-eyebrow">§ 00 · Zusammenfassung</div>
       <h1 class="hero-h1">Data Scientist &amp; Data Analyst – ich baue LLM-Agenten</h1>
       <p class="hero-bio">
-        Data Scientist &amp; Data Analyst mit Schwerpunkt auf Analytics Engineering, Zeitreihenprognosen mit Foundation-Modellen und LLM-Agentensystemen. Bei <a class="hl-link" href="https://www.innogames.com/" target="_blank" rel="noopener external"><span class="hl">InnoGames</span></a> liegt mein Hauptfokus auf durchgängiger Power-BI-Datenmodellierung und Reporting, ergänzt durch ein Claude-Code-Multi-Agenten-Toolkit zur automatisierten PBIP/TMDL-Berichtserstellung. Derzeit teste ich Microsoft Fabric für Analytics-Workflows. Parallel dazu prognostiziert mein Unternehmensprojekt, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, den täglichen Nettoumsatz jedes Spiels über einen Horizont von 90 Tagen als Produkt aus täglich aktiven Nutzern und Umsatz je täglich aktivem Nutzer, mit zwei eingefrorenen Foundation-Modellen (TabPFN-TS und Chronos-2), Kalendermerkmalen und ohne aufgabenspezifisches Training, und prüft agentenkompilierte Text-Kovariaten aus Planungsdokumenten gegen ein Placebo mit vertauschtem Text. Ich bringe zehn Jahre Analytics-Erfahrung aus Gaming, Telekommunikation, Finanzwesen und Versicherung mit.</p>
+        Data Scientist &amp; Data Analyst mit Schwerpunkt auf Analytics Engineering, Zeitreihenprognosen mit Foundation-Modellen und LLM-Agentensystemen. Bei <a class="hl-link" href="https://www.innogames.com/" target="_blank" rel="noopener external"><span class="hl">InnoGames</span></a> liegt mein Hauptfokus auf durchgängiger Power-BI-Datenmodellierung und Reporting, ergänzt durch ein Claude-Code-Multi-Agenten-Toolkit zur automatisierten PBIP/TMDL-Berichtserstellung. Ich habe einen manuellen Excel-Planungsprozess nach Microsoft Fabric migriert und dabei automatisierte Zeitreihenprognosen sowie ein Plan-Ist-Reporting in Power BI integriert. Parallel dazu prognostiziert mein Unternehmensprojekt, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, den täglichen Nettoumsatz jedes Spiels über einen Horizont von 90 Tagen als Produkt aus täglich aktiven Nutzern und Umsatz je täglich aktivem Nutzer, mit zwei eingefrorenen Foundation-Modellen (TabPFN-TS und Chronos-2), Kalendermerkmalen und ohne aufgabenspezifisches Training, und prüft agentenkompilierte Text-Kovariaten aus Planungsdokumenten gegen ein Placebo mit vertauschtem Text. Ich bringe zehn Jahre Analytics-Erfahrung aus Gaming, Telekommunikation, Finanzwesen und Versicherung mit.</p>
       <div class="hero-stats">
         <div><div class="stat-v">10</div><div class="stat-l">Jahre in Analytics</div></div>
         <div><div class="stat-v">CFA</div><div class="stat-l">Level I bestanden (2021)</div></div>
         <div><div class="stat-v">C1</div><div class="stat-l">Englisch (IELTS 8.0)</div></div>
-        <div><div class="stat-v">B2</div><div class="stat-l">Deutsch</div></div>
+        <div><div class="stat-v stat-v-long">B2 (C1-Kurs laufend)</div><div class="stat-l">Deutsch</div></div>
       </div>
     </div>
 
@@ -1042,9 +1068,9 @@
   <div class="about-body fi">
     <div>
       <p class="about-lead">Datenmodellierung, Power-BI-Analytics und Microsoft-Fabric-Pipelines, erweitert um LLM-Agentensysteme und Zeitreihenprognosen mit Foundation-Modellen.</p>
-      <p class="about-p">Bei InnoGames liegt mein Hauptfokus auf Business Intelligence und Data Engineering in Power BI und Microsoft Fabric. Ich entwerfe semantische Datenmodelle, entwickle umfassende Reportings und Dashboards für Spieler-Engagement und Monetarisierung für sechs Live-Spiele und führe A/B-Test- sowie Churn-Analysen durch. Um diesen Workflow zu beschleunigen und abzusichern, habe ich ein Claude-Code-Multi-Agenten-Toolkit für die automatisierte Erstellung und Pflege von PBIP/TMDL-Berichten mit Freigabe-, Validierungs- und Eskalationsmechanismen entwickelt. Derzeit teste ich Microsoft Fabric für Analytics-Workflows.</p>
+      <p class="about-p">Bei InnoGames liegt mein Hauptfokus auf Business Intelligence und Data Engineering in Power BI und Microsoft Fabric. Ich entwerfe semantische Datenmodelle, entwickle umfassende Reportings und Dashboards für Spieler-Engagement und Monetarisierung für sechs Live-Spiele und führe A/B-Test- sowie Churn-Analysen durch. Um diesen Workflow zu beschleunigen und abzusichern, habe ich ein Claude-Code-Multi-Agenten-Toolkit für die automatisierte Erstellung und Pflege von PBIP/TMDL-Berichten mit Freigabe-, Validierungs- und Eskalationsmechanismen entwickelt. Ich habe einen manuellen Excel-Planungsprozess nach Microsoft Fabric migriert und dabei automatisierte Zeitreihenprognosen (SARIMAX) sowie ein Plan-Ist-Reporting in Power BI integriert.</p>
       <p class="about-p">Parallel dazu prognostiziert mein Unternehmensprojekt, zugleich meine M.Sc.-Abschlussarbeit an der Leuphana Universität, den täglichen Nettoumsatz über einen Horizont von 90 Tagen aus täglich aktiven Nutzern und dem Umsatz je täglich aktivem Nutzer, mit zwei eingefrorenen Foundation-Modellen (TabPFN-TS und Chronos-2), Kalendermerkmalen und ohne aufgabenspezifisches Training, und prüft agentenkompilierte Text-Kovariaten aus Planungsdokumenten gegen ein Placebo mit vertauschtem Text.</p>
-      <p class="about-p">Derzeit schließe ich meinen M.Sc. in Management &amp; Data Science an der Leuphana Universität als Deutschlandstipendiat ab. Ab April 2027 stehe ich für Vollzeitstellen als Data Scientist oder Data Analyst in Deutschland zur Verfügung.</p>
+      <p class="about-p">Derzeit schließe ich meinen M.Sc. in Management &amp; Data Science an der Leuphana Universität als Deutschlandstipendiat ab. Ab April 2027 stehe ich in Deutschland für Vollzeitstellen als Data Scientist, Data Analyst oder AI Engineer zur Verfügung.</p>
     </div>
 
     <div class="cv-table">
@@ -1055,7 +1081,7 @@
         <div class="cv-y">Nov 2025 →</div>
         <div>
           <div class="cv-t">Werkstudent, Analytics · <a class="cv-link" href="https://www.innogames.com/" target="_blank" rel="noopener external">InnoGames</a></div>
-          <div class="cv-d">Hamburg, hybrid · Nettoumsatzprognosen mit eingefrorenem TabPFN-TS und Chronos-2 sowie agentenkompilierten Text-Kovariaten; Multi-Agenten-Toolkit für Claude Code mit eigenem MCP-Server zur Erstellung und Veröffentlichung von Power-BI-Modellen und -Berichten in Fabric; Power-BI-Dashboards sowie A/B-Test des Onboarding-Flows mit Churn-Analyse in StarRocks; derzeit Tests mit Microsoft Fabric für Analytics-Workflows</div>
+          <div class="cv-d">Hamburg, hybrid · Nettoumsatzprognosen mit eingefrorenem TabPFN-TS und Chronos-2 sowie agentenkompilierten Text-Kovariaten; Multi-Agenten-Toolkit für Claude Code mit eigenem MCP-Server zur Erstellung und Veröffentlichung von Power-BI-Modellen und -Berichten in Fabric; Power-BI-Dashboards sowie A/B-Test des Onboarding-Flows mit Churn-Analyse in StarRocks. Migration eines manuellen Excel-Planungsprozesses nach Microsoft Fabric inklusive automatisierter Zeitreihenprognosen (SARIMAX) sowie Plan-Ist-Reporting in Power BI.</div>
         </div>
         <div class="cv-k">Teilzeit</div>
       </div>
@@ -1175,7 +1201,7 @@
   <div class="langs-row fi">
     <div class="langs-lbl">Gesprochene Sprachen /</div>
     <div class="lang-item"><span class="lang-n">Englisch</span><span class="lang-l">C1 · IELTS 8.0</span></div>
-    <div class="lang-item"><span class="lang-n">Deutsch</span><span class="lang-l">B2</span></div>
+    <div class="lang-item"><span class="lang-n">Deutsch</span><span class="lang-l">B2 (C1-Kurs laufend)</span></div>
     <div class="lang-item"><span class="lang-n">Russisch</span><span class="lang-l">Muttersprache</span></div>
   </div>
 </section>
@@ -1435,7 +1461,7 @@
   <div class="contact-body fi">
     <div>
       <h2 class="contact-h2">Verfügbar in Deutschland ab April 2027, bevorzugt in München, Hamburg, Düsseldorf oder Berlin.</h2>
-      <p class="contact-p">Ich interessiere mich für Stellen als Data Scientist oder Data Analyst mit Schwerpunkt auf LLM-basierten Systemen, automatisierten Prognosen oder Analytics-Plattformen. Dabei verbinde ich praktische Erfahrung in der KI-Entwicklung mit zehn Jahren Erfahrung in der Umsetzung fachlicher Anforderungen in wartbare Daten- und Analytics-Lösungen.</p>
+      <p class="contact-p">Ich interessiere mich für Positionen als Data Scientist, Data Analyst oder AI Engineer mit Schwerpunkt auf LLM-basierten Systemen, automatisierten Prognosen oder Analyseplattformen. Dabei verbinde ich praktische Erfahrung in der KI-Entwicklung mit zehn Jahren Erfahrung in der Umsetzung fachlicher Anforderungen in wartbare Daten- und Analytics-Lösungen.</p>
       <h3 class="contact-h3">Meine Arbeit passt gut zu sechs Arten von Teams:</h3>
       <ul class="contact-fit-list">
         <li>Versicherungs- und Rückversicherungs-Analytics. Underwriting-Segmentierung bei Absolute Insurance und aktuelle bayesianische Prognoseverfahren, anwendbar auf den Münchner Versicherungs-Cluster und darüber hinaus.</li>
@@ -1445,7 +1471,7 @@
         <li>Global agierende Tech-Firmen und Plattformteams in München, Hamburg, Düsseldorf und Berlin, in denen Prognosen, angewandtes ML und produktive Analytics-Lösungen produktübergreifend skalieren.</li>
         <li>Startups und Scale-ups, bei denen produktives ML und Agentensysteme das Kernprodukt bilden und kein Pilotprojekt bleiben.</li>
       </ul>
-      <p class="contact-p">Ich arbeite auf Englisch (C1, IELTS 8,0) und Deutsch (B2). Meine Analytics-Erfahrung umfasst internationale Teams in Finanzwesen, Telekommunikation, Versicherung und Gaming.</p>
+      <p class="contact-p">Ich arbeite auf Englisch (C1, IELTS 8,0) und Deutsch (B2, C1-Kurs laufend). Meine Analytics-Erfahrung umfasst internationale Teams in Finanzwesen, Telekommunikation, Versicherung und Gaming.</p>
 
 
       <div class="contact-links">
@@ -1473,7 +1499,7 @@
   <footer class="footer">
     <span>© timur salakhetdinov · 2026</span>
     <span>erstellt mit HTML / CSS / Vanilla JS · Besucherstatistik mit GoatCounter (cookiefrei, ohne personenbezogene Daten)</span>
-    <span>v2.1 · zuletzt bearbeitet am 26. Oktober 2026</span>
+    <span>v2.1 · zuletzt bearbeitet am 2. November 2026</span>
     <span><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></span>
   </footer>
 </section>
