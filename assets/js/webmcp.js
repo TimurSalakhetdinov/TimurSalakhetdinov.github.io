@@ -168,11 +168,19 @@
 
     projects: [
       {
-        id: 'P-010',
+        id: 'P-011',
         slug: 'text-informed-forecasting',
         title: 'Game revenue forecasting with two foundation models',
         description: 'Two frozen foundation forecasters, TabPFN-TS and Chronos-2, with agent-compiled planning-text covariates tested against a shuffled-text placebo, across 54 monthly origins. The held-out evaluation is pending.',
         tech: ['TabPFN-TS', 'Chronos-2', 'LLM agents', 'Time series', 'Open-weight models'],
+        year: 2026
+      },
+      {
+        id: 'P-010',
+        slug: 'meta-game-onboarding-optimizer',
+        title: 'Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse',
+        description: 'Meta Global AI Developer Hackathon (submitted): a closed loop where Muse playtester agents play a free-to-play browser game, an analyst ranks where new players get stuck, a designer proposes a config fix, and a human must approve before any A/B rerun.',
+        tech: ['Muse', 'SAM 3.1', 'Multi-agent', 'Playtesting'],
         year: 2026
       },
       {
