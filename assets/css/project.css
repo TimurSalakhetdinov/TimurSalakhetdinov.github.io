@@ -43,3 +43,7 @@ header.nav{position:sticky;top:0;z-index:50;max-width:none;margin:0;display:grid
 .demo-note{margin:0}
 .link-list{margin:0;padding-left:1.2em;max-width:650px}
 .link-list li+li{margin-top:8px}
+
+.game-embed{margin-top:16px}
+.game-link{display:inline-block;padding:10px 18px;border:1px solid #202426;border-radius:2px;color:#202426;font-size:14px;line-height:1.4;text-decoration:none}
+.game-link:hover{background:#202426;color:#f4f4f1;text-decoration:none}
