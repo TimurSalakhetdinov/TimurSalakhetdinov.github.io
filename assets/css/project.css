@@ -44,6 +44,11 @@ header.nav{position:sticky;top:0;z-index:50;max-width:none;margin:0;display:grid
 .link-list{margin:0;padding-left:1.2em;max-width:650px}
 .link-list li+li{margin-top:8px}
 
-.game-embed{margin-top:16px}
+.game-embed{margin-top:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;aspect-ratio:16/9;background:#202426}
+.game-embed.is-playing{display:block;aspect-ratio:auto;background:transparent}
+.game-start{margin:0;padding:10px 18px;border:1px solid #f4f4f1;border-radius:2px;background:#f4f4f1;color:#202426;font:14px/1.4 Plex,Arial,sans-serif;cursor:pointer}
+.game-start:hover{background:#202426;color:#f4f4f1}
+.game-start:focus-visible{outline:2px solid #f4f4f1;outline-offset:3px}
+.game-start-note{margin:0;padding:0 20px;color:#d1d4ce;font-size:14px;line-height:1.45;text-align:center}
 .game-link{display:inline-block;padding:10px 18px;border:1px solid #202426;border-radius:2px;color:#202426;font-size:14px;line-height:1.4;text-decoration:none}
 .game-link:hover{background:#202426;color:#f4f4f1;text-decoration:none}
