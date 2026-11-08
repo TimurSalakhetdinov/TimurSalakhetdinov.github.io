@@ -37,7 +37,7 @@ SITEMAP = ROOT / "sitemap.xml"
 PYGMENTS_CSS = ROOT / "assets" / "css" / "pygments.css"
 
 SITE = "https://timursalakhetdinov.com"
-DEFAULT_OG_IMAGE = f"{SITE}/images/og-cover-v5.jpg"
+DEFAULT_OG_IMAGE = f"{SITE}/images/og-cover-v6.jpg"
 DEFAULT_OG_ALT = (
     "Social preview card with a portrait of Timur Salakhetdinov, "
     "Data Scientist & Data Analyst."
