@@ -432,30 +432,13 @@
       color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums;
     }
     .hero-stats > div {
-      min-width: 0; container-type: inline-size;
-      display: flex; flex-direction: column; justify-content: flex-end;
+      min-width: 0;
+      display: flex; flex-direction: column; align-items: flex-start;
     }
-    .stat-v.stat-v-long {
-      font-size: 13px; line-height: 1.15; letter-spacing: -0.02em;
-      overflow-wrap: break-word;
-    }
-    @container (min-width: 80px) {
-      .stat-v.stat-v-long { font-size: 14px; }
-    }
-    @container (min-width: 110px) {
-      .stat-v.stat-v-long { font-size: 16px; }
-    }
-    @container (min-width: 145px) {
-      .stat-v.stat-v-long { font-size: 18px; }
-    }
-    @container (min-width: 190px) {
-      .stat-v.stat-v-long { font-size: 22px; }
-    }
-    @container (min-width: 250px) {
-      .stat-v.stat-v-long { font-size: 26px; }
-    }
-    @container (min-width: 340px) {
-      .stat-v.stat-v-long { font-size: 32px; }
+    .stat-note {
+      font-family: var(--mono); font-size: 11px; line-height: 1.5;
+      color: var(--ink-muted); margin-top: 4px;
+      overflow-wrap: anywhere;
     }
     .stat-l {
       font-family: var(--mono); font-size: 11px;
@@ -1027,7 +1010,7 @@
         <div><div class="stat-v">10</div><div class="stat-l">Jahre in Analytics</div></div>
         <div><div class="stat-v">CFA</div><div class="stat-l">Level I bestanden (2021)</div></div>
         <div><div class="stat-v">C1</div><div class="stat-l">Englisch (IELTS 8.0)</div></div>
-        <div><div class="stat-v stat-v-long">B2 (C1-Kurs laufend)</div><div class="stat-l">Deutsch</div></div>
+        <div><div class="stat-v">B2</div><div class="stat-l">Deutsch</div><div class="stat-note">(C1-Kurs laufend)</div></div>
       </div>
     </div>
 
