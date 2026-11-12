@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse | Timur Salakhetdinov</title>
+  <meta name="description" content="A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.">
+  <link rel="canonical" href="https://timursalakhetdinov.com/writing/meta-game-onboarding-optimizer.html">
+  <link rel="alternate" type="application/rss+xml" title="Timur Salakhetdinov — Writing" href="/writing/feed.xml">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Timur Salakhetdinov">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse">
+  <meta property="og:description" content="A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.">
+  <meta property="og:url" content="https://timursalakhetdinov.com/writing/meta-game-onboarding-optimizer.html">
+  <meta property="og:image" content="https://timursalakhetdinov.com/images/og-cover-v6.jpg">
+  <meta property="og:image:secure_url" content="https://timursalakhetdinov.com/images/og-cover-v6.jpg">
+  <meta property="og:image:alt" content="Social preview card with a portrait of Timur Salakhetdinov, Data Scientist &amp; Data Analyst.">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta property="article:published_time" content="2026-11-12">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse">
+  <meta name="twitter:description" content="A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.">
+  <meta name="twitter:image" content="https://timursalakhetdinov.com/images/og-cover-v6.jpg">
+  <meta name="twitter:image:alt" content="Social preview card with a portrait of Timur Salakhetdinov, Data Scientist &amp; Data Analyst.">
+  <meta name="author" content="Timur Salakhetdinov">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/project.css">
+  <link rel="stylesheet" href="/assets/css/writing.css">
+  <link rel="stylesheet" href="/assets/css/pygments.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse",
+    "description": "A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.",
+    "url": "https://timursalakhetdinov.com/writing/meta-game-onboarding-optimizer.html",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://timursalakhetdinov.com/writing/meta-game-onboarding-optimizer.html"
+    },
+    "datePublished": "2026-11-12",
+    "dateModified": "2026-11-12",
+    "inLanguage": "en",
+    "image": "https://timursalakhetdinov.com/images/og-cover-v6.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Timur Salakhetdinov",
+      "url": "https://timursalakhetdinov.com/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://timursalakhetdinov.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Writing",
+        "item": "https://timursalakhetdinov.com/writing/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse",
+        "item": "https://timursalakhetdinov.com/writing/meta-game-onboarding-optimizer.html"
+      }
+    ]
+  }
+  </script>
+  <meta http-equiv="origin-trial" content="Amx40mtg9rixjk+HmaGAs5WOyScpWMKhqdbzpkt9TX93eQ3TwGCIV31nFpphHKJfmIZTin0Xoh80xBmrfHZMIw8AAABWeyJvcmlnaW4iOiJodHRwczovL3RpbXVyc2FsYWtoZXRkaW5vdi5jb206NDQzIiwiZmVhdHVyZSI6IldlYk1DUCIsImV4cGlyeSI6MTgwNjM2NDgwMH0="><script src="/assets/js/webmcp.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <a class="nav-brand" href="/" aria-label="Timur Salakhetdinov, homepage">
+    <div class="nav-mark">ts</div>
+    <span class="nav-name">Timur Salakhetdinov</span>
+    <span class="nav-role">/ data scientist · data analyst</span>
+  </a>
+  <nav aria-label="Sections">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#about"><span class="nav-num">§01</span><span>About</span></a></li>
+      <li><a href="/#skills"><span class="nav-num">§02</span><span>Skills</span></a></li>
+      <li><a href="/projects/"><span class="nav-num">§03</span><span>Projects</span></a></li>
+      <li><a href="/#writing" data-writing-nav><span class="nav-num">§04</span><span>Writing</span></a></li>
+      <li><a href="/#contact"><span class="nav-num">§05</span><span>Contact</span></a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <span class="lang-active">EN</span>
+      <span class="lang-sep">·</span>
+      <a href="/de" hreflang="de">DE</a>
+    </div>
+    <div class="nav-status">
+      <span class="nav-dot"></span>
+      <span>available from Apr 2027 · Germany</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu" data-menu-text="Menu" data-close-text="Close">
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span><span></span>
+      </span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="/writing/">Writing</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse</span>
+  </nav>
+  <p class="eyebrow"><time datetime="2026-11-12">12 November 2026</time> · 4 min read</p>
+  <h1>Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse</h1>
+  <p class="summary">A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.</p>
+  <div class="tags"><span>AI Agents</span><span>Evals</span><span>Game Development</span></div>
+  <div class="prose">
+<p>I submitted the project to the indie developer track under the theme <em>Build for Your World</em>. The game under test is an original Celtic village builder, Hearths of the Glen, created for the project so that proposed changes can be played and tested.</p>
+<h2>The problem</h2>
+<p>The first minutes of a free-to-play game can influence whether a player stays. Finding onboarding friction through playtests and funnel analysis takes time, and each proposed fix needs another round of testing.</p>
+<p>I wanted to build a loop that playtests, diagnoses, proposes a change, waits for a human decision and checks whether the change helped.</p>
+<h2>How the loop works</h2>
+<p>The system separates playtesting, diagnosis, design and experimentation:</p>
+<ol>
+<li><strong>Playtester agents</strong> use Muse Spark to run sessions and record screenshots, actions and events.</li>
+<li><strong>An analyst agent</strong> uses SAM 3.1 and Muse Spark to build an onboarding funnel and rank friction points.</li>
+<li><strong>A designer agent</strong> proposes a configuration change or a feature patch.</li>
+<li><strong>A human</strong> reviews the proposal before anything is applied.</li>
+<li><strong>An experiment agent</strong> reruns the playtesters on the original and changed configurations and produces a report.</li>
+</ol>
+<p>The human approval step is part of the workflow. A proposed change does not become a tested change until it has been reviewed.</p>
+<h2>Playtesting and diagnosis</h2>
+<p>The playtester agents use Muse Spark to inspect the screen, click through onboarding and maintain a short working-memory scratchpad. Five literature-grounded personas cover different player types: Rush-Clicker, Story-Guided, Strategist, Tinkerer and Hoarder.</p>
+<p>The analyst uses SAM 3.1 to mark UI elements in gameplay screenshots and Muse Spark to reason over the session. It builds an onboarding funnel and ranks friction points with linked evidence, including a distractor-to-goal visual salience note from the SAM masks.</p>
+<p>The designer can propose an onboarding configuration patch or turn a free-text feature idea into a schema-validated feature plugin. After human approval, the experiment agent runs a paired comparison using the baseline and patched configurations. It produces a report and a side-by-side replay.</p>
+<p>Bug hunting diagnoses one run. Feature Forge evaluates one frozen experiment. The two paths remain separate.</p>
+<h2>Evaluating the diagnosis pipeline</h2>
+<p>I compared the agent pipeline with a single-turn LLM baseline on seven predefined onboarding scenarios. Two scenarios contained no seeded issue, three contained a known bottleneck, and two tested how the system handled damaged or noisy telemetry.</p>
+<p>Each scenario ran three times with <code>muse-spark-1.3-contributor</code>. A scenario passed only if all three runs passed and their classifications agreed. The checks covered the diagnosis, the presence or absence of a patch, and, for the agent pipeline, the sequence of tool calls. A separate LLM judge evaluated responses against a rubric.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Single-turn baseline</th>
+<th style="text-align: right;">Agent pipeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenarios passed</td>
+<td style="text-align: right;">7/7</td>
+<td style="text-align: right;">6/7</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr>
+<td>Median latency</td>
+<td style="text-align: right;">7.29 s</td>
+<td style="text-align: right;">9.84 s</td>
+</tr>
+<tr>
+<td>95th-percentile latency</td>
+<td style="text-align: right;">9.27 s</td>
+<td style="text-align: right;">19.55 s</td>
+</tr>
+<tr>
+<td>Total estimated cost</td>
+<td style="text-align: right;">$0.0096</td>
+<td style="text-align: right;">$0.0121</td>
+</tr>
+</tbody>
+</table>
+<p>The agent pipeline failed one scenario because one of its three runs produced a patch response that did not pass schema validation. The analyst identified the locked-interface issue, but the resulting diagnosis contained no usable patch. The other two runs of that scenario passed.</p>
+<p>On this small test set, the single-turn baseline passed every scenario and was faster. The agent pipeline did not improve precision or recall. Its tool sequence made the steps of the diagnosis visible, but it also introduced another point of failure.</p>
+<p>Precision and recall were calculated using the first run of each scenario, while the pass rate required all three runs to succeed. Seven scenarios are not enough to establish how either approach performs across games or real player sessions. A broader evaluation would need more onboarding problems and telemetry patterns.</p>
+<h2>Models and credits</h2>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muse Spark</td>
+<td>Playtester decisions, diagnosis and report summaries</td>
+</tr>
+<tr>
+<td>Muse Wonder</td>
+<td>Coding help, optional playtester and feature ideas</td>
+</tr>
+<tr>
+<td>SAM 3.1</td>
+<td>UI segmentation and visual analysis</td>
+</tr>
+<tr>
+<td>Muse Image</td>
+<td>Game art and feature emblems</td>
+</tr>
+<tr>
+<td>Muse Voice Transcribe</td>
+<td>Optional transcription of in-game voice lines</td>
+</tr>
+</tbody>
+</table>
+<p>The soundtrack, voices and sound effects were generated with ElevenLabs.</p>
+<h2>Limits</h2>
+<p>Agent playtests are a smoke test, not a sample of real players. Persona findings are hypotheses to check with people. SAM 3.1 marks detected regions; it does not prove what a human would notice. Recorded bot commentary is not a window into hidden model motives.</p>
+<p>The evaluation covers seven predefined scenarios. Its results do not establish performance on unseen games, onboarding flows or real player sessions.</p>
+<p>Runtime changes are schema-validated JSON patches, and every patch stops at the human approval gate.</p>
+<h2>Demo and repository</h2>
+<p><a href="https://hearths-of-the-glen.onrender.com">Play Hearths of the Glen</a> · <a href="https://youtu.be/K9RStD75dBM">Watch the demo video</a> · <a href="https://github.com/TimurSalakhetdinov/meta-ai-hackathon">View the repository</a></p>
+  </div>
+  <section class="related">
+    <h2>Related projects</h2>
+    <ul>
+    <li><a href="/projects/meta-game-onboarding-optimizer.html">Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse</a></li>
+    </ul>
+  </section>
+  <p class="source"><a href="/">Home</a> · <a href="/writing/">All writing</a></p>
+</main>
+<footer>
+  <span>© Timur Salakhetdinov</span>
+  <a href="/#contact">Contact</a>
+  <a href="/imprint.html">Imprint</a>
+  <a href="/privacy.html">Privacy</a>
+</footer>
+<script src="/assets/js/site-nav.js" defer></script>
+<script data-goatcounter="https://timursalakhetdinov.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

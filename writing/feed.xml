@@ -5,5 +5,16 @@
     <link>https://timursalakhetdinov.com/writing/</link>
     <description>Articles by Timur Salakhetdinov.</description>
     <language>en</language>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse</title>
+      <link>https://timursalakhetdinov.com/writing/meta-game-onboarding-optimizer.html</link>
+      <guid isPermaLink="true">https://timursalakhetdinov.com/writing/meta-game-onboarding-optimizer.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <description>A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.</description>
+      <category>AI Agents</category>
+      <category>Evals</category>
+      <category>Game Development</category>
+    </item>
   </channel>
 </rss>
