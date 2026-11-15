@@ -721,6 +721,14 @@ def render_article(article: Article) -> str:
             + escape(article.substack_url)
             + '" target="_blank" rel="noopener noreferrer">Also on Substack</a></p>'
         )
+    cover = ""
+    if article.cover_image:
+        cover_alt = article.cover_alt or article.title
+        cover = (
+            '\n  <figure class="article-cover">'
+            f'<img src="{escape(article.cover_image)}" alt="{escape(cover_alt)}">'
+            "</figure>"
+        )
     extra_head = '\n  <link rel="stylesheet" href="/assets/css/pygments.css">'
     if article.has_math:
         extra_head += '\n  <link rel="stylesheet" href="/assets/katex/katex.min.css">'
@@ -784,7 +792,7 @@ def render_article(article: Article) -> str:
   </nav>
   <p class="eyebrow"><time datetime="{article.iso_date}">{format_date(article.date)}</time> · {article.minutes} min read</p>
   <h1>{escape(article.title)}</h1>
-  <p class="summary">{escape(article.description)}</p>{tags}{substack}
+  <p class="summary">{escape(article.description)}</p>{tags}{substack}{cover}
   <div class="prose">
 {article.html}
   </div>{render_related(article)}
