@@ -693,10 +693,26 @@
     .writing-grid[data-count="1"] { grid-template-columns: minmax(0, 1fr); }
     .writing-grid[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .writing-card {
-      display: flex; flex-direction: column; gap: 12px;
+      display: flex; flex-direction: column; gap: 14px;
       min-width: 0; padding: 24px;
       border: 1px solid var(--rule); background: var(--paper);
       text-decoration: none; color: inherit;
+    }
+    .writing-grid[data-count="1"] .writing-card[data-media="true"] {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      gap: 28px; align-items: center;
+    }
+    .writing-card-media {
+      aspect-ratio: 16 / 9; overflow: hidden;
+      border: 1px solid var(--rule); background: var(--bg);
+      min-width: 0; width: 100%;
+    }
+    .writing-card-media img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .writing-card-body {
+      display: flex; flex-direction: column; gap: 10px;
+      min-width: 0; flex: 1;
     }
     .writing-card:hover { border-color: var(--rule-strong); }
     .writing-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -707,12 +723,13 @@
     .writing-card h3 {
       font-family: var(--serif); font-weight: 400; font-size: 22px;
       line-height: 1.25; letter-spacing: -.01em; color: var(--ink);
+      max-width: 56ch;
     }
     .writing-card p {
       font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: 62ch;
     }
-    .writing-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .writing-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
     .writing-more { margin-top: 32px; }
 
     /* ── Contact ── */
@@ -883,8 +900,11 @@
         overscroll-behavior-x: contain;
         scrollbar-width: thin; scrollbar-color: var(--rule-strong) transparent;
       }
-      .writing-card { flex: 0 0 86%; scroll-snap-align: start; }
+      .writing-card { flex: 0 0 86%; scroll-snap-align: start; padding: 16px; }
       .writing-grid[data-count="1"] .writing-card { flex-basis: 100%; }
+      .writing-grid[data-count="1"] .writing-card[data-media="true"] {
+        grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: stretch;
+      }
 
       .contact-h2   { font-size: 40px; }
       .footer { flex-direction: column; gap: 10px; }
@@ -1443,11 +1463,16 @@
     </div>
   </div>
   <div class="writing-grid" data-count="1">
-    <a class="writing-card" href="/writing/meta-game-onboarding-optimizer.html">
-      <time datetime="2026-11-12">12. November 2026</time>
-      <h3>Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse</h3>
-      <p>A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.</p>
-      <div class="writing-card-tags"><span class="method-tag">AI Agents</span><span class="method-tag">Evals</span></div>
+    <a class="writing-card" data-media="true" href="/writing/meta-game-onboarding-optimizer.html">
+      <div class="writing-card-media">
+        <img src="/images/writing/hearths-of-the-glen-gameplay.webp" alt="Gameplay screenshot of Hearths of the Glen showing the Celtic village, Elder Kaelen&#x27;s onboarding prompt, and the building bar" loading="lazy">
+      </div>
+      <div class="writing-card-body">
+        <time datetime="2026-11-12">12. November 2026</time>
+        <h3>Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Meta Muse</h3>
+        <p>A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval.</p>
+        <div class="writing-card-tags"><span class="method-tag">AI Agents</span><span class="method-tag">Evals</span></div>
+      </div>
     </a>
   </div>
   <div class="writing-more">
