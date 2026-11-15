@@ -59,7 +59,7 @@ IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".avif"}
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DRAFT_SLUG_RE = re.compile(r"^_[a-z0-9]+(?:-[a-z0-9]+)*$")
 REQUIRED_KEYS = ("title", "date", "description", "slug", "tags")
-OPTIONAL_KEYS = ("og_image", "substack_url", "updated", "related_projects")
+OPTIONAL_KEYS = ("og_image", "cover_image", "cover_alt", "substack_url", "updated", "related_projects")
 ALLOWED_KEYS = set(REQUIRED_KEYS) | set(OPTIONAL_KEYS)
 
 FENCE_RE = re.compile(r"^(`{3,}|~{3,})[^\n]*\n.*?\n\1[ \t]*$", re.M | re.S)
@@ -131,6 +131,8 @@ class Article:
     slug: str
     tags: tuple[str, ...]
     og_image: str | None
+    cover_image: str | None
+    cover_alt: str | None
     substack_url: str | None
     updated: date | None
     related_projects: tuple[str, ...]
@@ -227,6 +229,8 @@ def parse_article(path: Path, *, draft: bool) -> Article | None:
         raise SystemExit(f"{path}: date must be YYYY-MM-DD") from exc
     tags = parse_tags(path, meta["tags"])
     og_image = optional_text(path, "og_image", meta.get("og_image"))
+    cover_image = optional_text(path, "cover_image", meta.get("cover_image"))
+    cover_alt = optional_text(path, "cover_alt", meta.get("cover_alt"))
     substack = optional_text(path, "substack_url", meta.get("substack_url"))
     if "updated" in meta and meta.get("updated") is not None:
         try:
@@ -240,6 +244,8 @@ def parse_article(path: Path, *, draft: bool) -> Article | None:
         raise SystemExit(f"{path}: substack_url must be an http(s) URL")
     if og_image:
         check_og_image(path, og_image)
+    if cover_image:
+        check_og_image(path, cover_image)
     if draft:
         return None
 
@@ -256,6 +262,8 @@ def parse_article(path: Path, *, draft: bool) -> Article | None:
         slug=slug,
         tags=tags,
         og_image=og_image,
+        cover_image=cover_image,
+        cover_alt=cover_alt,
         substack_url=substack,
         updated=updated,
         related_projects=related,
@@ -602,15 +610,26 @@ def render_index(articles: list[Article]) -> str:
           <div class="archive-footer">
             <div class="archive-tags">{labels}</div>
           </div>"""
+            media = ""
+            media_attr = ""
+            if article.cover_image:
+                media_attr = ' data-media="true"'
+                alt = article.cover_alt or article.title
+                media = f"""
+        <div class="archive-media">
+          <img src="{escape(article.cover_image)}" alt="{escape(alt)}" loading="lazy">
+        </div>"""
             items.append(
                 f"""    <li>
-      <a class="archive-item" href="/writing/{escape(article.slug)}.html">
-        <div class="archive-meta">
-          <time datetime="{article.iso_date}">{format_date(article.date)}</time>
-          <span>{article.minutes} min read</span>
+      <a class="archive-item"{media_attr} href="/writing/{escape(article.slug)}.html">{media}
+        <div class="archive-body">
+          <div class="archive-meta">
+            <time datetime="{article.iso_date}">{format_date(article.date)}</time>
+            <span>{article.minutes} min read</span>
+          </div>
+          <h2 class="archive-title">{escape(article.title)}</h2>
+          <p class="archive-desc">{escape(article.description)}</p>{tags}
         </div>
-        <h2 class="archive-title">{escape(article.title)}</h2>
-        <p class="archive-desc">{escape(article.description)}</p>{tags}
       </a>
     </li>"""
             )
@@ -1067,11 +1086,22 @@ def render_home_card(article: Article, lang: str) -> str:
         labels = "".join(
             f'<span class="method-tag">{escape(tag)}</span>' for tag in article.tags[:2]
         )
-        tags = f'\n      <div class="writing-card-tags">{labels}</div>'
-    return f"""    <a class="writing-card" href="/writing/{escape(article.slug)}.html">
-      <time datetime="{article.iso_date}">{escape(shown)}</time>
-      <h3>{escape(article.title)}</h3>
-      <p>{escape(article.description)}</p>{tags}
+        tags = f'\n        <div class="writing-card-tags">{labels}</div>'
+    media = ""
+    media_attr = ""
+    if article.cover_image:
+        media_attr = ' data-media="true"'
+        alt = article.cover_alt or article.title
+        media = f"""
+      <div class="writing-card-media">
+        <img src="{escape(article.cover_image)}" alt="{escape(alt)}" loading="lazy">
+      </div>"""
+    return f"""    <a class="writing-card"{media_attr} href="/writing/{escape(article.slug)}.html">{media}
+      <div class="writing-card-body">
+        <time datetime="{article.iso_date}">{escape(shown)}</time>
+        <h3>{escape(article.title)}</h3>
+        <p>{escape(article.description)}</p>{tags}
+      </div>
     </a>"""
 
 
