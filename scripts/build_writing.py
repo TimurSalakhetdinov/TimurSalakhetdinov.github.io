@@ -50,7 +50,7 @@ SECTION_INTRODUCED = "2026-10-26"
 HOME_LATEST_COUNT = 3
 WRITING_BLURB = (
     "Public notes on LLM agent systems, applied machine learning, and "
-    "time-series forecasting, from a data scientist and data analyst in Germany."
+    "time-series forecasting, from a data scientist and AI engineer in Germany."
 )
 WORDS_PER_MINUTE = 220
 AUTHOR = "Timur Salakhetdinov"
