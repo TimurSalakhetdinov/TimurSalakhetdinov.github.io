@@ -40,6 +40,22 @@
   font: 13px/1.5 Mono, ui-monospace, monospace;
 }
 
+.article-cover {
+  max-width: 40rem;
+  margin: 28px 0 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid #d1d4ce;
+  background: #f4f4f1;
+}
+
+.article-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .prose {
   max-width: 40rem;
   margin-top: 28px;
