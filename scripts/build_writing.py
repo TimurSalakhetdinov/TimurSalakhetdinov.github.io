@@ -37,10 +37,10 @@ SITEMAP = ROOT / "sitemap.xml"
 PYGMENTS_CSS = ROOT / "assets" / "css" / "pygments.css"
 
 SITE = "https://timursalakhetdinov.com"
-DEFAULT_OG_IMAGE = f"{SITE}/images/og-cover-v6.jpg"
+DEFAULT_OG_IMAGE = f"{SITE}/images/og-cover-v7.jpg"
 DEFAULT_OG_ALT = (
     "Social preview card with a portrait of Timur Salakhetdinov, "
-    "Data Scientist & Data Analyst."
+    "Data Scientist & AI Engineer."
 )
 DEFAULT_OG_WIDTH = "2400"
 DEFAULT_OG_HEIGHT = "1260"
@@ -50,7 +50,7 @@ SECTION_INTRODUCED = "2026-10-26"
 HOME_LATEST_COUNT = 3
 WRITING_BLURB = (
     "Public notes on LLM agent systems, applied machine learning, and "
-    "time-series forecasting, from a data scientist and data analyst in Germany."
+    "time-series forecasting, from a data scientist and AI engineer in Germany."
 )
 WORDS_PER_MINUTE = 220
 AUTHOR = "Timur Salakhetdinov"
@@ -706,9 +706,10 @@ def render_index(articles: list[Article]) -> str:
 
 
 def render_article(article: Article) -> str:
-    og_image = absolute_url(article.og_image) if article.og_image else DEFAULT_OG_IMAGE
+    raw_og = article.og_image or article.cover_image
+    og_image = absolute_url(raw_og) if raw_og else DEFAULT_OG_IMAGE
     using_default = og_image == DEFAULT_OG_IMAGE
-    og_alt = DEFAULT_OG_ALT if using_default else article.title
+    og_alt = DEFAULT_OG_ALT if using_default else (article.cover_alt or article.title)
     title = f"{article.title} | {AUTHOR}"
     tags = ""
     if article.tags:
@@ -782,6 +783,8 @@ def render_article(article: Article) -> str:
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="{DEFAULT_OG_WIDTH}">
   <meta property="og:image:height" content="{DEFAULT_OG_HEIGHT}">"""
+    elif raw_og:
+        image_meta = local_og_image_meta(raw_og)
     main = f"""<main>
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="/">Home</a>
@@ -816,6 +819,49 @@ def render_article(article: Article) -> str:
         extra_head=extra_head,
         extra_scripts=extra_scripts,
     )
+
+
+def local_og_image_meta(raw_og: str) -> str:
+    local = local_site_path(raw_og)
+    if local is None or not local.is_file():
+        return ""
+    mime = {
+        ".webp": "image/webp",
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+    }.get(local.suffix.lower())
+    if not mime:
+        return ""
+    dims = read_image_dimensions(local)
+    lines = [f'\n  <meta property="og:image:type" content="{mime}">']
+    if dims:
+        w, h = dims
+        lines.append(f'  <meta property="og:image:width" content="{w}">')
+        lines.append(f'  <meta property="og:image:height" content="{h}">')
+    return "\n".join(lines)
+
+
+def read_image_dimensions(path: Path) -> tuple[int, int] | None:
+    data = path.read_bytes()
+    if path.suffix.lower() == ".webp" and len(data) >= 30 and data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        chunk = data[12:16]
+        if chunk == b"VP8 " and len(data) >= 30:
+            w = int.from_bytes(data[26:28], "little") & 0x3FFF
+            h = int.from_bytes(data[28:30], "little") & 0x3FFF
+            return w, h
+        if chunk == b"VP8L" and len(data) >= 25:
+            b0, b1, b2, b3 = data[21], data[22], data[23], data[24]
+            w = 1 + (((b1 & 0x3F) << 8) | b0)
+            h = 1 + (((b3 & 0x0F) << 10) | (b2 << 2) | ((b1 & 0xC0) >> 6))
+            return w, h
+        if chunk == b"VP8X" and len(data) >= 30:
+            w = 1 + int.from_bytes(data[24:27], "little")
+            h = 1 + int.from_bytes(data[27:30], "little")
+            return w, h
+    if path.suffix.lower() == ".png" and len(data) >= 24 and data[:8] == b"\x89PNG\r\n\x1a\n":
+        return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+    return None
 
 
 def render_related(article: Article) -> str:
@@ -912,7 +958,7 @@ def render_page(
   <a class="nav-brand" href="/" aria-label="Timur Salakhetdinov, homepage">
     <div class="nav-mark">ts</div>
     <span class="nav-name">Timur Salakhetdinov</span>
-    <span class="nav-role">/ data scientist · data analyst</span>
+    <span class="nav-role">/ data scientist · ai engineer</span>
   </a>
   <nav aria-label="Sections">
     <ul class="nav-links" id="navLinks">
