@@ -3,6 +3,7 @@ title: "Meta Game Onboarding Optimizer: closed-loop onboarding playtests with Me
 date: 2026-11-12
 description: "A Meta Global AI Developer Hackathon project that uses agents to play a browser game, identify onboarding friction, propose a change and test it after human approval."
 slug: meta-game-onboarding-optimizer
+og_image: /images/writing/hearths-of-the-glen-gameplay.webp
 cover_image: /images/writing/hearths-of-the-glen-gameplay.webp
 cover_alt: "Gameplay screenshot of Hearths of the Glen showing the Celtic village, Elder Kaelen's onboarding prompt, and the building bar"
 tags:
