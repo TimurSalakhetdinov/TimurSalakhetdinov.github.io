@@ -57,3 +57,6 @@ header.nav{position:sticky;top:0;z-index:50;max-width:none;margin:0;display:grid
 .game-start-note{margin:0;padding:0 20px;color:#d1d4ce;font-size:14px;line-height:1.45;text-align:center}
 .game-link{display:inline-block;padding:10px 18px;border:1px solid #202426;border-radius:2px;color:#202426;font-size:14px;line-height:1.4;text-decoration:none}
 .game-link:hover{background:#202426;color:#f4f4f1;text-decoration:none}
+.project-cover{margin:28px 0 36px;max-width:100%}
+.project-cover img{display:block;width:100%;height:auto;border:1px solid #d1d4ce;background:#f4f4f1}
+.project-cover figcaption{margin-top:8px;font-size:13px;line-height:1.5;color:#626b71}
