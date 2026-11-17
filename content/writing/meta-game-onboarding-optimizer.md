@@ -87,4 +87,4 @@ Runtime changes are schema-validated JSON patches, and every patch stops at the 
 
 ## Demo and repository
 
-[Play Hearths of the Glen](https://hearths-of-the-glen.onrender.com) · [Watch the demo video](https://youtu.be/K9RStD75dBM) · [View the repository](https://github.com/TimurSalakhetdinov/meta-ai-hackathon)
+[Play Hearths of the Glen](https://hearths-of-the-glen.onrender.com) · [View the repository](https://github.com/TimurSalakhetdinov/meta-ai-hackathon)
