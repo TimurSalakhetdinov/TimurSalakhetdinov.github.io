@@ -171,8 +171,8 @@
         id: 'P-011',
         slug: 'text-informed-forecasting',
         title: 'Game revenue forecasting with two foundation models',
-        description: 'Two frozen foundation forecasters, TabPFN-TS and Chronos-2, with agent-compiled planning-text covariates tested against a shuffled-text placebo, across 54 monthly origins. The held-out evaluation is pending.',
-        tech: ['TabPFN-TS', 'Chronos-2', 'LLM agents', 'Time series', 'Open-weight models'],
+        description: 'Leuphana master’s thesis comparing TabPFN-TS and Chronos-2 on 90-day forecasts and testing five retrieval variants, verified local LLM answers, and four ways to pass them into TabPFN-TS across 52 monthly forecasts per game. The final evaluation is pending.',
+        tech: ['TabPFN-TS', 'Chronos-2', 'Hybrid-RAG', 'Local LLMs', 'Time series'],
         year: 2026
       },
       {
