@@ -1074,7 +1074,7 @@
     <div>
       <p class="about-lead">Ich arbeite im Bereich Analytics bei InnoGames in Hamburg. Ich entwickle Zeitreihenprognosen, analysiere Experimente und erstelle Werkzeuge für Analytics-Teams.</p>
       <p class="about-p">Derzeit ersetze ich manuelle Excel-Prognosen durch SARIMAX-Modelle in Python mit Backtesting und Ereigniskalendern. Dazu entwickle ich eine Streamlit-App zur Unterstützung der Planung und Entscheidungsfindung von Game-Managern. Außerdem habe ich ein Multi-Agenten-Toolkit für Claude Code mit eigenem Model-Context-Protocol-Server (MCP) für Power-BI-Workflows in Microsoft Fabric entwickelt. Weitere Aufgaben sind Onboarding-A/B-Tests, Churn-Analysen in StarRocks und Power-BI-Dashboards.</p>
-      <p class="about-p">Ich studiere Management &amp; Data Science im Master an der Leuphana Universität Lüneburg und schließe das Studium voraussichtlich im März 2027 ab. In meiner Masterarbeit vergleiche ich zwei Foundation-Modelle, TabPFN-TS und Chronos-2, mit unveränderten Modellgewichten und Kalendermerkmalen und untersuche, ob von LLM-Agenten aufbereitete Textmerkmale die Prognosegenauigkeit verbessern, wobei zufällig durchmischte Texte als Kontrolle dienen. Zuvor war ich in der Telekommunikation, der Versicherungsbranche und der Investmentanalyse tätig.</p>
+      <p class="about-p">Ich studiere Management &amp; Data Science im Master an der Leuphana Universität Lüneburg und schließe das Studium voraussichtlich im März 2027 ab. In meiner Masterarbeit vergleiche ich TabPFN-TS und Chronos-2 mit Kalendermerkmalen. Ich prüfe, ob Informationen, die lokale LLMs aus Planungsdokumenten extrahieren, Prognosen mit TabPFN-TS verbessern. Zuvor war ich in der Telekommunikation, der Versicherungsbranche und der Investmentanalyse tätig.</p>
       <p class="about-p">Ab Mai 2027 bin ich für Vollzeitstellen als Data Scientist, Data Analyst und AI Engineer in Deutschland verfügbar.</p>
     </div>
 
@@ -1235,33 +1235,33 @@
     <div>
       <h3 class="feat-h2">Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates</h3>
       <p class="feat-p">
-        In meiner Masterarbeit an der Leuphana vergleiche ich TabPFN-TS und Chronos-2 und untersuche, ob von LLM-Agenten aufbereitete Textmerkmale die Prognosegenauigkeit verbessern. Die Auswertung verwendet nur Informationen, die zum jeweiligen Prognosezeitpunkt verfügbar waren, und umfasst zufällig durchmischte Texte als Kontrolle. Die Experimente laufen; die abschließende Auswertung auf zurückgehaltenen Testdaten steht noch aus.</p>
+        Meine Masterarbeit vergleicht zwei Foundation-Modelle bei 90-Tage-Prognosen. Um den Nutzen von Planungsdokumenten zu prüfen, vergleiche ich fünf Suchvarianten, prüfe strukturierte Antworten lokaler LLMs anhand der Quellpassagen und teste vier Wege, die Antworten in TabPFN-TS einzubinden. Die abschließende Auswertung steht aus.</p>
 
       <div class="methods-lbl">Methoden &amp; Stack</div>
       <div class="methods-grid">
-        <div class="mc k">Domäne</div>          <div class="mc v">Spieleumsatz über einen Horizont von 90 Tagen</div>
-        <div class="mc k">Engine</div>          <div class="mc v">TabPFN-TS (TabPFN-3.5) und Chronos-2, beide eingefroren</div>
-        <div class="mc k">Texteingaben</div>    <div class="mc v">Agentenkompilierte Felder</div>
-        <div class="mc k">Kontrollen</div>      <div class="mc v">Placebo mit vertauschtem Text</div>
-        <div class="mc k">Benchmark</div>       <div class="mc v">Produktionsprognose · gelieferter Analystenplan · LightGBM, ARIMA, ETS, Seasonal Naive</div>
-        <div class="mc k">Backtest</div>        <div class="mc v">3 Spiele · 54 monatliche Stichtage · Holdout-Block einmal geöffnet</div>
-        <div class="mc k">Evaluation</div>      <div class="mc v">MASE (wöchentlich saisonal) · MAPE · Plan-to-Date-Fehler · Prognoseintervalle · selektionsbereinigter Test</div>
-        <div class="mc k">Datenprüfung</div>    <div class="mc v">Nur am Prognosestichtag verfügbare Dokumentversionen</div>
-        <div class="mc k">Stack</div>           <div class="mc v">Ollama · lokale Open-Weight-Modelle · Gegenprüfung mit zweitem Backbone</div>
-        <div class="mc k">Status</div>          <div class="mc v">Experimente laufen · Holdout ausstehend · Schreibphase · Abgabe Jan. 2027</div>
+        <div class="mc k">Prognose</div>        <div class="mc v">Tagesumsatz über 90 Tage · DAU × ARPDAU</div>
+        <div class="mc k">Korpus</div>          <div class="mc v">Ausgewählte Wiki-Abschnitte · Stand vom Vortag · programmatischer Sprachfilter · JEV-9B (Qwen3.5-9B), zwölf Kategorien, Instanz-/Typ-Labels</div>
+        <div class="mc k">Suche</div>           <div class="mc v">BM25 · bge-m3 · RRF-Hybridsuche · Hybrid + bge-reranker-v2-m3 · Hybrid + ein Kontextsatz von Qwen · Auswahl nach Recall@6, Bericht mit nDCG@6</div>
+        <div class="mc k">Belegprüfung</div>    <div class="mc v">qwen3.8:27b Hauptantwort · gemma4:31b unabhängige Prüfung · JEV-9B bewertet Passagen · wortgetreue Zitatprüfung · zwei wechselnde Prüfmodelle</div>
+        <div class="mc k">Texteingabe</div>     <div class="mc v">Merkmalsspalten · Embedding-Spalten · trainierter Ridge-Adapter · KV-Cache-Eingriff → ARPDAU mit TabPFN-TS</div>
+        <div class="mc k">H1</div>              <div class="mc v">TabPFN-TS und Chronos-2 mit Kalendermerkmalen · Dreimonatsplan und LightGBM, ARIMA, ETS, saisonal-naive Prognose · Plan-to-Date-Fehler und täglicher MASE</div>
+        <div class="mc k">H2</div>              <div class="mc v">Ein ausgewähltes TabPFN-TS-Verfahren je auswertbarer Kombination · erweiterte Basis ohne Text, Aktivitätskennung und vertauschte Antworten · Aktivitätstage innerhalb der ersten 30 Prognosetage</div>
+        <div class="mc k">Diagnostik</div>      <div class="mc v">Obergrenze mit beobachtetem Niveau · Multiplikator je Einstufung · stationärer Bootstrap · Hansen SPA / White’s Reality Check · Holm für H1/H2</div>
+        <div class="mc k">Backtest</div>        <div class="mc v">52 monatliche Prognosen je Spiel · 28 zur Entwicklung · 24 für eine einmalige Testauswertung</div>
+        <div class="mc k">Status</div>          <div class="mc v">Studiendesign festgelegt · Abschließende Auswertung steht aus</div>
       </div>
 
-      <div class="feat-foot">M.Sc.-Abschlussarbeit · Leuphana Universität Lüneburg · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · Betreuer Dr. Debayan Banerjee und Jonas Scharfenberger · Experimente laufen · Holdout ausstehend</div>
+      <div class="feat-foot">M.Sc.-Abschlussarbeit · Leuphana Universität Lüneburg · "Forecasting Free-to-Play Game Revenue with Foundation Models and Agent-Compiled Text Covariates" · Betreuer Dr. Debayan Banerjee und Jonas Scharfenberger · Studiendesign festgelegt · Abschließende Auswertung steht aus</div>
 
       <a href="/projects/text-informed-forecasting-de.html" class="btn-repos feat-link">Projektseite ansehen →</a>
     </div>
 
     <div class="diagram-panel">
       <div class="diagram-cap">
-        <span>Fig. 2 · Agentenkompilierte Texteingaben</span>
+        <span>Abb. 2 · Modellvergleich und Auswertung der Textinformationen</span>
         
       </div>
-      <svg viewBox="0 0 480 360" style="width:100%;height:auto;" aria-label="Agentenkompilierte Texteingaben: Ein LLM kompiliert Kovariaten aus am Prognosestichtag verfügbaren Planungsdokumenten für Umsatzprognosen mit TabPFN-TS und Chronos-2.">
+      <svg viewBox="0 0 480 420" style="width:100%;height:auto;" aria-label="Der obere Zweig vergleicht TabPFN-TS und Chronos-2 anhand historischer Daten und Kalendermerkmale. Der untere Zweig filtert Wiki-Versionen, vergleicht fünf Suchvarianten und prüft Antworten lokaler Modelle mit Zitaten und zwei Prüfmodellen. Vier alternative Verfahren binden die geprüften Informationen in die ARPDAU-Prognose mit TabPFN-TS ein. Das gewählte Verfahren wird an Tagen mit geplanten Aktivitäten gegen drei Kontrollen geprüft.">
         <defs>
           <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
             <path d="M20 0L0 0 0 20" fill="none" stroke="#CFCFC7" stroke-width="0.4"/>
@@ -1270,39 +1270,62 @@
             <path d="M0 0L10 5L0 10z" fill="#15171A"/>
           </marker>
         </defs>
-        <rect width="480" height="360" fill="url(#g)"/>
+        <rect width="480" height="420" fill="url(#g)"/>
 
-        <!-- PLANNING TEXT -->
-        <rect x="15" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="75" y="92" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">PLANNING TEXT</text>
-        <text x="75" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">events · sales · notes</text>
+        <!-- Upper branch: H1 -->
+        <rect x="14" y="16" width="136" height="42" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="82" y="34" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" fill="#15171A" text-anchor="middle">HISTORIE + KALENDER</text>
+        <text x="82" y="48" font-family="IBM Plex Mono,monospace" font-size="6.8" fill="#656A71" text-anchor="middle">ohne Text</text>
 
-        <!-- AGENT -->
-        <rect x="180" y="70" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="92" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#15171A" text-anchor="middle">AGENT</text>
-        <text x="240" y="110" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">retrieve · extract</text>
+        <rect x="172" y="16" width="138" height="42" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="241" y="34" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS · Chronos-2</text>
+        <text x="241" y="48" font-family="IBM Plex Mono,monospace" font-size="6.8" fill="#656A71" text-anchor="middle">eingefrorene Modelle</text>
 
-        <!-- CALENDAR FLAGS -->
-        <rect x="15" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="75" y="252" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="#15171A" text-anchor="middle">CALENDAR FLAGS</text>
-        <text x="75" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">six binary flags</text>
+        <rect x="332" y="16" width="134" height="42" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
+        <text x="399" y="34" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" fill="#F4F4F1" text-anchor="middle">H1 · 90-TAGE-TEST</text>
+        <text x="399" y="48" font-family="IBM Plex Mono,monospace" font-size="6.8" fill="#F4F4F1" text-anchor="middle">vs Plan &amp; Referenzen</text>
 
-        <!-- Engines -->
-        <rect x="180" y="230" width="120" height="52" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
-        <text x="240" y="252" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="600" fill="#15171A" text-anchor="middle">TabPFN-TS · Chronos-2</text>
-        <text x="240" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71" text-anchor="middle">both frozen</text>
+        <path d="M150 37L172 37" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+        <path d="M310 37L332 37" stroke="#15171A" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
 
-        <!-- FORECAST -->
-        <rect x="345" y="230" width="120" height="52" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
-        <text x="405" y="252" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#F4F4F1" text-anchor="middle">FORECAST</text>
-        <text x="405" y="270" font-family="IBM Plex Mono,monospace" font-size="7" fill="#F4F4F1" text-anchor="middle">90-day forecast</text>
+        <!-- Divider -->
+        <line x1="14" y1="74" x2="466" y2="74" stroke="#CFCFC7" stroke-width="1" stroke-dasharray="4 3"/>
 
-        <!-- Edges -->
-        <path d="M135 96L180 96" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M240 122L240 230" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M135 256L180 256" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        <path d="M300 256L345 256" stroke="#15171A" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <text x="250" y="180" font-family="IBM Plex Mono,monospace" font-size="7" fill="#656A71">covariates</text>
+        <!-- Lower branch: Stage 2 -->
+        <rect x="14" y="88" width="452" height="44" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="106" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600" fill="#15171A" text-anchor="middle">WIKI-STAND VOM VORTAG</text>
+        <text x="240" y="121" font-family="IBM Plex Mono,monospace" font-size="6.8" fill="#656A71" text-anchor="middle">relevante Abschnitte · Sprachfilter · JEV-9B (12 Kategorien, Instanz/Typ)</text>
+
+        <path d="M240 132L240 150" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+
+        <!-- Stage 3: 5 retrieval variants -->
+        <rect x="14" y="150" width="452" height="50" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="168" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600" fill="#15171A" text-anchor="middle">FÜNF SUCHVARIANTEN</text>
+        <text x="240" y="182" font-family="IBM Plex Mono,monospace" font-size="6.6" fill="#656A71" text-anchor="middle">BM25 | bge-m3 | RRF-Hybrid | Hybrid + Reranker | Hybrid + Qwen-Kontext</text>
+        <text x="240" y="194" font-family="IBM Plex Mono,monospace" font-size="6.5" fill="#075593" text-anchor="middle">Auswahl nach Recall@6 · Bericht mit nDCG@6 · bis zu 6 Passagen</text>
+
+        <path d="M240 200L240 218" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+
+        <!-- Stage 3: Readers & judges -->
+        <rect x="14" y="218" width="452" height="50" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="236" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600" fill="#15171A" text-anchor="middle">STRUKTURIERTE ANTWORTEN · LESEMODELLE &amp; PRÜFER</text>
+        <text x="240" y="250" font-family="IBM Plex Mono,monospace" font-size="6.6" fill="#656A71" text-anchor="middle">qwen3.8:27b (Hauptantwort) · gemma4:31b (Prüfung) · JEV-9B-Passagenbewertung</text>
+        <text x="240" y="262" font-family="IBM Plex Mono,monospace" font-size="6.5" fill="#075593" text-anchor="middle">wortgetreue Zitatprüfung → zwei wechselnde Prüfmodelle → akzeptierte Qwen-Antwort</text>
+
+        <path d="M240 268L240 286" stroke="#15171A" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+
+        <!-- Stage 4: 4 paths -->
+        <rect x="14" y="286" width="452" height="50" fill="#F4F4F1" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="304" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600" fill="#15171A" text-anchor="middle">VIER ALTERNATIVE TEXTVERFAHREN</text>
+        <text x="240" y="318" font-family="IBM Plex Mono,monospace" font-size="6.6" fill="#656A71" text-anchor="middle">Merkmalsspalten | Embedding-Spalten | Ridge-Adapter | KV-Cache-Eingriff</text>
+        <text x="240" y="330" font-family="IBM Plex Mono,monospace" font-size="6.5" fill="#075593" text-anchor="middle">gewähltes Verfahren + erweiterte Basis → ARPDAU mit TabPFN-TS · DAU unverändert</text>
+
+        <path d="M240 336L240 354" stroke="#15171A" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
+
+        <!-- Stage 5: H2 -->
+        <rect x="14" y="354" width="452" height="48" style="fill:oklch(0.42 0.14 252)" stroke="#15171A" stroke-width="1"/>
+        <text x="240" y="373" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600" fill="#F4F4F1" text-anchor="middle">H2 · AKTIVITÄTSTAGE INNERHALB DER ERSTEN 30 TAGE</text>
+        <text x="240" y="389" font-family="IBM Plex Mono,monospace" font-size="6.8" fill="#F4F4F1" text-anchor="middle">vs ohne Text / Aktivitätskennung / vertauschte Antworten (3 Zufallsstarts)</text>
       </svg>
     </div>
   </div>
@@ -1499,7 +1522,7 @@
       <ul class="contact-fit-list">
         <li>Versicherungs- und Rückversicherungs-Analytics. Underwriting-Segmentierung bei Absolute Insurance und aktuelle bayesianische Prognoseverfahren, anwendbar auf den Münchner Versicherungs-Cluster und darüber hinaus.</li>
         <li>Gaming und Consumer Products. Prototypen für Umsatzprognosen und Aufbau von Analytics-Infrastruktur bei InnoGames in Hamburg, inklusive Power-BI-Dashboards.</li>
-        <li>KI-native Startups und angewandte KI-Labs mit Fokus auf LLM-Systeme, Agenten-Architekturen und Retrieval. Ich habe ein Multi-Agenten-Toolkit entwickelt und eingeführt, das ein Analytics-Team täglich nutzt, und mein Unternehmensprojekt für Umsatzprognosen, zugleich meine M.Sc.-Abschlussarbeit, prüft agentenkompilierte Text-Kovariaten in 90-Tage-Umsatzprognosen gegen ein Placebo mit vertauschtem Text.</li>
+        <li>KI-native Startups und angewandte KI-Labs mit Fokus auf LLM-Systeme, Agenten-Architekturen und Retrieval. Ich habe ein Multi-Agenten-Toolkit entwickelt und eingeführt, das ein Analytics-Team täglich nutzt, und in meiner Masterarbeit prüfe ich, ob Antworten mit Belegen aus Planungsdokumenten die Prognosen von TabPFN-TS für geplante Aktivitäten verbessern.</li>
         <li>Telekommunikations- und Netzwerk-Analytics. Acht Jahre bei MTS mit Marktanalyse und M&amp;A für die Märkte Indien, Serbien, Slowenien und Moldau, relevant für Telekommunikationsunternehmen und Netzbetreiber, unter anderem in München.</li>
         <li>Global agierende Tech-Firmen und Plattformteams in München, Hamburg, Düsseldorf und Berlin, in denen Prognosen, angewandtes ML und produktive Analytics-Lösungen produktübergreifend skalieren.</li>
         <li>Startups und Scale-ups, bei denen produktives ML und Agentensysteme das Kernprodukt bilden und kein Pilotprojekt bleiben.</li>
